@@ -3,8 +3,7 @@ layout: page
 title: 
 permalink: /publications/
 ---
-
-
+<br />
 ## Journal
 <p></p>
 
