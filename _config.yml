@@ -9,10 +9,12 @@ lang: "en"
 title: Tianlin Liu
 
 # Short bio or description (displayed in the header)
-description: Home
+# description: Home
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: /assets/image/tianlin-liu-profile.JPG
+# avatar: /assets/image/tianlin-liu-profile.JPG
+
+google_analytics: UA-141182385-1
 
 #
 # Flags below are optional
