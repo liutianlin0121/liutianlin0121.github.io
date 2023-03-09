@@ -4,6 +4,7 @@ gem "jekyll"
 
 # Plugins
 group :jekyll_plugins do
+  gem "kramdown-parser-gfm"
   gem 'jekyll-sitemap'
   gem 'jekyll-feed'
   gem "jekyll-gist"
@@ -12,4 +13,5 @@ group :jekyll_plugins do
   gem "jemoji"
   gem "webrick"
   gem "jekyll-github-metadata"
+  gem 'jekyll-redirect-from'
 end
