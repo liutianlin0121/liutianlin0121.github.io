@@ -18,20 +18,20 @@ permalink: /about
 
 <div class="container">
   <div class="image-column">
-  <img src="assets/image/tianlin-liu-profile.JPG" alt="Profile Picture" style="float:left;width:24%;margin-right:30px;">
+  <img src="assets/image/tianlin-liu-profile.JPG" alt="Profile Picture" style="float:left;width:23%;margin-right:30px;">
   </div>
   <div class="info-column">
+   <p><strong>Tianlin Liu</strong></p>
     <p> PhD candidate </p>
     <p> University of Basel, Switzerland</p>
-    <p>t.liu (at) unibas (dot) ch </p> 
     <a href="files/Tianlin_Liu_CV.pdf">CV</a> – <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en">Scholar</a> – <a href="http://github.com/liutianlin0121"> GitHub </a> – <a href="https://twitter.com/tianlinliu0121">Twitter</a>
   </div>
 </div>
 
-<br />
+
 <br />
 
-I am a PhD candidate in machine learning and computational imaging, currently pursuing my studies at the University of Basel in Switzerland. My PhD advisor is [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
+I am a PhD candidate in machine learning, currently pursuing my studies at the University of Basel in Switzerland. My PhD advisor is [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
 
 I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
 
