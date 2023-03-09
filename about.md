@@ -5,12 +5,26 @@ permalink: /about
 ---
 
 
-<div>
+<!--<div>
   <img src="assets/image/tianlin-liu-profile.JPG" alt="Profile Picture" style="float:left;width:23%;margin-right:30px;">
    <p><strong>Tianlin Liu</strong></p>
    <p> PhD student, University of Basel, Switzerland</p>
    <p>t.liu (at) unibas (dot) ch </p> 
     <a href="files/Tianlin_Liu_CV.pdf">CV</a> – <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en">Scholar</a> – <a href="http://github.com/liutianlin0121"> GitHub </a> – <a href="https://twitter.com/tianlinliu0121">Twitter</a>
+</div>
+
+<br />
+<br />-->
+
+<div class="container">
+  <div class="image-column">
+  <img src="assets/image/tianlin-liu-profile.JPG" alt="Profile Picture" style="float:left;width:23%;margin-right:30px;">
+  </div>
+  <div class="info-column">
+    <p> PhD student, University of Basel, Switzerland</p>
+    <p>t.liu (at) unibas (dot) ch </p> 
+    <a href="files/Tianlin_Liu_CV.pdf">CV</a> – <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en">Scholar</a> – <a href="http://github.com/liutianlin0121"> GitHub </a> – <a href="https://twitter.com/tianlinliu0121">Twitter</a>
+  </div>
 </div>
 
 <br />
