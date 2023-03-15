@@ -12,14 +12,15 @@ The goal of the hackathon is to visualize how research happening in Switzerland 
 Below is the visualization that I made (modulo minor post-hackathon adjustments):
 
 <br/><br/>
-![]({{site.baseurl }}/assets/image/sdg_hackathon/sdg_hackathon_TianlinLiu.png){:width="1200px"}
+![]({{site.baseurl }}/assets/image/sdg_hackathon/sdg_hackathon_TianlinLiu.png){:.glightbox}
+<br/><br/>
 
 It is an [Alluvial diagram](https://cran.r-project.org/web/packages/ggalluvial/vignettes/ggalluvial.html) that illustrates the number of projects broken down by universities, disciplines, and SDGs. 
 
 To my pleasant surprise, I won the [public award](https://pollunit.com/polls/upfz8m_7clcrdnbzlbppia) and a runner-up jury award.
 
 <br/><br/>
-![]({{site.baseurl }}/assets/image/sdg_hackathon/two_images.png){:width="1200px"}
+![]({{site.baseurl }}/assets/image/sdg_hackathon/two_images.png){:width="1200px"}{:.glightbox}
 <br/><br/>
 
 --- 
@@ -63,7 +64,7 @@ country_data['discipline_name_hierarchy'] = [a.split(';')[0] for a in country_da
 The pre-processed data `country_data` is a panda dataframe of the following form:
 
 <br/><br/>
-![]({{site.baseurl }}/assets/image/sdg_hackathon/preprocessed_data.png){:width="1200px"}
+![]({{site.baseurl }}/assets/image/sdg_hackathon/preprocessed_data.png){:width="1200px"}{:.glightbox}
 <br/><br/>
 
 I then saved the `country_data` into a CSV file and uploaded it to [RAWGraphs](https://github.com/rawgraphs/rawgraphs-app) for a speedy visualization.

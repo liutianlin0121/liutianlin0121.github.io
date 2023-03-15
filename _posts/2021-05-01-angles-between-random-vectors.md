@@ -75,11 +75,11 @@ plt.grid()
 ```
 As we see in the resulting figure below, the averaged angle indeed concentrates around $$\pi/2$$ and not $$\pi/4$$.
 
-![]({{site.baseurl }}/assets/image/average_angle_dim2.png){:width="700px"}
+![]({{site.baseurl }}/assets/image/average_angle_dim2.png){:width="700px"}{:.glightbox}
 
 Via a slight modification of the above program, we can compute the angles when the Gaussian vectors are high-dimensional; in the figure below, we set the dimension to be 10.
 
-![]({{site.baseurl }}/assets/image/average_angle_dim10.png){:width="700px"}
+![]({{site.baseurl }}/assets/image/average_angle_dim10.png){:width="700px"}{:.glightbox}
 
 
 ## Analytical computation
