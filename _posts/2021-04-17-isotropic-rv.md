@@ -7,7 +7,8 @@ I was reading Section 3.3 of the nicely written book [High-dimensional Probabili
 
 > The coordinates of an isotropic random vector are always uncorrelated (why?), but they are not necessarily independent.
 
-In the above statement, the "not necessarily independent'' part is quite obvious from the example of spherically distributed random variables. However, I had a hard time verifying the "always uncorrelated" statement. I think it might be a typo here, and the correct statement should be: **The coordinates of a zero-mean isotropic random vector are always uncorrelated; however, coordinates of a generic isotropic random can be correlated.**
+In the above statement, the "not necessarily independent" part is evident from the example of spherically distributed random variables. However, I had a hard time verifying the "always uncorrelated" statement. After some thoughts, I think this statement is actually wrong: The coordinates of an isotropic random vector can be correlated.
+
 
 To show coordinates of a generic isotropic random vector can be correlated, we need to find an isotropic random variable $$X$$ such that 
 
@@ -26,7 +27,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 \end{equation}
 $$
 
-As shown in Section 3.3.4 of the book by Roman Vershynin, this random $$X$$ is isotropic. By the definition of an isotropic random variable, we have
+As shown in Section 3.3.4 of the book by Roman Vershynin, this random $$X$$ is isotropic. That is,
 
 $$
 \begin{equation}
