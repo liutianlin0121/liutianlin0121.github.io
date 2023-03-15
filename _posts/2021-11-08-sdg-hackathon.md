@@ -12,14 +12,14 @@ The goal of the hackathon is to visualize how research happening in Switzerland 
 Below is the visualization that I made (modulo minor post-hackathon adjustments):
 
 <br/><br/>
-![]({{site.baseurl }}/files/images/sdg_hackathon/sdg_hackathon_TianlinLiu.png){:width="1200px"}
+![](/files/images/sdg_hackathon/sdg_hackathon_TianlinLiu.png){:width="1200px"}
 
 It is an [Alluvial diagram](https://cran.r-project.org/web/packages/ggalluvial/vignettes/ggalluvial.html) that illustrates the number of projects broken down by universities, disciplines, and SDGs. 
 
 To my pleasant surprise, I won the [public award](https://pollunit.com/polls/upfz8m_7clcrdnbzlbppia) and a runner-up jury award.
 
 <br/><br/>
-![]({{site.baseurl }}/files/images/sdg_hackathon/two_images.png){:width="1200px"}
+![](/files/images/sdg_hackathon/two_images.png){:width="1200px"}
 <br/><br/>
 
 --- 
