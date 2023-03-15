@@ -63,7 +63,7 @@ country_data['discipline_name_hierarchy'] = [a.split(';')[0] for a in country_da
 The pre-processed data `country_data` is a panda dataframe of the following form:
 
 <br/><br/>
-![]({{site.baseurl }}/files/images/sdg_hackathon/preprocessed_data.png){:width="1200px"}
+![]({{site.baseurl }}/assets/image/sdg_hackathon/preprocessed_data.png){:width="1200px"}
 <br/><br/>
 
 I then saved the `country_data` into a CSV file and uploaded it to [RAWGraphs](https://github.com/rawgraphs/rawgraphs-app) for a speedy visualization.

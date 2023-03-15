@@ -61,6 +61,8 @@ footer_links:
 # Time zone
 timezone: Europe/Zurich
 
+future: true
+
 # Excerpt separator
 excerpt_separator: <!--more-->
 
