@@ -7,88 +7,76 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
 
-<meta name="description" content="I was reading Section 3.3 of the nicely written book High-dimensional Probability by Roman Vershynin. At the beginning of that section, it was mentioned that:
+<meta name="description" content="To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilities of image content.
+
+One example where MSE causes trouble is in template matching, where the goal is to align an image with its translated version. To nudge the misaligned image toward the correct location, we want to use a metric that gives a small value when the translation distance is small, and conversely, a large value when the distance is large. However, this is often not the case if we use MSE as a metric. The MSE score betwee two images will be significant, even if the translation between them is small. This is because the MSE approach average error across pixels, and a tiny translation can cause large differences in pixel values.
+
+Are there image metrics that can capture global variabilities of images? I recently learned from Adler et al. (2017), Dukler et al. (2019), and Kothari et al. (2020) that one approach is to use the Sinkhorn divergence. In this approach, we treat images—after a proper normalization—as histograms; we then compare the distance between two histograms through optimal transport. Specifically, the entropy-regularized Wasserstein metric between two histograms \(a\) and \(b\) is defined as
+
+\[W_{C, \epsilon}(a, b) := \min_{T \in U(a, b)}~ \langle T, C \rangle + \epsilon \langle T, \log T \rangle,\]
+
+where \(C\) is a cost matrix, and \(U(a, b) := \{T \in \mathbb{R}^{m \times n}_{+} : T 1_n = a, T^\top 1_m = b\}\)
+is the transportation polytope. The cost matrix stores all pairwise costs between points in the supports of the histograms. That is, \([C]_{ij} = c(x_i, x_j)\) with \(x_i\) and \(x_j\) being two points from the supports of \(a\) and \(b\). It is typically to choose \(c\) as the squared Euclidean distance.
+
+The Sinkhorn divergence is define as
+
+\[S_{C, \epsilon}(a, b) := W_{C, \epsilon}(a, b) - \frac{1}{2} \big( W_{C, \epsilon}(a, a) + W_{C, \epsilon}(b, b) \big).\]
+
+The Sinkhorn divergence $S_{C, \epsilon}$ is debiased version of $W_{C, \epsilon}$ since $S_{C, \epsilon}(a, a) = 0$ and $S_{C, \epsilon}(a, b) = S_{C, \epsilon}(b, a)$.
+
+Numerical demonstration
+
+To visually see that MSE is not a reliable indicator of translation distance, see the GIFs presented below. As a first example, an MNIST image of ‘1’ is translated, and when the translated image and the original image do not overlap, the MSE remains constant. This can lead to complications if one uses gradient-based optimization to minimize the loss.
 
 
-  The coordinates of an isotropic random vector are always uncorrelated (why?), but they are not necessarily independent.
+
+As another example below, an image of high-frequency textures (a curvelet band of an image) is translated. Since the curvelet is oscillatory, the MSE loss has many local minima. Again, this can make gradient-based optimization difficult.
 
 
-In the above statement, the “not necessarily independent” part is evident from the example of spherically distributed random variables. However, I had a hard time verifying the “always uncorrelated” statement. After some thoughts, I think this statement is actually wrong: The coordinates of an isotropic random vector can be correlated.
 
-To show coordinates of a generic isotropic random vector can be correlated, we need to find an isotropic random variable \(X\) such that
+As we see in the above GIFS, the Sinkhorn divergence produces a smooth and monotonic curve, which agrees with our intuition of translation distance.
 
-\[\begin{equation}
-\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j).
-\end{equation}\]
-
-This can be achieved by considering a coordinate random variable \(X\) uniformly distributed in the set \(\lbrace \sqrt{n} e_i \rbrace_{i=1}^n\), where \(\lbrace e_i\rbrace_{i=1}^n\) is the canonical basis of \(\mathbb{R}^n\):
-
-\[\begin{equation}
-X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace. 
-\end{equation}\]
-
-As shown in Section 3.3.4 of the book by Roman Vershynin, this random \(X\) is isotropic. That is,
-
-\[\begin{equation}
-\mathbb{E} (X_i X_j) =  0,  \quad \forall i \neq j.
-\end{equation}\]
-
-Additionally, each component of \(X\) can only take non-negative values. This implies that \(\mathbb{E} (X_i) \neq  0\) for all \(i = 1, \ldots, n\). As a result, there holds
-
-\[\begin{equation}
-\mathbb{E} (X_i) \mathbb{E} (X_j) \neq  0, \quad \forall i,j = 1, \ldots, n.
-\end{equation}\]
-
-Hence we have \(\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j)\). That is, the random variable \(X\) is isotropic yet it has correlated coordinates.
-
-Acknowledgement: My Ph.D. advisor Ivan helped me come up with the above counter-example.
-
+The Google Colab notebook for reproducing these experiments can be found here.
 " />
-<meta property="og:description" content="I was reading Section 3.3 of the nicely written book High-dimensional Probability by Roman Vershynin. At the beginning of that section, it was mentioned that:
+<meta property="og:description" content="To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilities of image content.
+
+One example where MSE causes trouble is in template matching, where the goal is to align an image with its translated version. To nudge the misaligned image toward the correct location, we want to use a metric that gives a small value when the translation distance is small, and conversely, a large value when the distance is large. However, this is often not the case if we use MSE as a metric. The MSE score betwee two images will be significant, even if the translation between them is small. This is because the MSE approach average error across pixels, and a tiny translation can cause large differences in pixel values.
+
+Are there image metrics that can capture global variabilities of images? I recently learned from Adler et al. (2017), Dukler et al. (2019), and Kothari et al. (2020) that one approach is to use the Sinkhorn divergence. In this approach, we treat images—after a proper normalization—as histograms; we then compare the distance between two histograms through optimal transport. Specifically, the entropy-regularized Wasserstein metric between two histograms \(a\) and \(b\) is defined as
+
+\[W_{C, \epsilon}(a, b) := \min_{T \in U(a, b)}~ \langle T, C \rangle + \epsilon \langle T, \log T \rangle,\]
+
+where \(C\) is a cost matrix, and \(U(a, b) := \{T \in \mathbb{R}^{m \times n}_{+} : T 1_n = a, T^\top 1_m = b\}\)
+is the transportation polytope. The cost matrix stores all pairwise costs between points in the supports of the histograms. That is, \([C]_{ij} = c(x_i, x_j)\) with \(x_i\) and \(x_j\) being two points from the supports of \(a\) and \(b\). It is typically to choose \(c\) as the squared Euclidean distance.
+
+The Sinkhorn divergence is define as
+
+\[S_{C, \epsilon}(a, b) := W_{C, \epsilon}(a, b) - \frac{1}{2} \big( W_{C, \epsilon}(a, a) + W_{C, \epsilon}(b, b) \big).\]
+
+The Sinkhorn divergence $S_{C, \epsilon}$ is debiased version of $W_{C, \epsilon}$ since $S_{C, \epsilon}(a, a) = 0$ and $S_{C, \epsilon}(a, b) = S_{C, \epsilon}(b, a)$.
+
+Numerical demonstration
+
+To visually see that MSE is not a reliable indicator of translation distance, see the GIFs presented below. As a first example, an MNIST image of ‘1’ is translated, and when the translated image and the original image do not overlap, the MSE remains constant. This can lead to complications if one uses gradient-based optimization to minimize the loss.
 
 
-  The coordinates of an isotropic random vector are always uncorrelated (why?), but they are not necessarily independent.
+
+As another example below, an image of high-frequency textures (a curvelet band of an image) is translated. Since the curvelet is oscillatory, the MSE loss has many local minima. Again, this can make gradient-based optimization difficult.
 
 
-In the above statement, the “not necessarily independent” part is evident from the example of spherically distributed random variables. However, I had a hard time verifying the “always uncorrelated” statement. After some thoughts, I think this statement is actually wrong: The coordinates of an isotropic random vector can be correlated.
 
-To show coordinates of a generic isotropic random vector can be correlated, we need to find an isotropic random variable \(X\) such that
+As we see in the above GIFS, the Sinkhorn divergence produces a smooth and monotonic curve, which agrees with our intuition of translation distance.
 
-\[\begin{equation}
-\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j).
-\end{equation}\]
-
-This can be achieved by considering a coordinate random variable \(X\) uniformly distributed in the set \(\lbrace \sqrt{n} e_i \rbrace_{i=1}^n\), where \(\lbrace e_i\rbrace_{i=1}^n\) is the canonical basis of \(\mathbb{R}^n\):
-
-\[\begin{equation}
-X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace. 
-\end{equation}\]
-
-As shown in Section 3.3.4 of the book by Roman Vershynin, this random \(X\) is isotropic. That is,
-
-\[\begin{equation}
-\mathbb{E} (X_i X_j) =  0,  \quad \forall i \neq j.
-\end{equation}\]
-
-Additionally, each component of \(X\) can only take non-negative values. This implies that \(\mathbb{E} (X_i) \neq  0\) for all \(i = 1, \ldots, n\). As a result, there holds
-
-\[\begin{equation}
-\mathbb{E} (X_i) \mathbb{E} (X_j) \neq  0, \quad \forall i,j = 1, \ldots, n.
-\end{equation}\]
-
-Hence we have \(\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j)\). That is, the random variable \(X\) is isotropic yet it has correlated coordinates.
-
-Acknowledgement: My Ph.D. advisor Ivan helped me come up with the above counter-example.
-
+The Google Colab notebook for reproducing these experiments can be found here.
 " />
 
 <meta name="author" content="Tianlin Liu" />
 
 
-<meta property="og:title" content="Are coordinates of an isotropic random vector uncorrelated?" />
-<meta property="twitter:title" content="Are coordinates of an isotropic random vector uncorrelated?" />
+<meta property="og:title" content="Using Sinkhorn divergence to measure image similarity" />
+<meta property="twitter:title" content="Using Sinkhorn divergence to measure image similarity" />
 
-<!-- <title>Are coordinates of an isotropic random vector uncorrelated? – Tianlin Liu – Home</title> -->
+<!-- <title>Using Sinkhorn divergence to measure image similarity – Tianlin Liu – Home</title> -->
 
     <link rel="stylesheet" type="text/css" href="/style.css"/>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css"/>
@@ -148,50 +136,44 @@ Acknowledgement: My Ph.D. advisor Ivan helped me come up with the above counter-
 
     <div id="main" role="main" class="container">
       <article class="post">
-  <h1>Are coordinates of an isotropic random vector uncorrelated?</h1>
+  <h1>Using Sinkhorn divergence to measure image similarity</h1>
 
   <div class="entry">
-    <p>I was reading Section 3.3 of the nicely written book <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.pdf">High-dimensional Probability</a> by Roman Vershynin. At the beginning of that section, it was mentioned that:</p>
+    <p>To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilities of image content.</p>
 
-<blockquote>
-  <p>The coordinates of an isotropic random vector are always uncorrelated (why?), but they are not necessarily independent.</p>
-</blockquote>
+<p>One example where MSE causes trouble is in template matching, where the goal is to align an image with its translated version. To nudge the misaligned image toward the correct location, we want to use a metric that gives a small value when the translation distance is small, and conversely, a large value when the distance is large. However, this is often not the case if we use MSE as a metric. The MSE score betwee two images will be significant, even if the translation between them is small. This is because the MSE approach average error across pixels, and a tiny translation can cause large differences in pixel values.</p>
 
-<p>In the above statement, the “not necessarily independent” part is evident from the example of spherically distributed random variables. However, I had a hard time verifying the “always uncorrelated” statement. After some thoughts, I think this statement is actually wrong: The coordinates of an isotropic random vector can be correlated.</p>
+<p>Are there image metrics that can capture global variabilities of images? I recently learned from <a href="https://arxiv.org/pdf/1710.10898.pdf">Adler et al. (2017)</a>, <a href="https://proceedings.mlr.press/v97/dukler19a.html">Dukler et al. (2019)</a>, and <a href="https://proceedings.neurips.cc/paper_files/paper/2020/file/5e98d23afe19a774d1b2dcbefd5103eb-Paper.pdf">Kothari et al. (2020)</a> that one approach is to use the Sinkhorn divergence. In this approach, we treat images—after a proper normalization—as histograms; we then compare the distance between two histograms through optimal transport. Specifically, the entropy-regularized Wasserstein metric between two histograms \(a\) and \(b\) is defined as</p>
 
-<p>To show coordinates of a generic isotropic random vector can be correlated, we need to find an isotropic random variable \(X\) such that</p>
+\[W_{C, \epsilon}(a, b) := \min_{T \in U(a, b)}~ \langle T, C \rangle + \epsilon \langle T, \log T \rangle,\]
 
-\[\begin{equation}
-\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j).
-\end{equation}\]
+<p>where \(C\) is a cost matrix, and \(U(a, b) := \{T \in \mathbb{R}^{m \times n}_{+} : T 1_n = a, T^\top 1_m = b\}\)
+is the transportation polytope. The cost matrix stores all pairwise costs between points in the supports of the histograms. That is, \([C]_{ij} = c(x_i, x_j)\) with \(x_i\) and \(x_j\) being two points from the supports of \(a\) and \(b\). It is typically to choose \(c\) as the squared Euclidean distance.</p>
 
-<p>This can be achieved by considering a <em>coordinate random variable</em> \(X\) uniformly distributed in the set \(\lbrace \sqrt{n} e_i \rbrace_{i=1}^n\), where \(\lbrace e_i\rbrace_{i=1}^n\) is the canonical basis of \(\mathbb{R}^n\):</p>
+<p>The Sinkhorn divergence is define as</p>
 
-\[\begin{equation}
-X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace. 
-\end{equation}\]
+\[S_{C, \epsilon}(a, b) := W_{C, \epsilon}(a, b) - \frac{1}{2} \big( W_{C, \epsilon}(a, a) + W_{C, \epsilon}(b, b) \big).\]
 
-<p>As shown in Section 3.3.4 of the book by Roman Vershynin, this random \(X\) is isotropic. That is,</p>
+<p>The Sinkhorn divergence $S_{C, \epsilon}$ is debiased version of $W_{C, \epsilon}$ since $S_{C, \epsilon}(a, a) = 0$ and $S_{C, \epsilon}(a, b) = S_{C, \epsilon}(b, a)$.</p>
 
-\[\begin{equation}
-\mathbb{E} (X_i X_j) =  0,  \quad \forall i \neq j.
-\end{equation}\]
+<h2 id="numerical-demonstration">Numerical demonstration</h2>
 
-<p>Additionally, each component of \(X\) can only take non-negative values. This implies that \(\mathbb{E} (X_i) \neq  0\) for all \(i = 1, \ldots, n\). As a result, there holds</p>
+<p>To visually see that MSE is not a reliable indicator of translation distance, see the GIFs presented below. As a first example, an MNIST image of ‘1’ is translated, and when the translated image and the original image do not overlap, the MSE remains constant. This can lead to complications if one uses gradient-based optimization to minimize the loss.</p>
 
-\[\begin{equation}
-\mathbb{E} (X_i) \mathbb{E} (X_j) \neq  0, \quad \forall i,j = 1, \ldots, n.
-\end{equation}\]
+<p><img src="/assets/image/mnist_metric_vs_translation.gif" alt="Alt Text" /></p>
 
-<p>Hence we have \(\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j)\). That is, the random variable \(X\) is isotropic yet it has correlated coordinates.</p>
+<p>As another example below, an image of high-frequency textures (a curvelet band of an image) is translated. Since the curvelet is oscillatory, the MSE loss has many local minima. Again, this can make gradient-based optimization difficult.</p>
 
-<p><strong>Acknowledgement:</strong> My Ph.D. advisor <a href="https://dmi.unibas.ch/de/personen/ivan-dokmanic/">Ivan</a> helped me come up with the above counter-example.</p>
+<p><img src="/assets/image/curvelet_metric_vs_translation.gif" alt="Alt Text" /></p>
 
+<p>As we see in the above GIFS, the Sinkhorn divergence produces a smooth and monotonic curve, which agrees with our intuition of translation distance.</p>
+
+<p>The Google Colab notebook for reproducing these experiments can be found <a href="https://colab.research.google.com/drive/1Z4nvSUkEwL4ztzG6WW0Js27bDJmUoVoF?usp=sharing">here</a>.</p>
 
   </div>
 
   <div class="date">
-    <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;Date:<span style="color: #333333; font-weight: normal;">&nbsp;April 17, 2021</span>
+    <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;Date:<span style="color: #333333; font-weight: normal;">&nbsp;March 23, 2023</span>
   </div>
 
   <div class="post-categories">
@@ -203,7 +185,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
   <div class="share-post">
     <i class="fa fa-share-alt-square fa-fw" aria-hidden="true"></i>&nbsp;Share:&nbsp;
     <!-- Sharingbutton Facebook -->
-<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/2021/04/17/isotropic-rv/" title="Share on Facebook" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/2023/03/23/sinkhorn-divergence/" title="Share on Facebook" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
     </div>
@@ -211,7 +193,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton Twitter -->
-<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Are coordinates of an isotropic random vector uncorrelated?&amp;url=http://localhost:4000/2021/04/17/isotropic-rv/" title="Share on Twitter" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?text=Using Sinkhorn divergence to measure image similarity&amp;url=http://localhost:4000/2023/03/23/sinkhorn-divergence/" title="Share on Twitter" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
     </div>
@@ -219,7 +201,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton Tumblr -->
-<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Are coordinates of an isotropic random vector uncorrelated?&amp;content=http://localhost:4000/2021/04/17/isotropic-rv/&amp;canonicalUrl=http://localhost:4000/2021/04/17/isotropic-rv/&amp;shareSource=tumblr_share_button" title="Share on Tumblr" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Using Sinkhorn divergence to measure image similarity&amp;content=http://localhost:4000/2023/03/23/sinkhorn-divergence/&amp;canonicalUrl=http://localhost:4000/2023/03/23/sinkhorn-divergence/&amp;shareSource=tumblr_share_button" title="Share on Tumblr" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.5.5v5h5v4h-5V15c0 5 3.5 4.4 6 2.8v4.4c-6.7 3.2-12 0-12-4.2V9.5h-3V6.7c1-.3 2.2-.7 3-1.3.5-.5 1-1.2 1.4-2 .3-.7.6-1.7.7-3h3.8z"/></svg>
     </div>
@@ -227,7 +209,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton E-Mail -->
-<a class="resp-sharing-button__link" href="mailto:?subject=Are coordinates of an isotropic random vector uncorrelated?&body=You can read more at this site%2C%0Ahttp://localhost:4000/2021/04/17/isotropic-rv/" title="Share via E-Mail" target="_self" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="mailto:?subject=Using Sinkhorn divergence to measure image similarity&body=You can read more at this site%2C%0Ahttp://localhost:4000/2023/03/23/sinkhorn-divergence/" title="Share via E-Mail" target="_self" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
     </div>
@@ -235,7 +217,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton Pinterest -->
-<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/2021/04/17/isotropic-rv/&amp;media=http://localhost:4000/2021/04/17/isotropic-rv/&amp;description=Are coordinates of an isotropic random vector uncorrelated?" title="Share on Pinterest" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=http://localhost:4000/2023/03/23/sinkhorn-divergence/&amp;media=http://localhost:4000/2023/03/23/sinkhorn-divergence/&amp;description=Using Sinkhorn divergence to measure image similarity" title="Share on Pinterest" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.14.5C5.86.5 2.7 5 2.7 8.75c0 2.27.86 4.3 2.7 5.05.3.12.57 0 .66-.33l.27-1.06c.1-.32.06-.44-.2-.73-.52-.62-.86-1.44-.86-2.6 0-3.33 2.5-6.32 6.5-6.32 3.55 0 5.5 2.17 5.5 5.07 0 3.8-1.7 7.02-4.2 7.02-1.37 0-2.4-1.14-2.07-2.54.4-1.68 1.16-3.48 1.16-4.7 0-1.07-.58-1.98-1.78-1.98-1.4 0-2.55 1.47-2.55 3.42 0 1.25.43 2.1.43 2.1l-1.7 7.2c-.5 2.13-.08 4.75-.04 5 .02.17.22.2.3.1.14-.18 1.82-2.26 2.4-4.33.16-.58.93-3.63.93-3.63.45.88 1.8 1.65 3.22 1.65 4.25 0 7.13-3.87 7.13-9.05C20.5 4.15 17.18.5 12.14.5z"/></svg>
     </div>
@@ -243,7 +225,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton LinkedIn -->
-<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/2021/04/17/isotropic-rv/&amp;title=Are coordinates of an isotropic random vector uncorrelated?&amp;summary=Are coordinates of an isotropic random vector uncorrelated?&amp;source=http://localhost:4000/2021/04/17/isotropic-rv/" title="Share on LinkedIn" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/2023/03/23/sinkhorn-divergence/&amp;title=Using Sinkhorn divergence to measure image similarity&amp;summary=Using Sinkhorn divergence to measure image similarity&amp;source=http://localhost:4000/2023/03/23/sinkhorn-divergence/" title="Share on LinkedIn" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg>
     </div>
@@ -251,7 +233,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton Reddit -->
-<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=http://localhost:4000/2021/04/17/isotropic-rv/&amp;resubmit=true&amp;title=Are coordinates of an isotropic random vector uncorrelated?" title="Share on Reddit" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=http://localhost:4000/2023/03/23/sinkhorn-divergence/&amp;resubmit=true&amp;title=Using Sinkhorn divergence to measure image similarity" title="Share on Reddit" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg>
     </div>
@@ -259,7 +241,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton XING -->
-<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;http://localhost:4000/2021/04/17/isotropic-rv/;title=Are coordinates of an isotropic random vector uncorrelated?" title="Share on XING" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;http://localhost:4000/2023/03/23/sinkhorn-divergence/;title=Using Sinkhorn divergence to measure image similarity" title="Share on XING" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.2 9.7l-3-5.4C7.2 4 7 4 6.8 4h-5c-.3 0-.4 0-.5.2v.5L4 10 .4 16v.5c0 .2.2.3.4.3h5c.3 0 .4 0 .5-.2l4-6.6v-.5zM24 .2l-.5-.2H18s-.2 0-.3.3l-8 14v.4l5.2 9c0 .2 0 .3.3.3h5.4s.3 0 .4-.2c.2-.2.2-.4 0-.5l-5-8.8L24 .7V.2z"/></svg>
     </div>
@@ -267,7 +249,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton WhatsApp -->
-<a class="resp-sharing-button__link" href="whatsapp://send?text=Are coordinates of an isotropic random vector uncorrelated?%20http://localhost:4000/2021/04/17/isotropic-rv/" title="Share via WhatsApp" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Using Sinkhorn divergence to measure image similarity%20http://localhost:4000/2023/03/23/sinkhorn-divergence/" title="Share via WhatsApp" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg>
     </div>
@@ -275,7 +257,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton Hacker News -->
-<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/2021/04/17/isotropic-rv/&amp;t=Are coordinates of an isotropic random vector uncorrelated?" title="Share on Hacker News" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=http://localhost:4000/2023/03/23/sinkhorn-divergence/&amp;t=Using Sinkhorn divergence to measure image similarity" title="Share on Hacker News" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><path fill-rule="evenodd" d="M60.94 82.314L17 0h20.08l25.85 52.093c.397.927.86 1.888 1.39 2.883.53.994.995 2.02 1.393 3.08.265.4.463.764.596 1.095.13.334.262.63.395.898.662 1.325 1.26 2.618 1.79 3.877.53 1.26.993 2.42 1.39 3.48 1.06-2.254 2.22-4.673 3.48-7.258 1.26-2.585 2.552-5.27 3.877-8.052L103.49 0h18.69L77.84 83.308v53.087h-16.9v-54.08z"></path></svg>
     </div>
@@ -283,7 +265,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton VK -->
-<a class="resp-sharing-button__link" href="http://vk.com/share.php?title=Are coordinates of an isotropic random vector uncorrelated?&amp;url=http://localhost:4000/2021/04/17/isotropic-rv/" title="Share on VK" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="http://vk.com/share.php?title=Using Sinkhorn divergence to measure image similarity&amp;url=http://localhost:4000/2023/03/23/sinkhorn-divergence/" title="Share on VK" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--vk resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.547 7h-3.29a.743.743 0 0 0-.655.392s-1.312 2.416-1.734 3.23C14.734 12.813 14 12.126 14 11.11V7.603A1.104 1.104 0 0 0 12.896 6.5h-2.474a1.982 1.982 0 0 0-1.75.813s1.255-.204 1.255 1.49c0 .42.022 1.626.04 2.64a.73.73 0 0 1-1.272.503 21.54 21.54 0 0 1-2.498-4.543.693.693 0 0 0-.63-.403h-2.99a.508.508 0 0 0-.48.685C3.005 10.175 6.918 18 11.38 18h1.878a.742.742 0 0 0 .742-.742v-1.135a.73.73 0 0 1 1.23-.53l2.247 2.112a1.09 1.09 0 0 0 .746.295h2.953c1.424 0 1.424-.988.647-1.753-.546-.538-2.518-2.617-2.518-2.617a1.02 1.02 0 0 1-.078-1.323c.637-.84 1.68-2.212 2.122-2.8.603-.804 1.697-2.507.197-2.507z"/></svg>
     </div>
@@ -291,7 +273,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 </a>
 
 <!-- Sharingbutton Telegram -->
-<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Are coordinates of an isotropic random vector uncorrelated?&amp;url=http://localhost:4000/2021/04/17/isotropic-rv/" title="Share via Telegram" target="_blank" rel="noopener" aria-label="">
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Using Sinkhorn divergence to measure image similarity&amp;url=http://localhost:4000/2023/03/23/sinkhorn-divergence/" title="Share via Telegram" target="_blank" rel="noopener" aria-label="">
   <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.707 8.475C.275 8.64 0 9.508 0 9.508s.284.867.718 1.03l5.09 1.897 1.986 6.38a1.102 1.102 0 0 0 1.75.527l2.96-2.41a.405.405 0 0 1 .494-.013l5.34 3.87a1.1 1.1 0 0 0 1.046.135 1.1 1.1 0 0 0 .682-.803l3.91-18.795A1.102 1.102 0 0 0 22.5.075L.706 8.475z"/></svg>
     </div>
@@ -321,17 +303,7 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
 
   
   
-
-  
-  
-
-  
-
-  
-
-  
-  
-
+    
   
   
 
@@ -372,47 +344,47 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
   
 
   
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+  
+
+  
+
+
+
+
   
     
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-
-  
-
-  
-
-
-
-
-  
     
-    
-    
-
-    
-    <div class="related-posts-post">
-  <a href="/2023/03/23/sinkhorn-divergence/">
-    Using Sinkhorn divergence to measure image similarity
-  </a>
-</div>
-
-
-  
+      
     
     
     
@@ -442,6 +414,19 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
     
     
     
+
+    
+    <div class="related-posts-post">
+  <a href="/2021/05/01/angles-between-random-vectors/">
+    The expected angle between two isotropic random vectors
+  </a>
+</div>
+
+
+  
+    
+    
+    
       
 
 
@@ -453,11 +438,11 @@ X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace.
     <div class="post-nav">
   <p>
     
+    <span class="post-nav-label">Previous</span><br>
+    <a href="/2021/11/08/sdg-hackathon/">&#9194;&nbsp;Visualizing Swiss sustainability research</a>
+    
   </p>
   <p>
-    
-    <span class="post-nav-label">Next</span><br>
-    <a href="/2021/05/01/angles-between-random-vectors/">The expected angle between two isotropic random vectors&nbsp;&#9193;</a>
     
   </p>
 </div>
