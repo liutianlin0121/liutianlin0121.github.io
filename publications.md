@@ -1,9 +1,10 @@
 ---
 layout: page
-title:
+title: Publications
 permalink: /publications/
 ---
-## Journal
+
+### Journal
 <p></p>
 
 **Learning multiscale convolutional dictionaries for image reconstruction**  
@@ -12,7 +13,7 @@ IEEE Transactions on Computational Imaging, 2022
 [![pdf](../files/badges/-paper-green.svg)](https://ieeexplore.ieee.org/document/9775596) [![code](../files/badges/-code-blue.svg)](https://github.com/liutianlin0121/MUSC)  [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2022learning.bib) 
 
 
-## Conference
+### Conference
 <p></p>
 
 **Sparsity-constrained optimal transport**  
@@ -59,7 +60,7 @@ AAAI Conference on Artificial Intelligence 2019
 
 
 
-## Workshop
+### Workshop
 <p></p>
 
 **Fast binary compressive sensing via smoothed l0 gradient descent**   
@@ -80,7 +81,7 @@ AAAI Workshop on Affective Content Analysis 2018
 
 
 
-## Theses
+### Theses
 <p></p>
 
 **Harnesing slow dynamics in neuromorphic computation**  
@@ -94,7 +95,7 @@ Bachelor thesis, Department of Mathematics, Jacobs University Bremen, 2016.
 
 
 
-## Prepreint & technical report
+### Prepreint & technical report
 
 **A consistent method for learning OOMs from asymptotically stationary time series data containing missing values**   
 _Tianlin Liu_  
