@@ -9,7 +9,7 @@ lang: "en"
 title: "Tianlin Liu"
 
 # Short bio or description (displayed in the header)
-description: "Home"
+description: "home"
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 # avatar: /assets/image/tianlin-liu-profile.JPG
@@ -40,6 +40,9 @@ navigation_links:
 
   - title: blog
     url: /blog
+
+  # - title: cv
+    # url: /cv
 
   # - title: search
   #   url: /search

@@ -1,9 +1,8 @@
 ---
 layout: page
-title: 
+title:
 permalink: /publications/
 ---
-<br />
 ## Journal
 <p></p>
 
