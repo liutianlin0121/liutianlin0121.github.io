@@ -20,6 +20,8 @@ permalink: /about
   
 I am a PhD candidate in machine learning, currently pursuing my studies at the University of Basel in Switzerland. My PhD advisor is [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
 
+During the summer of 2022, I was an intern at Google Brain Zurich.
+
 I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
 
 <a href="files/Tianlin_Liu_CV.pdf">CV</a> – <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en">Scholar</a> – <a href="http://github.com/liutianlin0121"> GitHub </a> – <a href="https://twitter.com/tianlinliu0121">Twitter</a>
