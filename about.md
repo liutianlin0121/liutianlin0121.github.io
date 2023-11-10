@@ -30,7 +30,7 @@ I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During 
 
 ### News
 
-* **Oct  2023**: Check out our [new blog](https://huggingface.co/blog/the_n_implementation_details_of_rlhf_with_ppo) for a detailed breakdown of OpenAI's first RLHF paper, featuring results replicated in PyTorch and Jax.
+* **Oct  2023**: Check out our [new blog](https://huggingface.co/blog/the_n_implementation_details_of_rlhf_with_ppo) (with Costa Huang and Leandro von Werra) for a detailed breakdown of OpenAI's first RLHF paper, featuring results replicated in PyTorch and Jax.
   
 * **Jan  2023**: Our [paper](https://arxiv.org/abs/2209.15466) (with Joan Puigcerver and Mathieu Blondel) has been accepted by ICLR 2023 as a spotlight presentation.
 
