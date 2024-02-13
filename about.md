@@ -17,7 +17,11 @@ permalink: /about
 </div>
 
 <br />
-  
+ 
+<span style="color:darkgreen">   
+I'm seeking full-time positions starting Fall or Winter 2024. If my experience aligns with your organization, please feel free to contact me.
+ </span> 
+
 I am a PhD candidate in machine learning, currently pursuing my studies at the University of Basel in Switzerland. My PhD advisor is [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
 
 In the fall of 2023, I interned at Google DeepMind in Paris. In the summer of 2022, I interned at Google Brain in Zurich.
@@ -26,6 +30,7 @@ In the fall of 2023, I interned at Google DeepMind in Paris. In the summer of 20
 I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
 
 <a href="files/Tianlin_Liu_CV.pdf">CV</a> – <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en">Google Scholar</a> – <a href="http://github.com/liutianlin0121"> GitHub </a> – <a href="https://twitter.com/tianlinliu0121">Twitter</a>
+
 
 
 ### News
