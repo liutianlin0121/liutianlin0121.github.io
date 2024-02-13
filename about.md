@@ -19,7 +19,7 @@ permalink: /about
 <br />
  -->
 <span style="color:darkgreen">   
-I'm seeking full-time positions starting Fall or Winter 2024. If my experience aligns with your organization, please feel free to contact me. </span> 
+I'm seeking full-time positions starting Fall or Winter 2024. If my experience would be a good fit for your organization, please feel free to contact me. </span> 
 
 I am a PhD candidate in machine learning, currently pursuing my studies at the University of Basel in Switzerland. My PhD advisor is [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
 
