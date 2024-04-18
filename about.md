@@ -15,7 +15,7 @@ permalink: /about
     <p> University of Basel, Switzerland</p>
   </div>
 </div>
-
+<br />
 
 I am a PhD candidate in machine learning, currently pursuing my studies at the University of Basel in Switzerland. My PhD advisor is [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
 
