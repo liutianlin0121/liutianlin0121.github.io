@@ -10,7 +10,7 @@ permalink: /about
   <div style="margin-bottom: 12px;"> PhD candidate, University of Basel</div> 
   <!-- Icons Row with adjusted size and margin -->
   <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en" target="_blank">
-    <i class="ai ai-google-scholar" style="font-size: 25px; margin: 0 3px;"></i>
+    <i class="fa-brands fa-google-scholar" style="font-size: 25px; margin: 0 3px;"></i>
   </a>
   <a href="files/Tianlin_Liu_CV.pdf" target="_blank">
     <i class="ai ai-cv" style="font-size: 24px; margin: 0 3px;"></i>
@@ -19,7 +19,7 @@ permalink: /about
     <i class="fab fa-github" style="font-size: 24px; margin: 0 3px;"></i>
   </a>
   <a href="https://twitter.com/tianlinliu0121" target="_blank">
-    <i class="fab fa-twitter" style="font-size: 24px; margin: 0 3px;"></i>
+    <i class="fa-brands fa-x-twitter" style="font-size: 24px; margin: 0 3px;"></i>
   </a>
   <a href="https://www.linkedin.com/in/tianlinliu0121/" target="_blank">
     <i class="fab fa-linkedin-in" style="font-size: 24px; margin: 0 3px;"></i>
