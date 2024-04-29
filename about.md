@@ -4,29 +4,39 @@ title:
 permalink: /about
 ---
 
-
-<div class="container">
-  <div class="image-column">
-<img src="assets/image/tianlin-liu-profile.JPG" alt="Example image" width="145" height=auto style="float:left; margin-right:20px; max-width: 50%;">
-  </div>
-  <div class="info-column">
-   <p><strong>Tianlin Liu</strong></p>
-    <p> PhD candidate </p>
-    <p> University of Basel, Switzerland</p>
-  </div>
+<div style="text-align: center;">
+  <img src="assets/image/tianlin-liu-profile.JPG" alt="Tianlin Liu" width="180" style="max-width: 50%; height: auto; border-radius: 50%;">
+  <div>Tianlin Liu</div>
+  <div style="margin-bottom: 12px;"> PhD candidate, University of Basel</div> 
+  <!-- Icons Row with adjusted size and margin -->
+  <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en" target="_blank">
+    <i class="ai ai-google-scholar" style="font-size: 25px; margin: 0 3px;"></i>
+  </a>
+  <a href="files/Tianlin_Liu_CV.pdf" target="_blank">
+    <i class="ai ai-cv" style="font-size: 24px; margin: 0 3px;"></i>
+  </a>
+  <a href="http://github.com/liutianlin0121" target="_blank">
+    <i class="fab fa-github" style="font-size: 24px; margin: 0 3px;"></i>
+  </a>
+  <a href="https://twitter.com/tianlinliu0121" target="_blank">
+    <i class="fab fa-twitter" style="font-size: 24px; margin: 0 3px;"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/tianlinliu0121/" target="_blank">
+    <i class="fab fa-linkedin-in" style="font-size: 24px; margin: 0 3px;"></i>
+  </a>
+  <!-- More icons as needed -->
 </div>
-<br />
 
-I am a PhD candidate in machine learning, currently pursuing my studies at the University of Basel in Switzerland. My PhD advisor is [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
+I am a PhD candidate in machine learning at the University of Basel in Switzerland. My PhD advisor is [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
 
 In the fall of 2023, I interned at Google DeepMind in Paris. In the summer of 2022, I interned at Google Brain in Zurich.
 
 
 I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
 
-<a href="files/Tianlin_Liu_CV.pdf">CV</a> – <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en">Google Scholar</a> – <a href="http://github.com/liutianlin0121"> GitHub </a> – <a href="https://twitter.com/tianlinliu0121">Twitter</a>
+<!--<a href="files/Tianlin_Liu_CV.pdf">CV</a> – <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en">Google Scholar</a> – <a href="http://github.com/liutianlin0121"> GitHub </a> – <a href="https://twitter.com/tianlinliu0121">Twitter</a>
 
-
+-->
 
 ### News
 
