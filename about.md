@@ -39,7 +39,7 @@ I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During 
 
 * **May 2024**: Our [paper](https://arxiv.org/abs/2402.02992) on decoding-time realignment of language models was accepted by ICML 2024.
 
-* **April 2024**: Our [paper](https://openreview.net/forum?id=aHk3vctnf1) on evaluating routers in vision mixture-of-experts was accepted by TMLR 2024
+* **April 2024**: Our [paper](https://openreview.net/forum?id=aHk3vctnf1) on evaluating routers in vision mixture-of-experts was accepted by TMLR 2024.
 
 * **Feb 2024**: Our [paper](https://openreview.net/forum?id=6wpInwnzs8) on benchmarking wave-propagation PDE solvers was accepted by TMLR, 2024.
 
@@ -59,7 +59,7 @@ I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During 
 <!--* **August 2019**: My [master's thesis](/files/MSc_thesis_TianlinLiu.pdf) has been awarded a Deans Prize for outstanding thesis by Jacobs University Bremen.
 -->
 
-* **March 2019**: Our [paper](https://www.ai.rug.nl/minds/uploads/3158_Heetal19.pdf) (with Xu He,  Fatemeh Hadaeghi, and Herbert Jaeger) on training spiking neural networks for neuromorphic hardware won a best paper finalist award at IEEE NER-2019.
+* **March 2019**: Our [paper](https://www.ai.rug.nl/minds/uploads/3158_Heetal19.pdf) on training spiking neural networks for neuromorphic hardware won a best paper finalist award at IEEE NER-2019.
 
 <!--
 * **March 2019**: I attended IEEE NER-2019.
