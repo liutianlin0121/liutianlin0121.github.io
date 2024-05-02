@@ -37,24 +37,29 @@ I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During 
 
 ### News
 
-* **Oct  2023**: Check out our [blog post](https://huggingface.co/blog/the_n_implementation_details_of_rlhf_with_ppo) (with Costa Huang and Leandro von Werra) for a detailed breakdown of OpenAI's first RLHF paper, featuring results replicated in PyTorch and Jax.
+* **May 2024**: Our [paper](https://arxiv.org/abs/2402.02992) on decoding-time realignment of language models was accepted by ICML 2024.
+
+* **April 2024**: Our [paper](https://openreview.net/forum?id=aHk3vctnf1) on evaluating routers in vision mixture-of-experts was accepted by TMLR 2024
+
+* **Feb 2024**: Our [paper](https://openreview.net/forum?id=6wpInwnzs8) on benchmarking wave-propagation PDE solvers was accepted by TMLR, 2024.
+
+
+* **Oct  2023**: Check out our [blog post](https://openreview.net/forum?id=CPFCkB2OGt) for an in-depth look at OpenAI's first RLHF paper, featuring results replicated in PyTorch and Jax. It has been selected for a spotlight in the ICLR-2024 blogpost track.
   
-* **Jan  2023**: Our [paper](https://arxiv.org/abs/2209.15466) (with Joan Puigcerver and Mathieu Blondel) has been accepted by ICLR 2023 as a spotlight presentation.
+* **Jan  2023**: Our [paper](https://openreview.net/forum?id=yHY9NbQJ5BP) on sparsity-constrained optimal transport was accepted by ICLR 2023 as a spotlight presentation.
 
+* **May  2022**: Our [paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9775596) on multiscale convolutional dictionary learning was accepted by the IEEE Transactions on Computational Imaging.
 
+* **Jan 2022**: Our [paper](https://openreview.net/forum?id=JGO8CvG5S9)  on universal approximation under constraints was by ICLR 2022 and selected for a spotlight presentation.
 
-* **May  2022**: Our [paper](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9775596) (with Anadi Chaman, David Belius, and Ivan Dokmanić) has been accepted by the IEEE Transactions on Computational Imaging.
+* **June  2020**: Our [paper](https://arxiv.org/abs/2006.08228) on training sparse neural networks was accepted by ICML 2020.
 
+* **November  2019**: Our [paper](https://arxiv.org/abs/1911.10524) on word vector denoising was accepted by AAAI 2020.
 
-* **Jan 2022**: Our [paper](https://arxiv.org/pdf/2110.03303.pdf) (with Anastasis Kratsios, Behnoosh Zamanlooy, and Ivan Dokmanić) has been accepted by ICLR 2022 and selected for a spotlight presentation.
+<!--* **August 2019**: My [master's thesis](/files/MSc_thesis_TianlinLiu.pdf) has been awarded a Deans Prize for outstanding thesis by Jacobs University Bremen.
+-->
 
-* **June  2020**: Our [paper](https://arxiv.org/abs/2006.08228) (with Friedemann Zenke) on training sparse neural networks has been accepted by ICML 2020.
-
-* **November  2019**: Our [paper](https://arxiv.org/abs/1911.10524) (with Zekun Yang) on word vector denoising has been accepted by AAAI 2020.
-
-* **August 2019**: My [master's thesis](/files/MSc_thesis_TianlinLiu.pdf) has been awarded a Deans Prize for outstanding thesis by Jacobs University Bremen.
-
-* **March 2019**: Our [paper](https://www.ai.rug.nl/minds/uploads/3158_Heetal19.pdf) (with Xu He,  Fatemeh Hadaeghi, and Herbert Jaeger) on training spiking neural networks for neuromorphic hardware won a best paper finalist award at IEEE NER-2019
+* **March 2019**: Our [paper](https://www.ai.rug.nl/minds/uploads/3158_Heetal19.pdf) (with Xu He,  Fatemeh Hadaeghi, and Herbert Jaeger) on training spiking neural networks for neuromorphic hardware won a best paper finalist award at IEEE NER-2019.
 
 <!--
 * **March 2019**: I attended IEEE NER-2019.
