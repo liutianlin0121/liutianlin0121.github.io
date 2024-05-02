@@ -54,7 +54,7 @@ I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During 
 
 * **June  2020**: Our [paper](https://arxiv.org/abs/2006.08228) on training sparse neural networks was accepted by ICML 2020.
 
-* **November  2019**: Our [paper](https://arxiv.org/abs/1911.10524) on word vector denoising was accepted by AAAI 2020.
+* **Nov  2019**: Our [paper](https://arxiv.org/abs/1911.10524) on word vector denoising was accepted by AAAI 2020.
 
 <!--* **August 2019**: My [master's thesis](/files/MSc_thesis_TianlinLiu.pdf) has been awarded a Deans Prize for outstanding thesis by Jacobs University Bremen.
 -->
