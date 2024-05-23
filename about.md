@@ -34,6 +34,8 @@ In the fall of 2023, I interned at Google DeepMind in Paris. In the summer of 20
 
 I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
 
+I welcome your feedback, which you can give anonymously [here](https://www.admonymous.co/tianlinliu0121).
+
 
 ### News
 
