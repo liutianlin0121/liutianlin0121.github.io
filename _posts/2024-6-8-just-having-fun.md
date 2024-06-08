@@ -5,7 +5,7 @@ title: "Reading 'Just for Fun: The Story of an Accidental Revolutionary' "
 ---
 
 
-Earlier this year, I came across a fiery code review from Linus Torvalds, the creator of Linux, addressed to a kernel contributor. The original email is available on the Linux mailing list [here](https://lkml.iu.edu/hypermail/linux/kernel/2401.3/04208.html), although I initially saw a screenshot of it on Twitter. Not knowing much about the technical details, I found his candid style amusing and wanted to learn more about him. Although I've been using Ubuntu Linux throughout my PhD, I realized I knew little about its creator or the history of its development. This curiosity led me to read ["Just for Fun: The Story of an Accidental Revolutionary"](https://www.amazon.com/Just-Fun-Story-Accidental-Revolutionary/dp/1587990806), Linus's autobiography.
+Earlier this year, I came across a fiery code review from Linus Torvalds, the creator of Linux, addressed to a kernel contributor. The original email is available on the Linux mailing list [here](https://lkml.iu.edu/hypermail/linux/kernel/2401.3/04208.html), although I initially saw a screenshot of it on Twitter. Not knowing much about the technical details, I found his candid style amusing and wanted to learn more about him. Although I've been using Ubuntu Linux throughout my PhD, I realized I knew little about its creator or the history of its development. This led me to read ["Just for Fun: The Story of an Accidental Revolutionary"](https://www.amazon.com/Just-Fun-Story-Accidental-Revolutionary/dp/1587990806), Linus's autobiography.
 
 <p align="center">
   <img src="{{site.baseurl }}/assets/image/just-for-fun.jpg" width="200px" class="glightbox">
