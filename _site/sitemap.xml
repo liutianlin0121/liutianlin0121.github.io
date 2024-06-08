@@ -43,7 +43,7 @@
 <loc>http://localhost:4000/search</loc>
 </url>
 <url>
-<loc>http://localhost:4000/</loc>
+<loc>http://localhost:4000/page/2/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/files/BSc_thesis_TianlinLiu.pdf</loc>
