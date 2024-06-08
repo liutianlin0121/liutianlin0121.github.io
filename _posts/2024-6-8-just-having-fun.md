@@ -1,7 +1,7 @@
 ---
 toc: false
 layout: post
-title: Reading "Just for Fun"
+title: "Reading 'Just for Fun: The Story of an Accidental Revolutionary' "
 ---
 
 

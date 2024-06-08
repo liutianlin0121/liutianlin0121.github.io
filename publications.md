@@ -4,8 +4,16 @@ title: Publications
 permalink: /publications/
 ---
 
+[Google Scholar profile](https://scholar.google.com/citations?user=1bbQjM4AAAAJ&hl=en)
+
 ### Journal
 <p></p>
+
+**WaveBench: Benchmarking Data-driven Solvers for Linear Wave Propagation PDEs**
+_Tianlin Liu_\*, Jose Antonio Lara Benitez\*, Amirehsan Khorashadizadeh, Florian Faucher, Maarten V de Hoop, Ivan Dokmanić  
+[![pdf](../files/badges/-paper-green.svg)](https://openreview.net/forum?id=6wpInwnzs8) [![code](../files/badges/-code-blue.svg)](https://github.com/wavebench/wavebench)  [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2024wavebench.bib) 
+
+
 
 **Learning multiscale convolutional dictionaries for image reconstruction**  
 _Tianlin Liu_, Anadi Chaman, David Belius, and Ivan Dokmanić  
@@ -15,6 +23,24 @@ IEEE Transactions on Computational Imaging, 2022
 
 ### Conference
 <p></p>
+
+**Decoding-time Realignment of Language Models**  
+_Tianlin Liu_, Shangmin Guo, Leonardo Bianco, Daniele Calandriello, Quentin Berthet, Felipe Llinares, Jessica Hoffmann, Lucas Dixon, Michal Valko, Mathieu Blondel  
+International Conference on Machine Learning (ICML) 2024  
+ <span style="color:blue">   Spotlight presentation </span>  
+[![pdf](../files/badges/-paper-green.svg)](https://arxiv.org/abs/2402.02992) 
+[![code](../files/badges/-code-blue.svg)](https://colab.research.google.com/drive/1s9hY3x3WtpCZMKSTCzm1xif0B2FTNnOt?usp=sharing) 
+[![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2024decoding.bib) 
+
+
+**The N Implementation Details of RLHF with PPO**  
+Shengyi Huang, Tianlin Liu, Leandro Von Werra    
+The Blogpost Track at International Conference on Learning Representations (ICLR) 2024  
+ <span style="color:blue">   Spotlight presentation </span>  
+[![pdf](../files/badges/-paper-green.svg)](https://openreview.net/forum?id=CPFCkB2OGt) 
+[![code](../files/badges/-code-blue.svg)](https://github.com/vwxyzjn/lm-human-preference-details) 
+[![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Huang2024implementation.bib) 
+
 
 **Sparsity-constrained optimal transport**  
 _Tianlin Liu_, Joan Puigcerver, Mathieu Blondel  

@@ -39,7 +39,7 @@ I welcome your feedback, which you can give anonymously [here](https://www.admon
 
 ### News
 
-* **May 2024**: Our [paper](https://arxiv.org/abs/2402.02992) on decoding-time realignment of language models was accepted by ICML 2024.
+* **May 2024**: Our [paper](https://arxiv.org/abs/2402.02992) on decoding-time realignment of language models was accepted by ICML 2024 as a spotlight presentation.
 
 * **April 2024**: Our [paper](https://openreview.net/forum?id=aHk3vctnf1) on evaluating routers in vision mixture-of-experts was accepted by TMLR 2024.
 
