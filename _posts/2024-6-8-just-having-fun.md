@@ -15,7 +15,7 @@ The book was a surprisingly engaging read. It details Linus's early life in Hels
 
 What captivated me most was Linus intrinsic motivation for understanding deep technical details, even when he was still an undergraduate student. During undergraduate study, he got interested in operating systems, inspired by Andrew S. Tanenbaum's "Operating Systems: Design and Implementation." He then spent a summer devouring this 719-page textbook purely out of interest:
 
-So
+
 > So there were two things I did that summer. Nothing. And read the 719 pages of Operating Systems: Design and Implementation. The red soft-cover textbook sort of lived on my bed.
 
 Linus's jolt of enthusiasm left me in awe. Reflecting on my own experiences, I've purchased numerous math and machine learning textbooks throughout my education, and surely, I like some of them a lot. However, unlike Linus, I've never been compelled to read any of them from cover to cover. This realization gave me a lot to think about.
