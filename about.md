@@ -26,11 +26,10 @@ permalink: /about
   </a>
   <!-- More icons as needed -->
 </div>
-I am a PhD candidate in machine learning at the University of Basel in Switzerland. I work with [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/).
 
+I’m currently a Research Scientist at Google DeepMind, Paris. 
 
-In the fall of 2023, I interned at Google DeepMind in Paris. In the summer of 2022, I interned at Google Brain in Zurich.
-
+I obtained my PhD with [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/) at the University of Basel in Switzerland.
 
 I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
 
