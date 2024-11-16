@@ -308,5 +308,3 @@ In such a case feel free to [start a discussion](https://github.com/forever-jeky
 
 > It is necessary to write, if the days are not to slip emptily by. How else, indeed, to clap the net over the butterfly of the moment? for the moment passes, it is forgotten; the mood is gone; life itself is gone.  
 ~ Vita Sackville-West  
-
-test
