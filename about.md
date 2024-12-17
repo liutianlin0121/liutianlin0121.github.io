@@ -30,12 +30,11 @@ permalink: /about
 
 Hi there! I’m Tianlin.
 
-I’m currently a Research Scientist at Google DeepMind, Paris. I obtained my PhD with [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/) at the University of Basel in Switzerland. I received BSc (2016) and MSc (2019) both from Jacobs University Bremen. During my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
-
-I welcome your feedback, which you can give anonymously [here](https://www.admonymous.co/tianlinliu0121).
-
+I’m a Research Scientist at Google DeepMind, Paris. I obtained my PhD with [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/) at the University of Basel in Switzerland. I received BSc (2016) and MSc (2019) both from Jacobs University Bremen; during my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
 
 ### News
+
+* **Nov 2024**: I defended my PhD thesis and joined Google DeepMind.
 
 * **May 2024**: Our [paper](https://arxiv.org/abs/2402.02992) on decoding-time realignment of language models was accepted by ICML 2024 as a spotlight presentation.
 
