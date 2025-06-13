@@ -49,4 +49,4 @@ Internships were another outlet. Thanks to Ivan’s support, I interned at Googl
 Looking back, I’m glad I drove my PhD journey along these two threads. The main thread with my advisor—focused on wave-based imaging and seismic data analysis—taught me useful research skills. The second thread of side projects and internships provided a sense of agency; these side projects finally opened the door to my current role. Together, they made the journey feel like mine.
 
 ## Final Thought
-A PhD can be many things: a technical apprenticeship, a professional credential, an endurance test. For me, it was the effort to move from being a passenger to taking the wheel—to learn not just how to follow a direction, but how to question it, wrestle with it, and slowly chart a course of my own.
+A PhD can be many things: a technical apprenticeship, a professional credential, an endurance test. For me, it was the effort to move from being a passenger to taking the wheel—to learn not just to take a direction for granted, but to wrestle with it and slowly chart a course of my own.
