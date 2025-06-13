@@ -1,7 +1,7 @@
 ---
 toc: false
 layout: post
-title: "PhD Lessons"
+title: "PhD Reflections"
 ---
 
 I finished my PhD in November 2024! I’m grateful to everyone who supported me along the way. What follows is not unsolicited advice to anyone, but lessons I learned through my own journey and some patterns I’ve noticed in others. Every PhD path is different, and this is simply mine. 
