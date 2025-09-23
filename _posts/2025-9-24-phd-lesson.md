@@ -50,6 +50,4 @@ Internships were another outlet. Thanks to Ivan’s support, I interned at Googl
 
 ## Final Thought
 
-The great promise of a PhD is intellectual freedom. But I learned its most common pitfall is surrendering your agency. It’s tempting to follow a set path that leads to a degree, but the real reward comes from taking the wheel oneself. 
-
-
+The great promise of a PhD is intellectual freedom, but I learned its most common pitfall is surrendering my own agency. It’s tempting to follow a set path that leads to a diploma, but for me, the real reward came from taking the wheel---pursuing my own creative initiatives rather than letting the journey simply happen to me.
