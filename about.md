@@ -7,7 +7,7 @@ permalink: /about
 <div style="text-align: center;">
   <img src="assets/image/tianlin-liu-profile.JPG" alt="Tianlin Liu" width="180" style="max-width: 50%; height: auto; border-radius: 50%;">
   <div>Tianlin Liu</div>
-  <div style="margin-bottom: 12px;"> Research scientist, Google DeepMind </div> 
+  <!-- <div style="margin-bottom: 12px;"> Research scientist, Google DeepMind </div>  -->
   <!-- Icons Row with adjusted size and margin -->
   <a href="https://scholar.google.de/citations?user=1bbQjM4AAAAJ&hl=en" target="_blank">
     <i class="fa-brands fa-google-scholar" style="font-size: 25px; margin: 0 3px;"></i>

@@ -1,6 +1,7 @@
 ---
 ---
 
+@charset "utf-8";
 @import "variables";
 
 html {
@@ -623,3 +624,15 @@ footer {
 @import "search";
 @import "video";
 @import "mermaid";
+
+// Dark mode support for KaTeX math rendering
+.darkmode--activated {
+  .katex,
+  .katex * {
+    color: $white !important;
+  }
+  
+  .katex-display > .katex {
+    color: $white !important;
+  }
+}

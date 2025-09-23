@@ -630,11 +630,11 @@ footer .social-icon:hover {
 }
 
 .resp-sharing-button--twitter {
-  background-color: #55acee;
+  background-color: #000000;
 }
 
 .resp-sharing-button--twitter:hover {
-  background-color: #2795e9;
+  background-color: #333333;
 }
 
 .resp-sharing-button--pinterest {
@@ -737,14 +737,14 @@ footer .social-icon:hover {
 }
 
 .resp-sharing-button--twitter {
-  background-color: #55acee;
-  border-color: #55acee;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .resp-sharing-button--twitter:hover,
 .resp-sharing-button--twitter:active {
-  background-color: #2795e9;
-  border-color: #2795e9;
+  background-color: #333333;
+  border-color: #333333;
 }
 
 .resp-sharing-button--tumblr {
@@ -1432,4 +1432,12 @@ green     #859900  operators, other keywords
 
 .mermaid {
   margin-bottom: 15px;
+}
+
+.darkmode--activated .katex,
+.darkmode--activated .katex * {
+  color: #FFFFFF !important;
+}
+.darkmode--activated .katex-display > .katex {
+  color: #FFFFFF !important;
 }
