@@ -4,7 +4,7 @@ layout: post
 title: The expected angle between two isotropic random vectors
 ---
 
-In Section 3.2 of the book [High-dimensional Probability](https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.pdf) by Roman Vershynin, it was mentioned in the caption to Figure 3.4 that
+In Section 3.2 of {% citet vershynin2018high %}, it was mentioned in the caption to Figure 3.4 that
 
 > Independent isotropic random vectors tend to be almost
 orthogonal in high dimensions but not in low dimensions. On the plane, the
@@ -117,3 +117,7 @@ Note that the random variable $$\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \
 
 
 
+
+## References
+
+{% bibliography --cited %}

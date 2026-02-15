@@ -4,7 +4,7 @@ layout: post
 title: A detailed derivation of the diffusion map
 ---
 
-The diffusion map is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.
+The diffusion map {% citep coifman2006 %} is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.
 
 
 To formalize, we let $$\mathcal{X} \coloneqq \{ \boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\} \subset \mathbb{R}^N$$ be a given set of high-dimensional data. In this note, we will construct the diffusion maps
@@ -267,3 +267,7 @@ $$
 
 In the interest to reduce the dimensionality of the data, we may choose $$n \ll \min(m-1, N).$$
 
+
+## References
+
+{% bibliography --cited %}

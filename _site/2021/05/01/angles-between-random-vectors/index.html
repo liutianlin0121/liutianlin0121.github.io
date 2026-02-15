@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+
+<head>
+  <meta charset="utf-8" />
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
 
-<meta name="description" content="In Section 3.2 of the book High-dimensional Probability by Roman Vershynin, it was mentioned in the caption to Figure 3.4 that
+<meta name="description" content="In Section 3.2 of Vershynin (2018)(Vershynin, 2018), it was mentioned in the caption to Figure 3.4 that
 
 
   Independent isotropic random vectors tend to be almost
@@ -102,9 +103,13 @@ By the law of total expectation, we have
 \end{equation}\]
 
 Note that the random variable \(\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )\) is a constant random variable: For any fixed realization of \(Y\), the conditional expectation of \(\mathrm{angle}(X, Y)\) is simply \(\pi/2\) since \(X\) has uniformly distributed directions.  For this reason, we have \(\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,\) which is what we claimed.
+
+References
+
+Vershynin, R. (2018). High-dimensional probability: An introduction with applications in data science (Vol. 47). Cambridge University Press. ↩
 
 " />
-<meta property="og:description" content="In Section 3.2 of the book High-dimensional Probability by Roman Vershynin, it was mentioned in the caption to Figure 3.4 that
+<meta property="og:description" content="In Section 3.2 of Vershynin (2018)(Vershynin, 2018), it was mentioned in the caption to Figure 3.4 that
 
 
   Independent isotropic random vectors tend to be almost
@@ -199,6 +204,10 @@ By the law of total expectation, we have
 \end{equation}\]
 
 Note that the random variable \(\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )\) is a constant random variable: For any fixed realization of \(Y\), the conditional expectation of \(\mathrm{angle}(X, Y)\) is simply \(\pi/2\) since \(X\) has uniformly distributed directions.  For this reason, we have \(\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,\) which is what we claimed.
+
+References
+
+Vershynin, R. (2018). High-dimensional probability: An introduction with applications in data science (Vol. 47). Cambridge University Press. ↩
 
 " />
 
@@ -210,38 +219,43 @@ Note that the random variable \(\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \
 
 <title>The expected angle between two isotropic random vectors – Tianlin Liu – home</title>
 
-    <link rel="stylesheet" type="text/css" href="/style.css"/>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Minimal favicon setup -->
-    <link rel="icon" type="image/x-icon" href="/assets/image/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/favicon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
-    <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Tianlin Liu - home" href="/feed.xml"/> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print" onload="this.media='all'"/>
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print" onload="this.media='all'"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous" media="print" onload="this.media='all'"/>
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Minimal favicon setup -->
+  <link rel="icon" type="image/x-icon" href="/assets/image/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/favicon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
+  <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- <link rel="alternate" type="application/rss+xml" title="Tianlin Liu - home" href="/feed.xml"/> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
+    integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print"
+    onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print"
+    onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
+    integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous"
+    media="print" onload="this.media='all'" />
 
-  </head>
+</head>
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-<!-- 
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <!-- 
           <a href="/" class="site-avatar"><img src="" width="70" height="70" /></a>
  -->
-<!--           <div class="site-info">
+        <!--           <div class="site-info">
             <h1 class="site-name"><a href="/">Tianlin Liu</a></h1>
             <p class="site-description">home</p>
           </div>
  -->
-          <nav class="nav-menu">
-            
+        <nav class="nav-menu">
+          
   <a class="nav-menu-item" href="/about">about</a>
 
   <a class="nav-menu-item" href="/publications">publication</a>
@@ -249,87 +263,87 @@ Note that the random variable \(\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \
   <a class="nav-menu-item" href="/blog">blog</a>
 
 
-          </nav>
-        </header>
-      </div>
+        </nav>
+      </header>
     </div>
+  </div>
 
-    <div id="main" role="main" class="container">
-      <article class="post">
+  <div id="main" role="main" class="container">
+    <article class="post">
   <h1>The expected angle between two isotropic random vectors</h1>
 
   <div class="entry">
-    <p>In Section 3.2 of the book <a href="https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.pdf">High-dimensional Probability</a> by Roman Vershynin, it was mentioned in the caption to Figure 3.4 that</p>
+    <p>In Section 3.2 of <span id="citation-vershynin2018high"><a class="citation" href="#vershynin2018high">Vershynin (2018)</a></span><span hidden=""><a class="citation" href="#vershynin2018high">(Vershynin, 2018)</a></span>, it was mentioned in the caption to Figure 3.4 that</p>
 
 <blockquote>
   <p>Independent isotropic random vectors tend to be almost
 orthogonal in high dimensions but not in low dimensions. On the plane, the
-average angle is \(\pi/4\), while in high dimensions it is close to \(\pi/2\).</p>
+average angle is $$\pi/4$$, while in high dimensions it is close to $$\pi/2$$.</p>
 </blockquote>
 
 <p>and later in the text that</p>
 
 <blockquote>
   <p>For example, the angle between two random independent and uniformly distributed
-directions on the plane has mean \(\pi/4\).</p>
+directions on the plane has mean $$\pi/4$$.</p>
 </blockquote>
 
-<p>Here, the number \(\pi/4\) is curious as it implies that two independent isotropic random vectors in a two-dimensional plane are not orthogonal to each other on average.</p>
+<p>Here, the number $$\pi/4$$ is curious as it implies that two independent isotropic random vectors in a two-dimensional plane are not orthogonal to each other on average.</p>
 
-<p>When I tried to do the computation myself, however, I couldn’t get the number \(\pi/4\). I believe that this is a typo in the book. The correct number should be \(\pi/2\). As a consequence, two independent isotropic random vectors are orthogonal to each other, in a two-dimensional plane as well as in higher dimensional spaces.</p>
+<p>When I tried to do the computation myself, however, I couldn’t get the number $$\pi/4$$. I believe that this is a typo in the book. The correct number should be $$\pi/2$$. As a consequence, two independent isotropic random vectors are orthogonal to each other, in a two-dimensional plane as well as in higher dimensional spaces.</p>
 
 <h2 id="numerical-demonstration">Numerical demonstration</h2>
 
 <p>In this post, we first numerically verify the claim. The idea is straightforward: We first produce a large amount of i.i.d. two-dimensional Gaussian vectors in pairs. We next compute the angles between each pair. Finally, we do the average across pairs. We plot the average angles as the number of sampled pairs increases. This procedure is implemented with the following python script.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FormatStrFormatter</span><span class="p">,</span> <span class="n">MultipleLocator</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">math</span>
+<span class="kn">import</span> <span class="n">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="n">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">FormatStrFormatter</span><span class="p">,</span> <span class="n">MultipleLocator</span>
 
 <span class="k">def</span> <span class="nf">angle</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">math</span><span class="p">.</span><span class="n">acos</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v2</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">math</span><span class="p">.</span><span class="nf">acos</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">dot</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">norm</span><span class="p">(</span><span class="n">v1</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="nf">norm</span><span class="p">(</span><span class="n">v2</span><span class="p">)))</span>
 
 <span class="n">dim</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="n">num_realizations</span> <span class="o">=</span> <span class="mi">100000</span>
-<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">angles</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_realizations</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">num_realizations</span><span class="p">):</span>
     <span class="c1"># realizations of two Gaussian random vectors
-</span>    <span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span> <span class="n">size</span><span class="o">=</span> <span class="n">dim</span><span class="p">)</span>
-    <span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="n">normal</span><span class="p">(</span> <span class="n">size</span><span class="o">=</span> <span class="n">dim</span><span class="p">)</span>
+</span>    <span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">normal</span><span class="p">(</span> <span class="n">size</span><span class="o">=</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">normal</span><span class="p">(</span> <span class="n">size</span><span class="o">=</span> <span class="n">dim</span><span class="p">)</span>
 
     <span class="c1"># angles between two vectors
-</span>    <span class="n">angles</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">angle</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span>
+</span>    <span class="n">angles</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="nf">angle</span><span class="p">(</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">))</span>
     
-<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span>
 
 <span class="c1"># the average of angles with different number of realizations.
-</span><span class="n">averages</span> <span class="o">=</span> <span class="p">[</span><span class="n">angles</span><span class="p">[:</span><span class="n">i</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">angles</span><span class="p">))]</span>
-<span class="n">averages</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">averages</span><span class="p">)</span>
+</span><span class="n">averages</span> <span class="o">=</span> <span class="p">[</span><span class="n">angles</span><span class="p">[:</span><span class="n">i</span><span class="p">].</span><span class="nf">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nf">len</span><span class="p">(</span><span class="n">angles</span><span class="p">))]</span>
+<span class="n">averages</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">(</span><span class="n">averages</span><span class="p">)</span>
 
 <span class="c1"># plot averaged angles vs number of realizations
-</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="o">/</span><span class="mf">1.618</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FormatStrFormatter</span><span class="p">(</span><span class="s">'%g $\pi$'</span><span class="p">))</span>
+</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="nf">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="o">/</span><span class="mf">1.618</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">yaxis</span><span class="p">.</span><span class="nf">set_major_formatter</span><span class="p">(</span><span class="nc">FormatStrFormatter</span><span class="p">(</span><span class="sh">'</span><span class="s">%g $\pi$</span><span class="sh">'</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">averages</span> <span class="o">/</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">'averaged angle'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">'#636363'</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">':'</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">averages</span> <span class="o">/</span> <span class="n">math</span><span class="p">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sh">'</span><span class="s">averaged angle</span><span class="sh">'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="sh">'</span><span class="s">#636363</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="nf">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="sh">'</span><span class="s">:</span><span class="sh">'</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 
 
-<span class="n">ax</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Number of realizations'</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Radian angle'</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s">'log'</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="nf">set_xlabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Number of realizations</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="nf">set_ylabel</span><span class="p">(</span><span class="sh">'</span><span class="s">Radian angle</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="nf">set_xscale</span><span class="p">(</span><span class="sh">'</span><span class="s">log</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="nf">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'top'</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="s">'right'</span><span class="p">].</span><span class="n">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="sh">'</span><span class="s">top</span><span class="sh">'</span><span class="p">].</span><span class="nf">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">.</span><span class="n">spines</span><span class="p">[</span><span class="sh">'</span><span class="s">right</span><span class="sh">'</span><span class="p">].</span><span class="nf">set_visible</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'Dim = 2'</span><span class="p">)</span>
-<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">.</span><span class="nf">set_title</span><span class="p">(</span><span class="sh">'</span><span class="s">Dim = 2</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">grid</span><span class="p">()</span>
 </code></pre></div></div>
-<p>As we see in the resulting figure below, the averaged angle indeed concentrates around \(\pi/2\) and not \(\pi/4\).</p>
+<p>As we see in the resulting figure below, the averaged angle indeed concentrates around $$\pi/2$$ and not $$\pi/4$$.</p>
 
 <p><img src="/assets/image/average_angle_dim2.png" alt="" width="700px" class="glightbox" /></p>
 
@@ -339,22 +353,30 @@ directions on the plane has mean \(\pi/4\).</p>
 
 <h2 id="analytical-computation">Analytical computation</h2>
 
-<p>It is not difficult to prove thefact that two independent isotropic random vectors in a two-dimensional plane have expected angle \(\pi/2.\) To show this, let \(X\) and \(Y\) be two such random vectors. We aim to show</p>
+<p>It is not difficult to prove thefact that two independent isotropic random vectors in a two-dimensional plane have expected angle $$\pi/2.$$ To show this, let $$X$$ and $$Y$$ be two such random vectors. We aim to show</p>
 
-\[\begin{equation}
+$$
+\begin{equation}
 \mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,
-\end{equation}\]
+\end{equation}
+$$
 
-<p>where \(\mathrm{angle}(\cdot, \cdot)\) is the function that measures the angle between two vectors.</p>
+<p>where $$\mathrm{angle}(\cdot, \cdot)$$ is the function that measures the angle between two vectors.</p>
 
 <p>By the law of total expectation, we have</p>
 
-\[\begin{equation}
+$$
+\begin{equation}
 \mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \mathbb{E}  \left [ \mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big   ) \right ].
-\end{equation}\]
+\end{equation}
+$$
 
-<p>Note that the random variable \(\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )\) is a constant random variable: For any fixed realization of \(Y\), the conditional expectation of \(\mathrm{angle}(X, Y)\) is simply \(\pi/2\) since \(X\) has uniformly distributed directions.  For this reason, we have \(\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,\) which is what we claimed.</p>
+<p>Note that the random variable $$\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )$$ is a constant random variable: For any fixed realization of $$Y$$, the conditional expectation of $$\mathrm{angle}(X, Y) $$ is simply $$\pi/2$$ since $$X$$ has uniformly distributed directions.  For this reason, we have $$\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,$$ which is what we claimed.</p>
 
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="vershynin2018high">Vershynin, R. (2018). <i>High-dimensional probability: An introduction with applications in data science</i> (Vol. 47). Cambridge University Press.</span> <a href="#citation-vershynin2018high" class="cite-backref" title="Back to text">↩</a>
+</li></ol>
 
   </div>
 
@@ -482,6 +504,19 @@ directions on the plane has mean \(\pi/4\).</p>
 
   
   
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
     
   
   
@@ -513,6 +548,8 @@ directions on the plane has mean \(\pi/4\).</p>
 
   
 
+  
+
 
 
 
@@ -523,6 +560,19 @@ directions on the plane has mean \(\pi/4\).</p>
   
 
 
+
+
+  
+    
+    
+    
+
+    
+    <div class="related-posts-post">
+  <a href="/2026/01/31/discrete-flow-matching-notes/">
+    Notes on Discrete Flow Matching
+  </a>
+</div>
 
 
   
@@ -547,19 +597,6 @@ directions on the plane has mean \(\pi/4\).</p>
     <div class="related-posts-post">
   <a href="/2024/06/08/just-having-fun/">
     Reading 'Just for Fun: The Story of an Accidental Revolutionary' 
-  </a>
-</div>
-
-
-  
-    
-    
-    
-
-    
-    <div class="related-posts-post">
-  <a href="/2023/03/23/sinkhorn-divergence/">
-    Using Sinkhorn divergence to measure image similarity
   </a>
 </div>
 
@@ -595,60 +632,64 @@ directions on the plane has mean \(\pi/4\).</p>
 
 </article>
 
-    </div>
+  </div>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer"><!--           <div class="copyright">
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer"><!--           <div class="copyright">
             
-            <p>&copy; 2025 Tianlin Liu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/forever-jekyll/forever-jekyll" rel="nofollow">Forever Jekyll</a>.</p>
+            <p>&copy; 2026 Tianlin Liu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/forever-jekyll/forever-jekyll" rel="nofollow">Forever Jekyll</a>.</p>
             
           </div> -->
-        </footer>
-      </div>
+      </footer>
     </div>
+  </div>
 
-    <script defer src="https://cdn.plyr.io/3.6.5/plyr.js"></script>
-    <script>
-      const player = new Plyr("#player", { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1 , enablejsapi: 1, autoplay: 0, focused: true, global: false });
-      window.player = player;
-    </script>
+  <script defer src="https://cdn.plyr.io/3.6.5/plyr.js"></script>
+  <script>
+    const player = new Plyr("#player", { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, enablejsapi: 1, autoplay: 0, focused: true, global: false });
+    window.player = player;
+  </script>
 
-    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-    <script type="text/javascript">
-      const lightbox = GLightbox({
-          touchNavigation: true,
-          loop: true,
-          autoplayVideos: true
-      });
-    </script>
+  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+  <script type="text/javascript">
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true
+    });
+  </script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true });</script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"
-            onload="renderMathInElement(document.body,{
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"
+    integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{
                     delimiters: [
                     { left: '$$',  right: '$$',  display: true  },
                     { left: '$',   right: '$',   display: false },
                     { left: '\\[', right: '\\]', display: true  },
                     { left: '\\(', right: '\\)', display: false }
-                    ]});">
-    </script>
+                    ],
+                    preProcess: function(math) { return math.replace(/\\_/g, '_'); }
+                    });">
+                    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script>
-      function addDarkmodeWidget() {
-        new Darkmode().showWidget();
-        window.addEventListener('load', addDarkmodeWidget);
-      }
-      const options = {
-        label: '🌓',
-      }
-      const darkmode = new Darkmode(options);
-            darkmode.showWidget();
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <script>
+    function addDarkmodeWidget() {
+      new Darkmode().showWidget();
+      window.addEventListener('load', addDarkmodeWidget);
+    }
+    const options = {
+      label: '🌓',
+    }
+    const darkmode = new Darkmode(options);
+    darkmode.showWidget();
+  </script>
 
-  </body>
+</body>
+
 </html>

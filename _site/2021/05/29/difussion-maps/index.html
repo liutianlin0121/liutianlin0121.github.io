@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
+
+<head>
+  <meta charset="utf-8" />
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
 
-<meta name="description" content="The diffusion map is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.
+<meta name="description" content="The diffusion map (Coifman &amp; Lafon, 2006) is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.
 
 To formalize, we let \(\mathcal{X} \coloneqq \{ \boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\} \subset \mathbb{R}^N\) be a given set of high-dimensional data. In this note, we will construct the diffusion maps
 
@@ -213,9 +214,13 @@ Then through Equation (2), we see that if we choose \(n = m -1\), the euclidean 
 \[\| \Phi_t^{m-1}(\boldsymbol{x}_i) - \Phi_t^{m-1}(\boldsymbol{x}_j) \|_2^2 \propto  d_{t}(v_i, v_j)^{2}.\]
 
 In the interest to reduce the dimensionality of the data, we may choose \(n \ll \min(m-1, N).\)
+
+References
+
+Coifman, R. R., &amp; Lafon, S. (2006). Diffusion maps. Applied and Computational Harmonic Analysis, 21(1), 5–30. ↩
 
 " />
-<meta property="og:description" content="The diffusion map is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.
+<meta property="og:description" content="The diffusion map (Coifman &amp; Lafon, 2006) is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.
 
 To formalize, we let \(\mathcal{X} \coloneqq \{ \boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\} \subset \mathbb{R}^N\) be a given set of high-dimensional data. In this note, we will construct the diffusion maps
 
@@ -421,6 +426,10 @@ Then through Equation (2), we see that if we choose \(n = m -1\), the euclidean 
 \[\| \Phi_t^{m-1}(\boldsymbol{x}_i) - \Phi_t^{m-1}(\boldsymbol{x}_j) \|_2^2 \propto  d_{t}(v_i, v_j)^{2}.\]
 
 In the interest to reduce the dimensionality of the data, we may choose \(n \ll \min(m-1, N).\)
+
+References
+
+Coifman, R. R., &amp; Lafon, S. (2006). Diffusion maps. Applied and Computational Harmonic Analysis, 21(1), 5–30. ↩
 
 " />
 
@@ -432,38 +441,43 @@ In the interest to reduce the dimensionality of the data, we may choose \(n \ll 
 
 <title>A detailed derivation of the diffusion map – Tianlin Liu – home</title>
 
-    <link rel="stylesheet" type="text/css" href="/style.css"/>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Minimal favicon setup -->
-    <link rel="icon" type="image/x-icon" href="/assets/image/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/favicon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
-    <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Tianlin Liu - home" href="/feed.xml"/> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print" onload="this.media='all'"/>
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print" onload="this.media='all'"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css" integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous" media="print" onload="this.media='all'"/>
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Minimal favicon setup -->
+  <link rel="icon" type="image/x-icon" href="/assets/image/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/favicon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
+  <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- <link rel="alternate" type="application/rss+xml" title="Tianlin Liu - home" href="/feed.xml"/> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
+    integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print"
+    onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print"
+    onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
+    integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous"
+    media="print" onload="this.media='all'" />
 
-  </head>
+</head>
 
-  <body>
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-<!-- 
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <!-- 
           <a href="/" class="site-avatar"><img src="" width="70" height="70" /></a>
  -->
-<!--           <div class="site-info">
+        <!--           <div class="site-info">
             <h1 class="site-name"><a href="/">Tianlin Liu</a></h1>
             <p class="site-description">home</p>
           </div>
  -->
-          <nav class="nav-menu">
-            
+        <nav class="nav-menu">
+          
   <a class="nav-menu-item" href="/about">about</a>
 
   <a class="nav-menu-item" href="/publications">publication</a>
@@ -471,223 +485,275 @@ In the interest to reduce the dimensionality of the data, we may choose \(n \ll 
   <a class="nav-menu-item" href="/blog">blog</a>
 
 
-          </nav>
-        </header>
-      </div>
+        </nav>
+      </header>
     </div>
+  </div>
 
-    <div id="main" role="main" class="container">
-      <article class="post">
+  <div id="main" role="main" class="container">
+    <article class="post">
   <h1>A detailed derivation of the diffusion map</h1>
 
   <div class="entry">
-    <p>The diffusion map is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.</p>
+    <p>The diffusion map <span id="citation-coifman2006"><a class="citation" href="#coifman2006">(Coifman &amp; Lafon, 2006)</a></span> is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.</p>
 
-<p>To formalize, we let \(\mathcal{X} \coloneqq \{ \boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\} \subset \mathbb{R}^N\) be a given set of high-dimensional data. In this note, we will construct the diffusion maps</p>
+<p>To formalize, we let $$\mathcal{X} \coloneqq \{ \boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\} \subset \mathbb{R}^N$$ be a given set of high-dimensional data. In this note, we will construct the diffusion maps</p>
 
-\[\begin{equation*}
+$$
+\begin{equation*}
 \begin{split} 
-  \Phi^n:  \mathcal{X} &amp; \to \mathbb{R}^{n} \\
-  \boldsymbol{x} &amp; \mapsto \Phi(\boldsymbol{x}),
+  \Phi^n:  \mathcal{X} & \to \mathbb{R}^{n} \\
+  \boldsymbol{x} & \mapsto \Phi(\boldsymbol{x}),
 \end{split}
-\end{equation*}\]
+\end{equation*}
+$$
 
-<p>where \(n \leq \min(m - 1, N)\). Specifically, to construct the diffusion maps \(\Phi^n\), we take three steps:</p>
+<p>where $$n \leq \min(m - 1, N)$$. Specifically, to construct the diffusion maps $$\Phi^n$$, we take three steps:</p>
 <ol>
-  <li>View the high-dimensional points in \(\mathcal{X}\) as vertices in an underlying graph (Section <a href="#graph-representation">1</a> ).</li>
+  <li>View the high-dimensional points in $$\mathcal{X}$$ as vertices in an underlying graph (Section <a href="#graph-representation">1</a> ).</li>
   <li>Define a Markov Chain (MC) on the graph, so that local connectivity between vertices of the graph has a probability interpretation (Section <a href="#mc">2</a> ).</li>
-  <li>Assign each data point in \(\mathcal{X}\) a low-dimensional vector, with respect to which the graph-based local connectivity is approximately preserved (Section <a href="#dim-reduction">3</a>).</li>
+  <li>Assign each data point in $$\mathcal{X}$$ a low-dimensional vector, with respect to which the graph-based local connectivity is approximately preserved (Section <a href="#dim-reduction">3</a>).</li>
 </ol>
 
 <h2 id="-1-graph-representation-of-data-points"><a name="graph-representation"></a> 1. Graph representation of data points</h2>
 
-<p>To start the diffusion maps machinery, we first describe each high-dimensional data point \(\boldsymbol{x}_i \in \mathbb{R}^{N}\) by its relationship with other data points in the given dataset \(\mathcal{X} \coloneqq \{\boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\}\). To this end, we assume that each data point \(\boldsymbol{x}_i\) is emitted from a vertex \(v_i\) of an underlying directed weighted graph \(G = (V, E, \boldsymbol{W})\).  Here, \(V \coloneqq \{v_1, \ldots, v_m\}\) is the set of vertices, \(E \subset V \times V\) is a set of ordered pairs of vertices representing edges, and \(\boldsymbol{W}\) is the adjacency matrix such that \(\boldsymbol{W}_{ij} &gt; 0\) if \((i,j) \in E\) and \(\boldsymbol{W}_{ij} = 0\) otherwise.</p>
+<p>To start the diffusion maps machinery, we first describe each high-dimensional data point $$\boldsymbol{x}_i \in \mathbb{R}^{N}$$ by its relationship with other data points in the given dataset $$\mathcal{X} \coloneqq \{\boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\}$$. To this end, we assume that each data point $$\boldsymbol{x}_i$$ is emitted from a vertex $$v_i$$ of an underlying directed weighted graph $$G = (V, E, \boldsymbol{W})$$.  Here, $$V \coloneqq \{v_1, \ldots, v_m\}$$ is the set of vertices, $$E \subset V \times V$$ is a set of ordered pairs of vertices representing edges, and $$\boldsymbol{W}$$ is the adjacency matrix such that $$\boldsymbol{W}_{ij} > 0$$ if $$(i,j) \in E$$ and $$\boldsymbol{W}_{ij} = 0$$ otherwise.</p>
 
-<p>One advantage of having an underlying graph representation of data is that the similarities of high-dimensional points \(\boldsymbol{x}_i\) and \(\boldsymbol{x}_j\) can be encapsulated by \(\boldsymbol{W}_{ij}\), that is, the connection strength or the weight between two vertices \(v_i\) and \(v_j\). But how to specify these weights? In diffusion maps, we let each connection strength be specified through a kernel function \(K\):</p>
+<p>One advantage of having an underlying graph representation of data is that the similarities of high-dimensional points $$\boldsymbol{x}_i$$ and $$\boldsymbol{x}_j$$ can be encapsulated by $$\boldsymbol{W}_{ij}$$, that is, the connection strength or the weight between two vertices $$v_i$$ and $$v_j$$. But how to specify these weights? In diffusion maps, we let each connection strength be specified through a kernel function $$K$$:</p>
 
-\[\begin{aligned}
-K: \mathbb{R}^N \times \mathbb{R}^N &amp; \to \mathbb{R}_{+} \cr
-(\boldsymbol{x}_i, \boldsymbol{x}_j) &amp; \mapsto K(\boldsymbol{x}_i, \boldsymbol{x}_j).
-\end{aligned}\]
+$$
+\begin{aligned}
+K: \mathbb{R}^N \times \mathbb{R}^N & \to \mathbb{R}_{+} \cr
+(\boldsymbol{x}_i, \boldsymbol{x}_j) & \mapsto K(\boldsymbol{x}_i, \boldsymbol{x}_j).
+\end{aligned}
+$$
 
-<p>Note that here we assume that the kernel \(K\) only takes positive values. This is a convenient choice as it guarantees the Markov chain to be defined later in to have a unique stationary state. One common choice of the kernel is the radial basis kernel 
-\(K(\boldsymbol{x}_i, \boldsymbol{x}_j)=\exp \left(-\frac{\|\boldsymbol{x}_i-\boldsymbol{x}_j\|^{2}}{\epsilon}\right) \text{~with~} \epsilon &gt; 0.\)
-In this way, we construct an adjacency matrix with components \(\boldsymbol{W}_{ij} \coloneqq K(\boldsymbol{x}_i, \boldsymbol{x}_j)\). The whole adjacency matrix \(\boldsymbol{W} \in \mathbb{R}^{m \times m}\) has the form</p>
+<p>Note that here we assume that the kernel $$K$$ only takes positive values. This is a convenient choice as it guarantees the Markov chain to be defined later in to have a unique stationary state. One common choice of the kernel is the radial basis kernel 
+$$K(\boldsymbol{x}_i, \boldsymbol{x}_j)=\exp \left(-\frac{\|\boldsymbol{x}_i-\boldsymbol{x}_j\|^{2}}{\epsilon}\right) \text{~with~} \epsilon > 0.$$
+In this way, we construct an adjacency matrix with components $$\boldsymbol{W}_{ij} \coloneqq K(\boldsymbol{x}_i, \boldsymbol{x}_j)$$. The whole adjacency matrix $$\boldsymbol{W} \in \mathbb{R}^{m \times m}$$ has the form</p>
 
-\[\boldsymbol{W} = \begin{bmatrix} 
-    K(\boldsymbol{x}_1, \boldsymbol{x}_1) &amp; \dots &amp; K(\boldsymbol{x}_1, \boldsymbol{x}_m) \\
-    \vdots &amp; \ddots &amp;       \vdots \\
-    K(\boldsymbol{x}_m, \boldsymbol{x}_1) &amp;  \dots      &amp; K(\boldsymbol{x}_m, \boldsymbol{x}_m)
-\end{bmatrix} \in \mathbb{R}^{m \times m}.\]
+$$\boldsymbol{W} = \begin{bmatrix} 
+    K(\boldsymbol{x}_1, \boldsymbol{x}_1) & \dots & K(\boldsymbol{x}_1, \boldsymbol{x}_m) \\
+    \vdots & \ddots &       \vdots \\
+    K(\boldsymbol{x}_m, \boldsymbol{x}_1) &  \dots      & K(\boldsymbol{x}_m, \boldsymbol{x}_m)
+\end{bmatrix} \in \mathbb{R}^{m \times m}.$$
 
 <p>Another important concept for a graph is the degree matrix. Recall that the degree of a vertex is defined as the sum of the weights of its outgoing edges. The degree matrix is simply a diagonal matrix that collects the degree of each vertex:</p>
 
-\[\boldsymbol{D} \coloneqq \begin{bmatrix} 
-    \sum_{k = 1}^m K( \boldsymbol{x}_1, \boldsymbol{x}_k) &amp; \dots &amp; 0 \\
-    \vdots &amp; \ddots &amp;       \vdots \\
-    0 &amp;  \dots      &amp; \sum_{k = 1}^m K( \boldsymbol{x}_m, \boldsymbol{x}_k)
-\end{bmatrix} \in \mathbb{R}^{m \times m}.\]
+$$
+\boldsymbol{D} \coloneqq \begin{bmatrix} 
+    \sum_{k = 1}^m K( \boldsymbol{x}_1, \boldsymbol{x}_k) & \dots & 0 \\
+    \vdots & \ddots &       \vdots \\
+    0 &  \dots      & \sum_{k = 1}^m K( \boldsymbol{x}_m, \boldsymbol{x}_k)
+\end{bmatrix} \in \mathbb{R}^{m \times m}.
+$$
 
 <h2 id="-2-markov-chain-on-the-graph"><a name="mc"></a> 2. Markov chain on the graph</h2>
 
-<p>Now, with the weighted graph \(G = (V, E, \boldsymbol{W})\) in the previous section, we construct a stochastic process \((X_t)_{t \in \mathbb{N}}\) taking values in the vertices \(V\). Specifically, we let the stochastic process to be a time-homogenous Markov Chain, where the transition probability between two vertices is specified via the normalized edge weights attached to these two vertices:</p>
+<p>Now, with the weighted graph $$G = (V, E, \boldsymbol{W})$$ in the previous section, we construct a stochastic process $$(X_t)_{t \in \mathbb{N}}$$ taking values in the vertices $$V$$. Specifically, we let the stochastic process to be a time-homogenous Markov Chain, where the transition probability between two vertices is specified via the normalized edge weights attached to these two vertices:</p>
 
-\[\begin{aligned} 
+$$
+\begin{aligned} 
 \forall t \in \mathbb{N}: \quad \mathbb{P}\left(X_{t+1}= v_j \mid X_{t}= v_i \right) = \frac{ K ( \boldsymbol{x}_i, \boldsymbol{x}_j)}{ \sum_{k = 1}^m K( \boldsymbol{x}_i, \boldsymbol{x}_k) } \eqqcolon p(v_i, v_j).
-\end{aligned}\]
+\end{aligned}
+$$
 
-<p>We arrange these transition probabilities \(p(v_i, v_j)\) into a \(N \times N\) sized transition matrix</p>
+<p>We arrange these transition probabilities $$p(v_i, v_j)$$ into a $$N \times N$$ sized transition matrix</p>
 
-\[\boldsymbol{M} \coloneqq \begin{bmatrix} 
-    p(v_1, v_1) &amp; \dots &amp; p(v_1, v_m) \\
-    \vdots &amp; \ddots &amp;       \vdots \\
-    p(v_m, v_1) &amp;  \dots      &amp; p(v_m, v_m)
-\end{bmatrix} \in \mathbb{R}^{m \times m}.\]
+$$
+\boldsymbol{M} \coloneqq \begin{bmatrix} 
+    p(v_1, v_1) & \dots & p(v_1, v_m) \\
+    \vdots & \ddots &       \vdots \\
+    p(v_m, v_1) &  \dots      & p(v_m, v_m)
+\end{bmatrix} \in \mathbb{R}^{m \times m}.
+$$
 
-<p>It is easy to verify that \(\boldsymbol{M} = \boldsymbol{D}^{-1} \boldsymbol{W}\) and that</p>
+<p>It is easy to verify that $$\boldsymbol{M} = \boldsymbol{D}^{-1} \boldsymbol{W}$$ and that</p>
 
-\[\begin{aligned}
+$$
+\begin{aligned}
 \forall t \in \mathbb{N}: \quad \mathbb{P}\left(X_{t}= v_j \mid X_{0} = v_i \right ) = \left( \boldsymbol{M}^{t}\right)_{i j}.
-\end{aligned}\]
+\end{aligned}
+$$
 
-<p>Characterizing transition probability with the matrix \(\boldsymbol{M}\) is helpful as it allows us to study the MC using tools of linear algebra. For instance, the stationary distribution of the MC \((X_t)_{t \in \mathbb{N}}\) is encoded in a probability vector \(\boldsymbol{\pi}\) such that</p>
+<p>Characterizing transition probability with the matrix $$\boldsymbol{M}$$ is helpful as it allows us to study the MC using tools of linear algebra. For instance, the stationary distribution of the MC $$(X_t)_{t \in \mathbb{N}}$$ is encoded in a probability vector $$\boldsymbol{\pi}$$ such that</p>
 
-\[\begin{equation} 
+$$
+\begin{equation} 
 \boldsymbol{\pi}^\top \boldsymbol{M} = \boldsymbol{\pi}^\top.    
-\end{equation}\]
+\end{equation}
+$$
 
-<p>The stationary probability vector \(\boldsymbol{\pi}\) is thus a left eigenvector of \(\boldsymbol{M}\). If we assume \(\boldsymbol{l}_1, \ldots, \boldsymbol{l}_m\) are unit norm left eigenvectors of \(\boldsymbol{M}\), then \(\boldsymbol{\pi} = \boldsymbol{l}_1/ \| \boldsymbol{l}_1\|_1.\) We remark that, by construction, the stationary distribution \(\boldsymbol{\pi} = \boldsymbol{l}_1/ \| \boldsymbol{l}_1\|_1\) is unique. This is because we have assumed the kernel \(K\) only takes positive values, which is an assumption implying that the markov chain is irreducible. Additionally, via Equation (1), it is straightforward to verify that \(\boldsymbol{\pi}\) is explicitly defined through the degree matrix \(\boldsymbol{D}\):</p>
+<p>The stationary probability vector $$\boldsymbol{\pi}$$ is thus a left eigenvector of $$\boldsymbol{M}$$. If we assume $$\boldsymbol{l}_1, \ldots, \boldsymbol{l}_m$$ are unit norm left eigenvectors of $$\boldsymbol{M}$$, then $$\boldsymbol{\pi} = \boldsymbol{l}_1/ \| \boldsymbol{l}_1\|_1.$$ We remark that, by construction, the stationary distribution $$\boldsymbol{\pi} = \boldsymbol{l}_1/ \| \boldsymbol{l}_1\|_1$$ is unique. This is because we have assumed the kernel $$K$$ only takes positive values, which is an assumption implying that the markov chain is irreducible. Additionally, via Equation (1), it is straightforward to verify that $$\boldsymbol{\pi}$$ is explicitly defined through the degree matrix $$\boldsymbol{D}$$:</p>
 
-\[\begin{aligned}
+$$
+\begin{aligned}
 \boldsymbol{\pi} = \text{diag}(\boldsymbol{D})/ \text{trace}(\boldsymbol{D}).
-\end{aligned}\]
+\end{aligned}
+$$
 
 <h2 id="--3-dimensionality-reduction-by-preserving-diffusion-distance"><a name="dim-reduction"></a>  3. Dimensionality reduction by preserving diffusion distance</h2>
 
 <p>Based on the MC on the graph, we define a diffusion distance between two vertices:</p>
 
-\[\begin{equation*} 
+$$
+\begin{equation*} 
 d_{t}\left(v_i, v_j\right)^{2} \coloneqq \sum_{k \in [S]}  \Big [ \mathbb{P} (X_{t} = v_k \mid X_0 = v_i) - \mathbb{P} (X_{t} = v_k \mid X_0 = v_j) \Big ]^{2} \Big/ \boldsymbol{\pi}[k].
-\end{equation*}\]
+\end{equation*} 
+$$
 
-<p>Intuitively, this diffusion distance \(d_{t}\) measures the local connectivity between two vertices at a timescale prescribed by \(t\).
-Writing the conditional probabilities in terms of the entries of the transition matrix \(\boldsymbol{M}\), we discover</p>
+<p>Intuitively, this diffusion distance $$d_{t}$$ measures the local connectivity between two vertices at a timescale prescribed by $$t$$.
+Writing the conditional probabilities in terms of the entries of the transition matrix $$\boldsymbol{M}$$, we discover</p>
 
-\[\begin{equation*} 
+$$
+\begin{equation*} 
 d_{t}\left(v_i, v_j\right)^{2} =\sum_{k \in [S]}\Big [ (\boldsymbol{M}^{t})_{ik}-(\boldsymbol{M}^{t})_{jk}\Big ]^{2} \Big/ \boldsymbol{\pi}[k].
-\end{equation*}\]
+\end{equation*}
+$$
 
-<p>The above equation is a linear algebraic way of computing the distance \(d_{t}\left(v_i, v_j\right)^{2}\) of transition probabilities. However, evaluating the term \(d_{t}\left(v_i, v_j\right)^{2}\) as above is still inconvenient as it involves the power of a matrix. In what follows, we show that the distance in Equation \(d_{t}\left(v_i, v_j\right)^{2}\) can be significantly simplified by using the eigendecomposition of \(\boldsymbol{M}\).</p>
+<p>The above equation is a linear algebraic way of computing the distance $$d_{t}\left(v_i, v_j\right)^{2}$$ of transition probabilities. However, evaluating the term $$d_{t}\left(v_i, v_j\right)^{2}$$ as above is still inconvenient as it involves the power of a matrix. In what follows, we show that the distance in Equation $$d_{t}\left(v_i, v_j\right)^{2}$$ can be significantly simplified by using the eigendecomposition of $$\boldsymbol{M}$$.</p>
 
-<p>We proceed to write out the right and left eivenvectors of \(\boldsymbol{M}\) and examine their relationships. To this end, we first consider a “normalized’’ version of \(\boldsymbol{M}\), which has the form</p>
+<p>We proceed to write out the right and left eivenvectors of $$\boldsymbol{M}$$ and examine their relationships. To this end, we first consider a “normalized’’ version of $$\boldsymbol{M}$$, which has the form</p>
 
-\[\begin{equation*}
+$$
+\begin{equation*}
 \overline{\boldsymbol{M}} \coloneqq \boldsymbol{D}^{\frac{1}{2}} \boldsymbol{M} \boldsymbol{D}^{-\frac{1}{2}} . 
-\end{equation*}\]
+\end{equation*}
+$$
 
-<p>One nice property of \(\overline{\boldsymbol{M}}\) is that it is positive semidefinite (PSD):</p>
+<p>One nice property of $$\overline{\boldsymbol{M}}$$ is that it is positive semidefinite (PSD):</p>
 
-\[\begin{aligned}
-     \forall \boldsymbol{q} \in \mathbb{R}^m, \quad \boldsymbol{q}^\top \overline{\boldsymbol{M}} \boldsymbol{q} &amp; = \boldsymbol{q}^\top \boldsymbol{D}^{\frac{1}{2}} \boldsymbol{M} \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q} \cr
-     &amp; = \boldsymbol{q}^\top \boldsymbol{D}^{\frac{1}{2}} \boldsymbol{D}^{-1} \boldsymbol{W} \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q} \cr
-     &amp; = \boldsymbol{q}^\top \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{W} \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q} \cr
-     &amp; = (\boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q})^\top \boldsymbol{W} (\boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q}) \cr
-     &amp; \geq 0,
-\end{aligned}\]
+$$
+\begin{aligned}
+     \forall \boldsymbol{q} \in \mathbb{R}^m, \quad \boldsymbol{q}^\top \overline{\boldsymbol{M}} \boldsymbol{q} & = \boldsymbol{q}^\top \boldsymbol{D}^{\frac{1}{2}} \boldsymbol{M} \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q} \cr
+     & = \boldsymbol{q}^\top \boldsymbol{D}^{\frac{1}{2}} \boldsymbol{D}^{-1} \boldsymbol{W} \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q} \cr
+     & = \boldsymbol{q}^\top \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{W} \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q} \cr
+     & = (\boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q})^\top \boldsymbol{W} (\boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{q}) \cr
+     & \geq 0,
+\end{aligned}
+$$
 
-<p>where in the last step we used the fact that the kernel matrix \(\boldsymbol{W}\) is PSD. Note that the original, unnormalized matrix \(\boldsymbol{M}\) is not PSD because it is not symmetric.</p>
+<p>where in the last step we used the fact that the kernel matrix $$\boldsymbol{W}$$ is PSD. Note that the original, unnormalized matrix $$\boldsymbol{M}$$ is not PSD because it is not symmetric.</p>
 
-<p>Since \(\overline{\boldsymbol{M}}\) is PSD, we may write 
-\(\overline{\boldsymbol{M}} \coloneqq \boldsymbol{U} \boldsymbol{S} \boldsymbol{U}^\top,\)
-where \(\boldsymbol{U}\) is an orthonormal matrix whose columns \(\boldsymbol{u}_1, \ldots, \boldsymbol{u}_m\) are eigenvectors of \(\overline{\boldsymbol{M}}\) and \(\boldsymbol{S}\) is a diagonal matrix whose entries are non-negative eigenvalues of \(\overline{\boldsymbol{M}}\). As a consequence, we have</p>
+<p>Since $$\overline{\boldsymbol{M}}$$ is PSD, we may write 
+$$
+\overline{\boldsymbol{M}} \coloneqq \boldsymbol{U} \boldsymbol{S} \boldsymbol{U}^\top,
+$$
+where $$\boldsymbol{U}$$ is an orthonormal matrix whose columns $$\boldsymbol{u}_1, \ldots, \boldsymbol{u}_m$$ are eigenvectors of $$\overline{\boldsymbol{M}}$$ and $$\boldsymbol{S}$$ is a diagonal matrix whose entries are non-negative eigenvalues of $$\overline{\boldsymbol{M}}$$. As a consequence, we have</p>
 
-\[\begin{aligned}
-{\boldsymbol{M}} &amp; =  \boldsymbol{D}^{-\frac{1}{2}} \overline{\boldsymbol{M}} \boldsymbol{D}^{\frac{1}{2}}\cr
-&amp; = \underbrace{\boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{U}}_{\coloneqq \boldsymbol{R}} \boldsymbol{S} \boldsymbol{U}^\top \boldsymbol{D}^{\frac{1}{2}} = \boldsymbol{R} \boldsymbol{S} \boldsymbol{R}^{-1}.
-\end{aligned}\]
+$$
+\begin{aligned}
+{\boldsymbol{M}} & =  \boldsymbol{D}^{-\frac{1}{2}} \overline{\boldsymbol{M}} \boldsymbol{D}^{\frac{1}{2}}\cr
+& = \underbrace{\boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{U}}_{\coloneqq \boldsymbol{R}} \boldsymbol{S} \boldsymbol{U}^\top \boldsymbol{D}^{\frac{1}{2}} = \boldsymbol{R} \boldsymbol{S} \boldsymbol{R}^{-1}.
+\end{aligned}
+$$
 
-<p>By the identity \(\boldsymbol{M} = \boldsymbol{R} \boldsymbol{S} \boldsymbol{R}^{-1},\) it is clear that columns of \(\boldsymbol{R}\) are right eigenvectors of \(\boldsymbol{M}\) and rows of \(\boldsymbol{R}^{-1}\) are left eigenvectors of \(\boldsymbol{M}.\) For convenience, we write</p>
+<p>By the identity $$\boldsymbol{M} = \boldsymbol{R} \boldsymbol{S} \boldsymbol{R}^{-1},$$ it is clear that columns of $$\boldsymbol{R}$$ are right eigenvectors of $$\boldsymbol{M}$$ and rows of $$\boldsymbol{R}^{-1}$$ are left eigenvectors of $$\boldsymbol{M}.$$ For convenience, we write</p>
 
-\[\boldsymbol{R} = \begin{bmatrix}
-    \vert &amp;&amp; \vert \\
-    \boldsymbol{r}_1 &amp; \vdots &amp; \boldsymbol{r}_m   \\
-    \vert &amp; &amp; \vert
+$$
+\boldsymbol{R} = \begin{bmatrix}
+    \vert && \vert \\
+    \boldsymbol{r}_1 & \vdots & \boldsymbol{r}_m   \\
+    \vert & & \vert
 \end{bmatrix}
 \quad {\text{~and~}} \quad
 \boldsymbol{R}^{-1} = 
 \begin{bmatrix}
-    \text{---} &amp; \boldsymbol{l}_1^\top &amp; \text{---} \\
-    &amp; \cdots &amp; \\    
-    \text{---} &amp; \boldsymbol{l}_m^ \top &amp; \text{---}
-\end{bmatrix}\]
+    \text{---} & \boldsymbol{l}_1^\top & \text{---} \\
+    & \cdots & \\    
+    \text{---} & \boldsymbol{l}_m^ \top & \text{---}
+\end{bmatrix}
+$$
 
-<p>and use \(\boldsymbol{r}_i\) and \(\boldsymbol{l}_i\) to denote the \(i\)-th right and left eigenvectors of \(\boldsymbol{M}\) associated to eigenvalue \(s_i\). Since \(\boldsymbol{R} \coloneqq \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{U}\) and \(\boldsymbol{R}^{-1} = \boldsymbol{U}^\top \boldsymbol{D}^{\frac{1}{2}}\), we see that \(\boldsymbol{r}_i\) and \(\boldsymbol{l}_i\) are linked through \(\boldsymbol{u}_i\):</p>
+<p>and use $$\boldsymbol{r}_i$$ and $$\boldsymbol{l}_i$$ to denote the $$i$$-th right and left eigenvectors of $$\boldsymbol{M}$$ associated to eigenvalue $$s_i$$. Since $$\boldsymbol{R} \coloneqq \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{U}$$ and $$\boldsymbol{R}^{-1} = \boldsymbol{U}^\top \boldsymbol{D}^{\frac{1}{2}}$$, we see that $$\boldsymbol{r}_i$$ and $$\boldsymbol{l}_i$$ are linked through $$\boldsymbol{u}_i$$:</p>
 
-\[\begin{equation*}
+$$
+\begin{equation*}
  \forall i \in [m]: \quad  \boldsymbol{r}_i = \boldsymbol{D}^{- \frac{1}{2}} \boldsymbol{u}_i \quad \text{~and~} \quad \boldsymbol{l}_i = \boldsymbol{D}^{\frac{1}{2}} \boldsymbol{u}_i.
-\end{equation*}\]
+\end{equation*}
+$$
 
 <p>Additionally, we note that
-\(\boldsymbol{M}^t = (\boldsymbol{R} \boldsymbol{S} \boldsymbol{R}^{-1})^{t} = \boldsymbol{R} \boldsymbol{S}^t \boldsymbol{R}^{-1}  = \sum_{h=1}^{m} s_{h}^t \boldsymbol{r}_h \boldsymbol{l}_h^\top,\)
+$$
+\boldsymbol{M}^t = (\boldsymbol{R} \boldsymbol{S} \boldsymbol{R}^{-1})^{t} = \boldsymbol{R} \boldsymbol{S}^t \boldsymbol{R}^{-1}  = \sum_{h=1}^{m} s_{h}^t \boldsymbol{r}_h \boldsymbol{l}_h^\top,
+$$
 which suggests 
-\((\boldsymbol{M}^t)_{ij} = \sum_{h=1}^m s_h^t \boldsymbol{r}_{h}[i] \boldsymbol{l}_{h}[j].\)</p>
+$$
+ (\boldsymbol{M}^t)_{ij} = \sum_{h=1}^m s_h^t \boldsymbol{r}_{h}[i] \boldsymbol{l}_{h}[j].
+$$</p>
 
 <p>Hence</p>
 
-\[\begin{aligned}
-d_{t}\left(v_i, v_j\right)^{2} &amp;=\sum_{k \in [S]} {\Big [ (\boldsymbol{M}^{t})_{ik}-(\boldsymbol{M}^{t})_{jk}\Big ]^{2}} \Big/ \boldsymbol{\pi}[k] \cr
-&amp;=\sum_{k \in [S]} \Big [ \sum_{h=1}^m s_h^t \boldsymbol{r}_{h}[i] \boldsymbol{l}_{h}[k] - \sum_{h=1}^m s_h^t \boldsymbol{r}_{h}[j] \boldsymbol{l}_{h}[k] \Big ]^{2} \Big/ \boldsymbol{\pi}[k] \cr 
-&amp;=\sum_{k \in [S]} \Big [ \sum_{h=1}^m s_h^t (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j]) \boldsymbol{l}_{h}[k]  \Big ]^{2} \Big/ \boldsymbol{\pi}[k] \cr
-&amp;=\sum_{k \in [S]}  \sum_{h=1}^m \sum_{h'= 1}^m \Big ( s_h^t (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j]) \boldsymbol{l}_{h}[k] \Big ) \Big ( s_{h'}^t (\boldsymbol{r}_{h'}[i] - \boldsymbol{r}_{h'}[j]) \boldsymbol{l}_{h'}[k] \Big )  \Big/ \boldsymbol{\pi}[k] \cr
-&amp;=  \sum_{h=1}^m \sum_{h'= 1}^m \left( s_h^t (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j]) \right)  \left( s_{h'}^t (\boldsymbol{r}_{h'}[i] - \boldsymbol{r}_{h'}[j]) \right) \sum_{k \in [S]} \frac{\boldsymbol{l}_{h}[k] \boldsymbol{l}_{h'}[k]}{\boldsymbol{\pi}[k]}.
-\end{aligned}\]
+$$
+\begin{aligned}
+d_{t}\left(v_i, v_j\right)^{2} &=\sum_{k \in [S]} {\Big [ (\boldsymbol{M}^{t})_{ik}-(\boldsymbol{M}^{t})_{jk}\Big ]^{2}} \Big/ \boldsymbol{\pi}[k] \cr
+&=\sum_{k \in [S]} \Big [ \sum_{h=1}^m s_h^t \boldsymbol{r}_{h}[i] \boldsymbol{l}_{h}[k] - \sum_{h=1}^m s_h^t \boldsymbol{r}_{h}[j] \boldsymbol{l}_{h}[k] \Big ]^{2} \Big/ \boldsymbol{\pi}[k] \cr 
+&=\sum_{k \in [S]} \Big [ \sum_{h=1}^m s_h^t (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j]) \boldsymbol{l}_{h}[k]  \Big ]^{2} \Big/ \boldsymbol{\pi}[k] \cr
+&=\sum_{k \in [S]}  \sum_{h=1}^m \sum_{h'= 1}^m \Big ( s_h^t (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j]) \boldsymbol{l}_{h}[k] \Big ) \Big ( s_{h'}^t (\boldsymbol{r}_{h'}[i] - \boldsymbol{r}_{h'}[j]) \boldsymbol{l}_{h'}[k] \Big )  \Big/ \boldsymbol{\pi}[k] \cr
+&=  \sum_{h=1}^m \sum_{h'= 1}^m \left( s_h^t (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j]) \right)  \left( s_{h'}^t (\boldsymbol{r}_{h'}[i] - \boldsymbol{r}_{h'}[j]) \right) \sum_{k \in [S]} \frac{\boldsymbol{l}_{h}[k] \boldsymbol{l}_{h'}[k]}{\boldsymbol{\pi}[k]}.
+\end{aligned}
+$$
 
-<p>As remarked in the second section, there is an explicit expression for the stationary distribution over vertices: \(\boldsymbol{\pi}[k] = \frac{\boldsymbol{D}[k,k]}{\text{trace}(\boldsymbol{D})}\). Plug this expression into the above equation, we get</p>
+<p>As remarked in the second section, there is an explicit expression for the stationary distribution over vertices: $$\boldsymbol{\pi}[k] = \frac{\boldsymbol{D}[k,k]}{\text{trace}(\boldsymbol{D})}$$. Plug this expression into the above equation, we get</p>
 
-\[\begin{aligned} 
-    \frac{\boldsymbol{l}_{h}[k] \boldsymbol{l}_{h'}[k]}{\boldsymbol{\pi}[k]} &amp; = \frac{ \text{trace}(\boldsymbol{D}) \cdot \boldsymbol{l}_{h}[k] \cdot \boldsymbol{l}_{h'}[k]}{ \boldsymbol{D}[k, k]} \cr
-    &amp; = \frac{ \text{trace}(\boldsymbol{D}) \cdot \left (\boldsymbol{D}^{\frac{1}{2}} \boldsymbol{u}_{h} \right )[k] \cdot \boldsymbol{l}_{h'}[k]}{ \boldsymbol{D}[k, k]} \cr
-    &amp; =  \text{trace}(\boldsymbol{D}) \cdot \left (\boldsymbol{D}^{- \frac{1}{2}} \boldsymbol{u}_{h} \right )[k] \cdot \boldsymbol{l}_{h'}[k] \cr
-    &amp; =  \text{trace}(\boldsymbol{D}) \cdot \boldsymbol{r}_{h}[k] \cdot \boldsymbol{l}_{h'}[k] \cr
-    &amp; =   \begin{cases}
-   0  &amp; \text{if } h \neq h', \cr
+$$
+\begin{aligned} 
+    \frac{\boldsymbol{l}_{h}[k] \boldsymbol{l}_{h'}[k]}{\boldsymbol{\pi}[k]} & = \frac{ \text{trace}(\boldsymbol{D}) \cdot \boldsymbol{l}_{h}[k] \cdot \boldsymbol{l}_{h'}[k]}{ \boldsymbol{D}[k, k]} \cr
+    & = \frac{ \text{trace}(\boldsymbol{D}) \cdot \left (\boldsymbol{D}^{\frac{1}{2}} \boldsymbol{u}_{h} \right )[k] \cdot \boldsymbol{l}_{h'}[k]}{ \boldsymbol{D}[k, k]} \cr
+    & =  \text{trace}(\boldsymbol{D}) \cdot \left (\boldsymbol{D}^{- \frac{1}{2}} \boldsymbol{u}_{h} \right )[k] \cdot \boldsymbol{l}_{h'}[k] \cr
+    & =  \text{trace}(\boldsymbol{D}) \cdot \boldsymbol{r}_{h}[k] \cdot \boldsymbol{l}_{h'}[k] \cr
+    & =   \begin{cases}
+   0  & \text{if } h \neq h', \cr
    \text{trace}(\boldsymbol{D})        
-   &amp; \text{otherwise}.
+   & \text{otherwise}.
   \end{cases}
-\end{aligned}\]
+\end{aligned}
+$$
 
 <p>As a result, we have</p>
 
-\[\begin{aligned}
-d_{t}(v_i, v_j)^{2} &amp; = \text{trace}(\boldsymbol{D}) \sum_{h=1}^m  s_h^{2t} (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j])^2 \\
-&amp; = \text{trace}(\boldsymbol{D}) \sum_{h=2}^m  s_h^{2t} (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j])^2 \\
-&amp; \propto \sum_{h=2}^m  s_h^{2t} (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j])^2
-\end{aligned}\]
+$$
+\begin{aligned}
+d_{t}(v_i, v_j)^{2} & = \text{trace}(\boldsymbol{D}) \sum_{h=1}^m  s_h^{2t} (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j])^2 \\
+& = \text{trace}(\boldsymbol{D}) \sum_{h=2}^m  s_h^{2t} (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j])^2 \\
+& \propto \sum_{h=2}^m  s_h^{2t} (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j])^2
+\end{aligned}
+$$
 
-<p>where in second last step we used the fact that \(\boldsymbol{r}_1\) is a constant eigenvector and therefore the entrywise difference  \((\boldsymbol{r}_{1}[i]\) - \(\boldsymbol{r}_{1}[j])^2\) vanishes.</p>
+<p>where in second last step we used the fact that $$\boldsymbol{r}_1$$ is a constant eigenvector and therefore the entrywise difference  $$(\boldsymbol{r}_{1}[i]$$ - $$\boldsymbol{r}_{1}[j])^2$$ vanishes.</p>
 
 <p>To summarize, we proved:</p>
 
-\[\begin{equation}
+$$
+\begin{equation}
 \boxed{\quad d_{t}(v_i, v_j)^{2}  \propto \sum_{h=2}^m  s_h^{2t} (\boldsymbol{r}_{h}[i] - \boldsymbol{r}_{h}[j])^2. \quad }
-\end{equation}\]
+\end{equation}
+$$
 
-<p>Finally, we define the diffusion map with truncated order \(n\) as</p>
+<p>Finally, we define the diffusion map with truncated order $$n$$ as</p>
 
-\[\begin{equation}
+$$
+\begin{equation}
 \boxed{
 \begin{split}
-  \quad \Phi_t^n:  \mathcal{X} &amp; \to \mathbb{R}^{n} \quad \\
-  \boldsymbol{x}_i &amp; \mapsto \begin{pmatrix} s_2^{t} \boldsymbol{r}_2[i] \\ s_3^{t} \boldsymbol{r}_3[i] \\ \vdots \\ s_{n+1}^{t} \boldsymbol{r}_{n+1}[i] \end{pmatrix}. \quad
+  \quad \Phi_t^n:  \mathcal{X} & \to \mathbb{R}^{n} \quad \\
+  \boldsymbol{x}_i & \mapsto \begin{pmatrix} s_2^{t} \boldsymbol{r}_2[i] \\ s_3^{t} \boldsymbol{r}_3[i] \\ \vdots \\ s_{n+1}^{t} \boldsymbol{r}_{n+1}[i] \end{pmatrix}. \quad
   \end{split}}
-\end{equation}\]
+\end{equation}
+$$
 
-<p>Then through Equation (2), we see that if we choose \(n = m -1\), the euclidean distance of the diffusion maps of two vectors \(\boldsymbol{x}_i\) and \(\boldsymbol{x}_j\) reconstructs the diffusion distance up to a scalar:</p>
+<p>Then through Equation (2), we see that if we choose $$n = m -1$$, the euclidean distance of the diffusion maps of two vectors $$\boldsymbol{x}_i$$ and $$\boldsymbol{x}_j$$ reconstructs the diffusion distance up to a scalar:</p>
 
-\[\| \Phi_t^{m-1}(\boldsymbol{x}_i) - \Phi_t^{m-1}(\boldsymbol{x}_j) \|_2^2 \propto  d_{t}(v_i, v_j)^{2}.\]
+$$
+\| \Phi_t^{m-1}(\boldsymbol{x}_i) - \Phi_t^{m-1}(\boldsymbol{x}_j) \|_2^2 \propto  d_{t}(v_i, v_j)^{2}.
+$$
 
-<p>In the interest to reduce the dimensionality of the data, we may choose \(n \ll \min(m-1, N).\)</p>
+<p>In the interest to reduce the dimensionality of the data, we may choose $$n \ll \min(m-1, N).$$</p>
 
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="coifman2006">Coifman, R. R., &amp; Lafon, S. (2006). Diffusion maps. <i>Applied and Computational Harmonic Analysis</i>, <i>21</i>(1), 5–30.</span> <a href="#citation-coifman2006" class="cite-backref" title="Back to text">↩</a>
+</li></ol>
 
   </div>
 
@@ -802,6 +868,19 @@ d_{t}(v_i, v_j)^{2} &amp; = \text{trace}(\boldsymbol{D}) \sum_{h=1}^m  s_h^{2t} 
 
   
   
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
     
   
   
@@ -846,6 +925,8 @@ d_{t}(v_i, v_j)^{2} &amp; = \text{trace}(\boldsymbol{D}) \sum_{h=1}^m  s_h^{2t} 
 
   
 
+  
+
 
 
 
@@ -856,6 +937,19 @@ d_{t}(v_i, v_j)^{2} &amp; = \text{trace}(\boldsymbol{D}) \sum_{h=1}^m  s_h^{2t} 
   
 
 
+
+
+  
+    
+    
+    
+
+    
+    <div class="related-posts-post">
+  <a href="/2026/01/31/discrete-flow-matching-notes/">
+    Notes on Discrete Flow Matching
+  </a>
+</div>
 
 
   
@@ -880,19 +974,6 @@ d_{t}(v_i, v_j)^{2} &amp; = \text{trace}(\boldsymbol{D}) \sum_{h=1}^m  s_h^{2t} 
     <div class="related-posts-post">
   <a href="/2024/06/08/just-having-fun/">
     Reading 'Just for Fun: The Story of an Accidental Revolutionary' 
-  </a>
-</div>
-
-
-  
-    
-    
-    
-
-    
-    <div class="related-posts-post">
-  <a href="/2023/03/23/sinkhorn-divergence/">
-    Using Sinkhorn divergence to measure image similarity
   </a>
 </div>
 
@@ -928,60 +1009,64 @@ d_{t}(v_i, v_j)^{2} &amp; = \text{trace}(\boldsymbol{D}) \sum_{h=1}^m  s_h^{2t} 
 
 </article>
 
-    </div>
+  </div>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer"><!--           <div class="copyright">
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer"><!--           <div class="copyright">
             
-            <p>&copy; 2025 Tianlin Liu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/forever-jekyll/forever-jekyll" rel="nofollow">Forever Jekyll</a>.</p>
+            <p>&copy; 2026 Tianlin Liu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/forever-jekyll/forever-jekyll" rel="nofollow">Forever Jekyll</a>.</p>
             
           </div> -->
-        </footer>
-      </div>
+      </footer>
     </div>
+  </div>
 
-    <script defer src="https://cdn.plyr.io/3.6.5/plyr.js"></script>
-    <script>
-      const player = new Plyr("#player", { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1 , enablejsapi: 1, autoplay: 0, focused: true, global: false });
-      window.player = player;
-    </script>
+  <script defer src="https://cdn.plyr.io/3.6.5/plyr.js"></script>
+  <script>
+    const player = new Plyr("#player", { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, enablejsapi: 1, autoplay: 0, focused: true, global: false });
+    window.player = player;
+  </script>
 
-    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-    <script type="text/javascript">
-      const lightbox = GLightbox({
-          touchNavigation: true,
-          loop: true,
-          autoplayVideos: true
-      });
-    </script>
+  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+  <script type="text/javascript">
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true
+    });
+  </script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true });</script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js" integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"
-            onload="renderMathInElement(document.body,{
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"
+    integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb"
+    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{
                     delimiters: [
                     { left: '$$',  right: '$$',  display: true  },
                     { left: '$',   right: '$',   display: false },
                     { left: '\\[', right: '\\]', display: true  },
                     { left: '\\(', right: '\\)', display: false }
-                    ]});">
-    </script>
+                    ],
+                    preProcess: function(math) { return math.replace(/\\_/g, '_'); }
+                    });">
+                    </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-    <script>
-      function addDarkmodeWidget() {
-        new Darkmode().showWidget();
-        window.addEventListener('load', addDarkmodeWidget);
-      }
-      const options = {
-        label: '🌓',
-      }
-      const darkmode = new Darkmode(options);
-            darkmode.showWidget();
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <script>
+    function addDarkmodeWidget() {
+      new Darkmode().showWidget();
+      window.addEventListener('load', addDarkmodeWidget);
+    }
+    const options = {
+      label: '🌓',
+    }
+    const darkmode = new Darkmode(options);
+    darkmode.showWidget();
+  </script>
 
-  </body>
+</body>
+
 </html>

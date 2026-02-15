@@ -3,7 +3,7 @@ toc: false
 layout: post
 title: Are coordinates of an isotropic random vector uncorrelated?
 ---
-I was reading Section 3.3 of the nicely written book [High-dimensional Probability](https://www.math.uci.edu/~rvershyn/papers/HDP-book/HDP-book.pdf) by Roman Vershynin. At the beginning of that section, it was mentioned that:
+I was reading Section 3.3 of the nicely written book  {% citet vershynin2018high %}. At the beginning of that section, it was mentioned that:
 
 > The coordinates of an isotropic random vector are always uncorrelated (why?), but they are not necessarily independent.
 
@@ -53,3 +53,7 @@ Hence we have $$\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j)$$. Tha
 
 
 
+
+## References
+
+{% bibliography --cited %}
