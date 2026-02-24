@@ -7,7 +7,7 @@ title: A detailed derivation of the diffusion map
 The diffusion map {% citep coifman2006 %} is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.
 
 
-To formalize, we let $$\mathcal{X} \coloneqq \{ \boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\} \subset \mathbb{R}^N$$ be a given set of high-dimensional data. In this note, we will construct the diffusion maps
+To formalize, we let $\mathcal{X} \coloneqq \{ \boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\} \subset \mathbb{R}^N$ be a given set of high-dimensional data. In this note, we will construct the diffusion maps
 
 $$
 \begin{equation*}
@@ -18,18 +18,18 @@ $$
 \end{equation*}
 $$
 
-where $$n \leq \min(m - 1, N)$$. Specifically, to construct the diffusion maps $$\Phi^n$$, we take three steps:
-1. View the high-dimensional points in $$\mathcal{X}$$ as vertices in an underlying graph (Section [1](#graph-representation) ).
+where $n \leq \min(m - 1, N)$. Specifically, to construct the diffusion maps $\Phi^n$, we take three steps:
+1. View the high-dimensional points in $\mathcal{X}$ as vertices in an underlying graph (Section [1](#graph-representation) ).
 2. Define a Markov Chain (MC) on the graph, so that local connectivity between vertices of the graph has a probability interpretation (Section [2](#mc) ).
-3. Assign each data point in $$\mathcal{X}$$ a low-dimensional vector, with respect to which the graph-based local connectivity is approximately preserved (Section [3](#dim-reduction)).
+3. Assign each data point in $\mathcal{X}$ a low-dimensional vector, with respect to which the graph-based local connectivity is approximately preserved (Section [3](#dim-reduction)).
 
 
 ## <a name="graph-representation"></a> 1. Graph representation of data points
 
-To start the diffusion maps machinery, we first describe each high-dimensional data point $$\boldsymbol{x}_i \in \mathbb{R}^{N}$$ by its relationship with other data points in the given dataset $$\mathcal{X} \coloneqq \{\boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\}$$. To this end, we assume that each data point $$\boldsymbol{x}_i$$ is emitted from a vertex $$v_i$$ of an underlying directed weighted graph $$G = (V, E, \boldsymbol{W})$$.  Here, $$V \coloneqq \{v_1, \ldots, v_m\}$$ is the set of vertices, $$E \subset V \times V$$ is a set of ordered pairs of vertices representing edges, and $$\boldsymbol{W}$$ is the adjacency matrix such that $$\boldsymbol{W}_{ij} > 0$$ if $$(i,j) \in E$$ and $$\boldsymbol{W}_{ij} = 0$$ otherwise. 
+To start the diffusion maps machinery, we first describe each high-dimensional data point $\boldsymbol{x}_i \in \mathbb{R}^{N}$ by its relationship with other data points in the given dataset $\mathcal{X} \coloneqq \{\boldsymbol{x}_1, \ldots, \boldsymbol{x}_m\}$. To this end, we assume that each data point $\boldsymbol{x}_i$ is emitted from a vertex $v_i$ of an underlying directed weighted graph $G = (V, E, \boldsymbol{W})$.  Here, $V \coloneqq \{v_1, \ldots, v_m\}$ is the set of vertices, $E \subset V \times V$ is a set of ordered pairs of vertices representing edges, and $\boldsymbol{W}$ is the adjacency matrix such that $\boldsymbol{W}_{ij} > 0$ if $(i,j) \in E$ and $\boldsymbol{W}_{ij} = 0$ otherwise. 
 
 
-One advantage of having an underlying graph representation of data is that the similarities of high-dimensional points $$\boldsymbol{x}_i$$ and $$\boldsymbol{x}_j$$ can be encapsulated by $$\boldsymbol{W}_{ij}$$, that is, the connection strength or the weight between two vertices $$v_i$$ and $$v_j$$. But how to specify these weights? In diffusion maps, we let each connection strength be specified through a kernel function $$K$$:
+One advantage of having an underlying graph representation of data is that the similarities of high-dimensional points $\boldsymbol{x}_i$ and $\boldsymbol{x}_j$ can be encapsulated by $\boldsymbol{W}_{ij}$, that is, the connection strength or the weight between two vertices $v_i$ and $v_j$. But how to specify these weights? In diffusion maps, we let each connection strength be specified through a kernel function $K$:
 
 
 $$
@@ -39,9 +39,9 @@ K: \mathbb{R}^N \times \mathbb{R}^N & \to \mathbb{R}_{+} \cr
 \end{aligned}
 $$
 
-Note that here we assume that the kernel $$K$$ only takes positive values. This is a convenient choice as it guarantees the Markov chain to be defined later in to have a unique stationary state. One common choice of the kernel is the radial basis kernel 
+Note that here we assume that the kernel $K$ only takes positive values. This is a convenient choice as it guarantees the Markov chain to be defined later in to have a unique stationary state. One common choice of the kernel is the radial basis kernel 
 $$K(\boldsymbol{x}_i, \boldsymbol{x}_j)=\exp \left(-\frac{\|\boldsymbol{x}_i-\boldsymbol{x}_j\|^{2}}{\epsilon}\right) \text{~with~} \epsilon > 0.$$
-In this way, we construct an adjacency matrix with components $$\boldsymbol{W}_{ij} \coloneqq K(\boldsymbol{x}_i, \boldsymbol{x}_j)$$. The whole adjacency matrix $$\boldsymbol{W} \in \mathbb{R}^{m \times m}$$ has the form
+In this way, we construct an adjacency matrix with components $\boldsymbol{W}_{ij} \coloneqq K(\boldsymbol{x}_i, \boldsymbol{x}_j)$. The whole adjacency matrix $\boldsymbol{W} \in \mathbb{R}^{m \times m}$ has the form
 
 $$\boldsymbol{W} = \begin{bmatrix} 
     K(\boldsymbol{x}_1, \boldsymbol{x}_1) & \dots & K(\boldsymbol{x}_1, \boldsymbol{x}_m) \\
@@ -62,7 +62,7 @@ $$
 
 ## <a name="mc"></a> 2. Markov chain on the graph
 
-Now, with the weighted graph $$G = (V, E, \boldsymbol{W})$$ in the previous section, we construct a stochastic process $$(X_t)_{t \in \mathbb{N}}$$ taking values in the vertices $$V$$. Specifically, we let the stochastic process to be a time-homogenous Markov Chain, where the transition probability between two vertices is specified via the normalized edge weights attached to these two vertices:
+Now, with the weighted graph $G = (V, E, \boldsymbol{W})$ in the previous section, we construct a stochastic process $(X_t)_{t \in \mathbb{N}}$ taking values in the vertices $V$. Specifically, we let the stochastic process to be a time-homogenous Markov Chain, where the transition probability between two vertices is specified via the normalized edge weights attached to these two vertices:
 
 $$
 \begin{aligned} 
@@ -70,7 +70,7 @@ $$
 \end{aligned}
 $$
 
-We arrange these transition probabilities $$p(v_i, v_j)$$ into a $$N \times N$$ sized transition matrix 
+We arrange these transition probabilities $p(v_i, v_j)$ into a $N \times N$ sized transition matrix 
 
 $$
 \boldsymbol{M} \coloneqq \begin{bmatrix} 
@@ -80,7 +80,7 @@ $$
 \end{bmatrix} \in \mathbb{R}^{m \times m}.
 $$
 
-It is easy to verify that $$\boldsymbol{M} = \boldsymbol{D}^{-1} \boldsymbol{W}$$ and that
+It is easy to verify that $\boldsymbol{M} = \boldsymbol{D}^{-1} \boldsymbol{W}$ and that
 
 $$
 \begin{aligned}
@@ -88,7 +88,7 @@ $$
 \end{aligned}
 $$
 
-Characterizing transition probability with the matrix $$\boldsymbol{M}$$ is helpful as it allows us to study the MC using tools of linear algebra. For instance, the stationary distribution of the MC $$(X_t)_{t \in \mathbb{N}}$$ is encoded in a probability vector $$\boldsymbol{\pi}$$ such that 
+Characterizing transition probability with the matrix $\boldsymbol{M}$ is helpful as it allows us to study the MC using tools of linear algebra. For instance, the stationary distribution of the MC $(X_t)_{t \in \mathbb{N}}$ is encoded in a probability vector $\boldsymbol{\pi}$ such that 
 
 $$
 \begin{equation} 
@@ -96,7 +96,7 @@ $$
 \end{equation}
 $$
 
-The stationary probability vector $$\boldsymbol{\pi}$$ is thus a left eigenvector of $$\boldsymbol{M}$$. If we assume $$\boldsymbol{l}_1, \ldots, \boldsymbol{l}_m$$ are unit norm left eigenvectors of $$\boldsymbol{M}$$, then $$\boldsymbol{\pi} = \boldsymbol{l}_1/ \| \boldsymbol{l}_1\|_1.$$ We remark that, by construction, the stationary distribution $$\boldsymbol{\pi} = \boldsymbol{l}_1/ \| \boldsymbol{l}_1\|_1$$ is unique. This is because we have assumed the kernel $$K$$ only takes positive values, which is an assumption implying that the markov chain is irreducible. Additionally, via Equation (1), it is straightforward to verify that $$\boldsymbol{\pi}$$ is explicitly defined through the degree matrix $$\boldsymbol{D}$$:
+The stationary probability vector $\boldsymbol{\pi}$ is thus a left eigenvector of $\boldsymbol{M}$. If we assume $\boldsymbol{l}_1, \ldots, \boldsymbol{l}_m$ are unit norm left eigenvectors of $\boldsymbol{M}$, then $\boldsymbol{\pi} = \boldsymbol{l}_1/ \| \boldsymbol{l}_1\|_1.$ We remark that, by construction, the stationary distribution $\boldsymbol{\pi} = \boldsymbol{l}_1/ \| \boldsymbol{l}_1\|_1$ is unique. This is because we have assumed the kernel $K$ only takes positive values, which is an assumption implying that the markov chain is irreducible. Additionally, via Equation (1), it is straightforward to verify that $\boldsymbol{\pi}$ is explicitly defined through the degree matrix $\boldsymbol{D}$:
 
 $$
 \begin{aligned}
@@ -115,8 +115,8 @@ d_{t}\left(v_i, v_j\right)^{2} \coloneqq \sum_{k \in [S]}  \Big [ \mathbb{P} (X_
 \end{equation*} 
 $$
 
-Intuitively, this diffusion distance $$d_{t}$$ measures the local connectivity between two vertices at a timescale prescribed by $$t$$.
-Writing the conditional probabilities in terms of the entries of the transition matrix $$\boldsymbol{M}$$, we discover
+Intuitively, this diffusion distance $d_{t}$ measures the local connectivity between two vertices at a timescale prescribed by $t$.
+Writing the conditional probabilities in terms of the entries of the transition matrix $\boldsymbol{M}$, we discover
 
 $$
 \begin{equation*} 
@@ -124,9 +124,9 @@ d_{t}\left(v_i, v_j\right)^{2} =\sum_{k \in [S]}\Big [ (\boldsymbol{M}^{t})_{ik}
 \end{equation*}
 $$
 
-The above equation is a linear algebraic way of computing the distance $$d_{t}\left(v_i, v_j\right)^{2}$$ of transition probabilities. However, evaluating the term $$d_{t}\left(v_i, v_j\right)^{2}$$ as above is still inconvenient as it involves the power of a matrix. In what follows, we show that the distance in Equation $$d_{t}\left(v_i, v_j\right)^{2}$$ can be significantly simplified by using the eigendecomposition of $$\boldsymbol{M}$$. 
+The above equation is a linear algebraic way of computing the distance $d_{t}\left(v_i, v_j\right)^{2}$ of transition probabilities. However, evaluating the term $d_{t}\left(v_i, v_j\right)^{2}$ as above is still inconvenient as it involves the power of a matrix. In what follows, we show that the distance in Equation $d_{t}\left(v_i, v_j\right)^{2}$ can be significantly simplified by using the eigendecomposition of $\boldsymbol{M}$. 
 
-We proceed to write out the right and left eivenvectors of $$\boldsymbol{M}$$ and examine their relationships. To this end, we first consider a "normalized'' version of $$\boldsymbol{M}$$, which has the form
+We proceed to write out the right and left eivenvectors of $\boldsymbol{M}$ and examine their relationships. To this end, we first consider a "normalized'' version of $\boldsymbol{M}$, which has the form
 
 $$
 \begin{equation*}
@@ -134,7 +134,7 @@ $$
 \end{equation*}
 $$
 
-One nice property of $$\overline{\boldsymbol{M}}$$ is that it is positive semidefinite (PSD):
+One nice property of $\overline{\boldsymbol{M}}$ is that it is positive semidefinite (PSD):
 
 $$
 \begin{aligned}
@@ -146,13 +146,13 @@ $$
 \end{aligned}
 $$
 
-where in the last step we used the fact that the kernel matrix $$\boldsymbol{W}$$ is PSD. Note that the original, unnormalized matrix $$\boldsymbol{M}$$ is not PSD because it is not symmetric.
+where in the last step we used the fact that the kernel matrix $\boldsymbol{W}$ is PSD. Note that the original, unnormalized matrix $\boldsymbol{M}$ is not PSD because it is not symmetric.
 
-Since $$\overline{\boldsymbol{M}}$$ is PSD, we may write 
+Since $\overline{\boldsymbol{M}}$ is PSD, we may write 
 $$
 \overline{\boldsymbol{M}} \coloneqq \boldsymbol{U} \boldsymbol{S} \boldsymbol{U}^\top,
 $$
-where $$\boldsymbol{U}$$ is an orthonormal matrix whose columns $$\boldsymbol{u}_1, \ldots, \boldsymbol{u}_m$$ are eigenvectors of $$\overline{\boldsymbol{M}}$$ and $$\boldsymbol{S}$$ is a diagonal matrix whose entries are non-negative eigenvalues of $$\overline{\boldsymbol{M}}$$. As a consequence, we have
+where $\boldsymbol{U}$ is an orthonormal matrix whose columns $\boldsymbol{u}_1, \ldots, \boldsymbol{u}_m$ are eigenvectors of $\overline{\boldsymbol{M}}$ and $\boldsymbol{S}$ is a diagonal matrix whose entries are non-negative eigenvalues of $\overline{\boldsymbol{M}}$. As a consequence, we have
 
 $$
 \begin{aligned}
@@ -162,7 +162,7 @@ $$
 $$
 
 
-By the identity $$\boldsymbol{M} = \boldsymbol{R} \boldsymbol{S} \boldsymbol{R}^{-1},$$ it is clear that columns of $$\boldsymbol{R}$$ are right eigenvectors of $$\boldsymbol{M}$$ and rows of $$\boldsymbol{R}^{-1}$$ are left eigenvectors of $$\boldsymbol{M}.$$ For convenience, we write
+By the identity $\boldsymbol{M} = \boldsymbol{R} \boldsymbol{S} \boldsymbol{R}^{-1},$ it is clear that columns of $\boldsymbol{R}$ are right eigenvectors of $\boldsymbol{M}$ and rows of $\boldsymbol{R}^{-1}$ are left eigenvectors of $\boldsymbol{M}.$ For convenience, we write
 
 $$
 \boldsymbol{R} = \begin{bmatrix}
@@ -179,7 +179,7 @@ $$
 \end{bmatrix}
 $$
 
-and use $$\boldsymbol{r}_i$$ and $$\boldsymbol{l}_i$$ to denote the $$i$$-th right and left eigenvectors of $$\boldsymbol{M}$$ associated to eigenvalue $$s_i$$. Since $$\boldsymbol{R} \coloneqq \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{U}$$ and $$\boldsymbol{R}^{-1} = \boldsymbol{U}^\top \boldsymbol{D}^{\frac{1}{2}}$$, we see that $$\boldsymbol{r}_i$$ and $$\boldsymbol{l}_i$$ are linked through $$\boldsymbol{u}_i$$:
+and use $\boldsymbol{r}_i$ and $\boldsymbol{l}_i$ to denote the $i$-th right and left eigenvectors of $\boldsymbol{M}$ associated to eigenvalue $s_i$. Since $\boldsymbol{R} \coloneqq \boldsymbol{D}^{-\frac{1}{2}} \boldsymbol{U}$ and $\boldsymbol{R}^{-1} = \boldsymbol{U}^\top \boldsymbol{D}^{\frac{1}{2}}$, we see that $\boldsymbol{r}_i$ and $\boldsymbol{l}_i$ are linked through $\boldsymbol{u}_i$:
 
 $$
 \begin{equation*}
@@ -209,7 +209,7 @@ d_{t}\left(v_i, v_j\right)^{2} &=\sum_{k \in [S]} {\Big [ (\boldsymbol{M}^{t})_{
 \end{aligned}
 $$
 
-As remarked in the second section, there is an explicit expression for the stationary distribution over vertices: $$\boldsymbol{\pi}[k] = \frac{\boldsymbol{D}[k,k]}{\text{trace}(\boldsymbol{D})}$$. Plug this expression into the above equation, we get
+As remarked in the second section, there is an explicit expression for the stationary distribution over vertices: $\boldsymbol{\pi}[k] = \frac{\boldsymbol{D}[k,k]}{\text{trace}(\boldsymbol{D})}$. Plug this expression into the above equation, we get
 
 $$
 \begin{aligned} 
@@ -235,7 +235,7 @@ d_{t}(v_i, v_j)^{2} & = \text{trace}(\boldsymbol{D}) \sum_{h=1}^m  s_h^{2t} (\bo
 \end{aligned}
 $$
 
-where in second last step we used the fact that $$\boldsymbol{r}_1$$ is a constant eigenvector and therefore the entrywise difference  $$(\boldsymbol{r}_{1}[i]$$ - $$\boldsymbol{r}_{1}[j])^2$$ vanishes. 
+where in second last step we used the fact that $\boldsymbol{r}_1$ is a constant eigenvector and therefore the entrywise difference  $(\boldsymbol{r}_{1}[i]$ - $\boldsymbol{r}_{1}[j])^2$ vanishes. 
 
 
 To summarize, we proved:
@@ -246,7 +246,7 @@ $$
 \end{equation}
 $$
 
-Finally, we define the diffusion map with truncated order $$n$$ as
+Finally, we define the diffusion map with truncated order $n$ as
 
 $$
 \begin{equation}
@@ -259,13 +259,13 @@ $$
 $$
 
 
-Then through Equation (2), we see that if we choose $$n = m -1$$, the euclidean distance of the diffusion maps of two vectors $$\boldsymbol{x}_i$$ and $$\boldsymbol{x}_j$$ reconstructs the diffusion distance up to a scalar:
+Then through Equation (2), we see that if we choose $n = m -1$, the euclidean distance of the diffusion maps of two vectors $\boldsymbol{x}_i$ and $\boldsymbol{x}_j$ reconstructs the diffusion distance up to a scalar:
 
 $$
 \| \Phi_t^{m-1}(\boldsymbol{x}_i) - \Phi_t^{m-1}(\boldsymbol{x}_j) \|_2^2 \propto  d_{t}(v_i, v_j)^{2}.
 $$
 
-In the interest to reduce the dimensionality of the data, we may choose $$n \ll \min(m-1, N).$$
+In the interest to reduce the dimensionality of the data, we may choose $n \ll \min(m-1, N).$
 
 
 ## References

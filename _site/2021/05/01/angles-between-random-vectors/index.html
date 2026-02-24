@@ -13,19 +13,19 @@
 
   Independent isotropic random vectors tend to be almost
 orthogonal in high dimensions but not in low dimensions. On the plane, the
-average angle is \(\pi/4\), while in high dimensions it is close to \(\pi/2\).
+average angle is $\pi/4$, while in high dimensions it is close to $\pi/2$.
 
 
 and later in the text that
 
 
   For example, the angle between two random independent and uniformly distributed
-directions on the plane has mean \(\pi/4\).
+directions on the plane has mean $\pi/4$.
 
 
-Here, the number \(\pi/4\) is curious as it implies that two independent isotropic random vectors in a two-dimensional plane are not orthogonal to each other on average.
+Here, the number $\pi/4$ is curious as it implies that two independent isotropic random vectors in a two-dimensional plane are not orthogonal to each other on average.
 
-When I tried to do the computation myself, however, I couldn’t get the number \(\pi/4\). I believe that this is a typo in the book. The correct number should be \(\pi/2\). As a consequence, two independent isotropic random vectors are orthogonal to each other, in a two-dimensional plane as well as in higher dimensional spaces.
+When I tried to do the computation myself, however, I couldn’t get the number $\pi/4$. I believe that this is a typo in the book. The correct number should be $\pi/2$. As a consequence, two independent isotropic random vectors are orthogonal to each other, in a two-dimensional plane as well as in higher dimensional spaces.
 
 Numerical demonstration
 
@@ -78,7 +78,7 @@ ax.spines['right'].set_visible(False)
 ax.set_title('Dim = 2')
 plt.grid()
 
-As we see in the resulting figure below, the averaged angle indeed concentrates around \(\pi/2\) and not \(\pi/4\).
+As we see in the resulting figure below, the averaged angle indeed concentrates around $\pi/2$ and not $\pi/4$.
 
 
 
@@ -88,13 +88,13 @@ Via a slight modification of the above program, we can compute the angles when t
 
 Analytical computation
 
-It is not difficult to prove thefact that two independent isotropic random vectors in a two-dimensional plane have expected angle \(\pi/2.\) To show this, let \(X\) and \(Y\) be two such random vectors. We aim to show
+It is not difficult to prove thefact that two independent isotropic random vectors in a two-dimensional plane have expected angle $\pi/2.$ To show this, let $X$ and $Y$ be two such random vectors. We aim to show
 
 \[\begin{equation}
 \mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,
 \end{equation}\]
 
-where \(\mathrm{angle}(\cdot, \cdot)\) is the function that measures the angle between two vectors.
+where $\mathrm{angle}(\cdot, \cdot)$ is the function that measures the angle between two vectors.
 
 By the law of total expectation, we have
 
@@ -102,11 +102,11 @@ By the law of total expectation, we have
 \mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \mathbb{E}  \left [ \mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big   ) \right ].
 \end{equation}\]
 
-Note that the random variable \(\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )\) is a constant random variable: For any fixed realization of \(Y\), the conditional expectation of \(\mathrm{angle}(X, Y)\) is simply \(\pi/2\) since \(X\) has uniformly distributed directions.  For this reason, we have \(\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,\) which is what we claimed.
+Note that the random variable $\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )$ is a constant random variable: For any fixed realization of $Y$, the conditional expectation of $\mathrm{angle}(X, Y) $ is simply $\pi/2$ since $X$ has uniformly distributed directions.  For this reason, we have $\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,$ which is what we claimed.
 
 References
 
-Vershynin, R. (2018). High-dimensional probability: An introduction with applications in data science (Vol. 47). Cambridge University Press. ↩
+Vershynin, R. (2018). High-dimensional Probability: An Introduction with Applications in Data Science (Vol. 47). Cambridge University Press. ↩
 
 " />
 <meta property="og:description" content="In Section 3.2 of Vershynin (2018)(Vershynin, 2018), it was mentioned in the caption to Figure 3.4 that
@@ -114,19 +114,19 @@ Vershynin, R. (2018). High-dimensional probability: An introduction with applica
 
   Independent isotropic random vectors tend to be almost
 orthogonal in high dimensions but not in low dimensions. On the plane, the
-average angle is \(\pi/4\), while in high dimensions it is close to \(\pi/2\).
+average angle is $\pi/4$, while in high dimensions it is close to $\pi/2$.
 
 
 and later in the text that
 
 
   For example, the angle between two random independent and uniformly distributed
-directions on the plane has mean \(\pi/4\).
+directions on the plane has mean $\pi/4$.
 
 
-Here, the number \(\pi/4\) is curious as it implies that two independent isotropic random vectors in a two-dimensional plane are not orthogonal to each other on average.
+Here, the number $\pi/4$ is curious as it implies that two independent isotropic random vectors in a two-dimensional plane are not orthogonal to each other on average.
 
-When I tried to do the computation myself, however, I couldn’t get the number \(\pi/4\). I believe that this is a typo in the book. The correct number should be \(\pi/2\). As a consequence, two independent isotropic random vectors are orthogonal to each other, in a two-dimensional plane as well as in higher dimensional spaces.
+When I tried to do the computation myself, however, I couldn’t get the number $\pi/4$. I believe that this is a typo in the book. The correct number should be $\pi/2$. As a consequence, two independent isotropic random vectors are orthogonal to each other, in a two-dimensional plane as well as in higher dimensional spaces.
 
 Numerical demonstration
 
@@ -179,7 +179,7 @@ ax.spines['right'].set_visible(False)
 ax.set_title('Dim = 2')
 plt.grid()
 
-As we see in the resulting figure below, the averaged angle indeed concentrates around \(\pi/2\) and not \(\pi/4\).
+As we see in the resulting figure below, the averaged angle indeed concentrates around $\pi/2$ and not $\pi/4$.
 
 
 
@@ -189,13 +189,13 @@ Via a slight modification of the above program, we can compute the angles when t
 
 Analytical computation
 
-It is not difficult to prove thefact that two independent isotropic random vectors in a two-dimensional plane have expected angle \(\pi/2.\) To show this, let \(X\) and \(Y\) be two such random vectors. We aim to show
+It is not difficult to prove thefact that two independent isotropic random vectors in a two-dimensional plane have expected angle $\pi/2.$ To show this, let $X$ and $Y$ be two such random vectors. We aim to show
 
 \[\begin{equation}
 \mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,
 \end{equation}\]
 
-where \(\mathrm{angle}(\cdot, \cdot)\) is the function that measures the angle between two vectors.
+where $\mathrm{angle}(\cdot, \cdot)$ is the function that measures the angle between two vectors.
 
 By the law of total expectation, we have
 
@@ -203,11 +203,11 @@ By the law of total expectation, we have
 \mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \mathbb{E}  \left [ \mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big   ) \right ].
 \end{equation}\]
 
-Note that the random variable \(\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )\) is a constant random variable: For any fixed realization of \(Y\), the conditional expectation of \(\mathrm{angle}(X, Y)\) is simply \(\pi/2\) since \(X\) has uniformly distributed directions.  For this reason, we have \(\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,\) which is what we claimed.
+Note that the random variable $\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )$ is a constant random variable: For any fixed realization of $Y$, the conditional expectation of $\mathrm{angle}(X, Y) $ is simply $\pi/2$ since $X$ has uniformly distributed directions.  For this reason, we have $\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,$ which is what we claimed.
 
 References
 
-Vershynin, R. (2018). High-dimensional probability: An introduction with applications in data science (Vol. 47). Cambridge University Press. ↩
+Vershynin, R. (2018). High-dimensional Probability: An Introduction with Applications in Data Science (Vol. 47). Cambridge University Press. ↩
 
 " />
 
@@ -278,19 +278,19 @@ Vershynin, R. (2018). High-dimensional probability: An introduction with applica
 <blockquote>
   <p>Independent isotropic random vectors tend to be almost
 orthogonal in high dimensions but not in low dimensions. On the plane, the
-average angle is $$\pi/4$$, while in high dimensions it is close to $$\pi/2$$.</p>
+average angle is $\pi/4$, while in high dimensions it is close to $\pi/2$.</p>
 </blockquote>
 
 <p>and later in the text that</p>
 
 <blockquote>
   <p>For example, the angle between two random independent and uniformly distributed
-directions on the plane has mean $$\pi/4$$.</p>
+directions on the plane has mean $\pi/4$.</p>
 </blockquote>
 
-<p>Here, the number $$\pi/4$$ is curious as it implies that two independent isotropic random vectors in a two-dimensional plane are not orthogonal to each other on average.</p>
+<p>Here, the number $\pi/4$ is curious as it implies that two independent isotropic random vectors in a two-dimensional plane are not orthogonal to each other on average.</p>
 
-<p>When I tried to do the computation myself, however, I couldn’t get the number $$\pi/4$$. I believe that this is a typo in the book. The correct number should be $$\pi/2$$. As a consequence, two independent isotropic random vectors are orthogonal to each other, in a two-dimensional plane as well as in higher dimensional spaces.</p>
+<p>When I tried to do the computation myself, however, I couldn’t get the number $\pi/4$. I believe that this is a typo in the book. The correct number should be $\pi/2$. As a consequence, two independent isotropic random vectors are orthogonal to each other, in a two-dimensional plane as well as in higher dimensional spaces.</p>
 
 <h2 id="numerical-demonstration">Numerical demonstration</h2>
 
@@ -343,7 +343,7 @@ directions on the plane has mean $$\pi/4$$.</p>
 <span class="n">ax</span><span class="p">.</span><span class="nf">set_title</span><span class="p">(</span><span class="sh">'</span><span class="s">Dim = 2</span><span class="sh">'</span><span class="p">)</span>
 <span class="n">plt</span><span class="p">.</span><span class="nf">grid</span><span class="p">()</span>
 </code></pre></div></div>
-<p>As we see in the resulting figure below, the averaged angle indeed concentrates around $$\pi/2$$ and not $$\pi/4$$.</p>
+<p>As we see in the resulting figure below, the averaged angle indeed concentrates around $\pi/2$ and not $\pi/4$.</p>
 
 <p><img src="/assets/image/average_angle_dim2.png" alt="" width="700px" class="glightbox" /></p>
 
@@ -353,7 +353,7 @@ directions on the plane has mean $$\pi/4$$.</p>
 
 <h2 id="analytical-computation">Analytical computation</h2>
 
-<p>It is not difficult to prove thefact that two independent isotropic random vectors in a two-dimensional plane have expected angle $$\pi/2.$$ To show this, let $$X$$ and $$Y$$ be two such random vectors. We aim to show</p>
+<p>It is not difficult to prove thefact that two independent isotropic random vectors in a two-dimensional plane have expected angle $\pi/2.$ To show this, let $X$ and $Y$ be two such random vectors. We aim to show</p>
 
 $$
 \begin{equation}
@@ -361,7 +361,7 @@ $$
 \end{equation}
 $$
 
-<p>where $$\mathrm{angle}(\cdot, \cdot)$$ is the function that measures the angle between two vectors.</p>
+<p>where $\mathrm{angle}(\cdot, \cdot)$ is the function that measures the angle between two vectors.</p>
 
 <p>By the law of total expectation, we have</p>
 
@@ -371,11 +371,11 @@ $$
 \end{equation}
 $$
 
-<p>Note that the random variable $$\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )$$ is a constant random variable: For any fixed realization of $$Y$$, the conditional expectation of $$\mathrm{angle}(X, Y) $$ is simply $$\pi/2$$ since $$X$$ has uniformly distributed directions.  For this reason, we have $$\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,$$ which is what we claimed.</p>
+<p>Note that the random variable $\mathbb{E}  \big ( \mathrm{angle}(X, Y) \mid Y \big  )$ is a constant random variable: For any fixed realization of $Y$, the conditional expectation of $\mathrm{angle}(X, Y) $ is simply $\pi/2$ since $X$ has uniformly distributed directions.  For this reason, we have $\mathbb{E} \big ( \mathrm{angle}(X, Y) \big )  = \pi/2,$ which is what we claimed.</p>
 
 <h2 id="references">References</h2>
 
-<ol class="bibliography"><li><span id="vershynin2018high">Vershynin, R. (2018). <i>High-dimensional probability: An introduction with applications in data science</i> (Vol. 47). Cambridge University Press.</span> <a href="#citation-vershynin2018high" class="cite-backref" title="Back to text">↩</a>
+<ol class="bibliography"><li><span id="vershynin2018high">Vershynin, R. (2018). <i>High-dimensional Probability: An Introduction with Applications in Data Science</i> (Vol. 47). Cambridge University Press.</span> <a href="#citation-vershynin2018high" class="cite-backref" title="Back to text">↩</a>
 </li></ol>
 
   </div>
@@ -570,7 +570,7 @@ $$
     
     <div class="related-posts-post">
   <a href="/2026/01/31/discrete-flow-matching-notes/">
-    Notes on Discrete Flow Matching
+    Notes on discrete flow matching
   </a>
 </div>
 

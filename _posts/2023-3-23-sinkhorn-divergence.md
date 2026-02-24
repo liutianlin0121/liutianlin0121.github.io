@@ -8,14 +8,14 @@ To quantitatively evaluate the difference between images, one often uses the mea
 
 One example where MSE causes trouble is in template matching, where the goal is to align an image with its translated version. To nudge the misaligned image toward the correct location, we want to use a metric that gives a small value when the translation distance is small, and conversely, a large value when the distance is large. However, this is often not the case if we use MSE as a metric. The MSE score betwee two images will be significant, even if the translation between them is small. This is because the MSE approach average error across pixels, and a tiny translation can cause large differences in pixel values.
 
-Are there image metrics that can capture global variabilities of images? I recently learned from [Adler et al. (2017)](https://arxiv.org/pdf/1710.10898.pdf), [Dukler et al. (2019)](https://proceedings.mlr.press/v97/dukler19a.html), and [Kothari et al. (2020)](https://proceedings.neurips.cc/paper_files/paper/2020/file/5e98d23afe19a774d1b2dcbefd5103eb-Paper.pdf) that one approach is to use the Sinkhorn divergence. In this approach, we treat images---after a proper normalization---as histograms; we then compare the distance between two histograms through optimal transport. Specifically, the entropy-regularized Wasserstein metric between two histograms $$a$$ and $$b$$ is defined as
+Are there image metrics that can capture global variabilities of images? I recently learned from [Adler et al. (2017)](https://arxiv.org/pdf/1710.10898.pdf), [Dukler et al. (2019)](https://proceedings.mlr.press/v97/dukler19a.html), and [Kothari et al. (2020)](https://proceedings.neurips.cc/paper_files/paper/2020/file/5e98d23afe19a774d1b2dcbefd5103eb-Paper.pdf) that one approach is to use the Sinkhorn divergence. In this approach, we treat images---after a proper normalization---as histograms; we then compare the distance between two histograms through optimal transport. Specifically, the entropy-regularized Wasserstein metric between two histograms $a$ and $b$ is defined as
 
 $$
 W_{C, \epsilon}(a, b) := \min_{T \in U(a, b)}~ \langle T, C \rangle + \epsilon \langle T, \log T \rangle,
 $$  
 
-where $$C$$ is a cost matrix, and $$U(a, b) := \{T \in \mathbb{R}^{m \times n}_{+} : T 1_n = a, T^\top 1_m = b\}$$
-is the transportation polytope. The cost matrix stores all pairwise costs between points in the supports of the histograms. That is, $$[C]_{ij} = c(x_i, x_j)$$ with $$x_i$$ and $$x_j$$ being two points from the supports of $$a$$ and $$b$$. It is typically to choose $$c$$ as the squared Euclidean distance.
+where $C$ is a cost matrix, and $U(a, b) := \{T \in \mathbb{R}^{m \times n}_{+} : T 1_n = a, T^\top 1_m = b\}$
+is the transportation polytope. The cost matrix stores all pairwise costs between points in the supports of the histograms. That is, $[C]_{ij} = c(x_i, x_j)$ with $x_i$ and $x_j$ being two points from the supports of $a$ and $b$. It is typically to choose $c$ as the squared Euclidean distance.
 
 The Sinkhorn divergence is define as
 
