@@ -30,7 +30,7 @@ permalink: /about
 
 Hi there! I’m Tianlin. 
 
-I’m a research scientist at Google DeepMind, Paris. I obtained my PhD with [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/) at the University of Basel in Switzerland. I received BSc (2016) and MSc (2019) both from Jacobs University Bremen; during my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
+I’m a research scientist at Google DeepMind. I obtained my PhD with [Prof. Ivan Dokmanić](https://dmi.unibas.ch/de/personen/ivan-dokmanic/) at the University of Basel in Switzerland. I received BSc (2016) and MSc (2019) both from Jacobs University Bremen; during my time there, I completed my master's thesis under the guidance of [Prof. Herbert Jaeger](https://www.ai.rug.nl/minds/).
 
 ### News
 
