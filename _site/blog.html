@@ -73,6 +73,8 @@
   <div class="entry">
     <ul>
     
+      <li><a href="/2026/08/16/autoregressive-model-maxent-rl/">Language models as Maximum-Entropy Policies</a> August 2026 </li>
+    
       <li><a href="/2026/01/31/discrete-flow-matching-notes/">Notes on discrete flow matching</a> January 2026 </li>
     
       <li><a href="/2025/09/24/phd-lesson/">PhD reflections</a> September 2025 </li>
@@ -125,19 +127,25 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({ startOnLoad: true });</script>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"
-    integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb"
-    crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{
-                    delimiters: [
-                    { left: '$$',  right: '$$',  display: true  },
-                    { left: '$',   right: '$',   display: false },
-                    { left: '\\[', right: '\\]', display: true  },
-                    { left: '\\(', right: '\\)', display: false }
-                    ],
-                    preProcess: function(math) { return math.replace(/\\_/g, '_'); }
-                    });">
-                    </script>
+  <!-- MathJax v3 with AMS equation numbering, mathtools (\coloneqq), and custom macros -->
+  <script>
+    MathJax = {
+      loader: { load: ['[tex]/mathtools'] },
+      tex: {
+        packages: { '[+]': ['mathtools'] },
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams',
+        macros: {
+          coloneqq: ':=',
+          EE: '\\mathbb{E}',
+          LSE: '\\operatorname{LSE}',
+          Acal: '\\mathcal{A}'
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <script>

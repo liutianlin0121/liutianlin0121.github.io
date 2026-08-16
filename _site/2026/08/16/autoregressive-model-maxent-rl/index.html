@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+
+<meta name="description" content="My collaborators and I published a paper on the connection between autoregressive models and energy-based models (Blondel et al., 2026). Among other interesting findings, we formulate autoregressive language models through the Maximum-Entropy Reinforcement Learning (MaxEnt RL) framework, which is quite neat. Below is a succinct summary of this formulation.
+
+Language models as MDPs. We treat a language model as a MDP with the state space as the token histories and the action space as the vocabulary. The transition dynamics are deterministic: given a state $s_t$ and action $a_t$, the next state is the concatenation 
+\(s_{t+1} = s_t \oplus a_t.\)
+
+Next-token probs as the MaxEnt optimal policy. Given a model outputting next token probabilities $\pi^\ast(\cdot|s)$ for each state $s$, we interpret $\pi^\ast$ as the optimal policy that maximizes the expected return plus an entropy bonus:
+\(\begin{equation} \label{eq:expected-return}
+    \pi^\ast = \operatorname*{argmax}_{\pi} \mathbb{E}_{\tau \sim \pi} \left[ \sum_{t=0}^{L-1} r(s_t, a_t) + H(\pi(\cdot|s_t)) \right].
+\end{equation}\)
+As is common in language modeling, we assume a finite horizon $L$ (context length) and no discounting.
+
+Logits as the optimal action values. The optimal value function $V^*(s)$ for the objective in $\eqref{eq:expected-return}$ satisfies the soft Bellman optimality equation:
+\(\begin{equation} \label{eq:bellman-max}
+    V^*(s_t) \coloneqq \max_{\pi(\cdot|s_t)} \mathbb{E}_{a_t \sim \pi(\cdot|s_t)} \Big[ r(s_t, a_t) + V^*(s_{t+1}) - \log \pi(a_t|s_t) \Big].
+\end{equation}\)
+
+Let $Q^\ast(s_t, a_t) \coloneqq r(s_t, a_t) + V^(s_{t+1})$ be the optimal action values. Solving the maximization on the RHS of $\eqref{eq:bellman-max}$ gives 
+\(\begin{equation} \label{eq:optimal-policy}
+    \pi^*(a|s_t) = \frac{\exp(Q^\ast(s_t, a))}{Z_t} = \operatorname{softmax}(Q^\ast(s_t, \cdot))[a],
+\end{equation}\)
+where $Z_t \coloneqq \sum_{a’} \exp(Q^\ast(s_t, a’))$ is the partition function. Therefore, the unnormalized logits of the LM can be identified with the optimal action values $Q^(s_t, \cdot)$ up to an additive state-dependent constant.
+
+LSE of the logits as state values. Plugging the optimal policy $\pi^$ back into the objective in $\eqref{eq:bellman-max}$, we recover the value of the state $V^(s_t)$.
+Recall that $\log \pi^(a|s_t) = Q^(s_t, a) - \log Z_t$. We have
+\(\begin{align}
+    V^*(s_t) &amp;= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ Q^*(s_t, a_t) - \log \pi^*(a_t|s_t) \Big] \\
+    &amp;= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ Q^*(s_t, a_t) - \big( Q^*(s_t, a_t) - \log Z_t \big) \Big] \\
+    &amp;= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ \log Z_t \Big] \\
+    &amp;= \log Z_t \\
+    &amp;= \operatorname{LSE}_{a' \in \mathcal{A}} Q^*(s_t, a').
+\end{align}\)
+Therefore, the LSE of the action values (or logits) corresponds to the optimal state value $V^*(s_t)$ under this natural normalization.
+
+Implicit reward of LM. By the definition of $Q^\ast(s_t, a_t) \coloneqq r(s_t, a_t) + V^(s_{t+1})$, the underlying step-wise reward $r$ must satisfy the following consistency condition for non-terminal steps $t &lt; L-1$:
+\(\begin{align} \label{eq:implicit-reward}
+    r(s_t, a_t) &amp;= Q^\ast(s_t, a_t) - V^\ast(s_{t+1}) \\
+     &amp;= Q^\ast(s_t, a_t) - \operatorname{LSE}_{a' \in \mathcal{A}} Q^*(s_{t+1}, a').
+\end{align}\)
+For the terminal step $t = L-1$, $V^(s_L)$ represents the terminal reward of the complete sequence.
+
+References
+
+Blondel, M., Sander, M. E., Vivier-Ardisson, G., Liu, T., &amp; Roulet, V. (2026). Autoregressive Language Models are Secretly Energy-Based Models. Proceedings of the International Conference on Machine Learning. ↩
+
+" />
+<meta property="og:description" content="My collaborators and I published a paper on the connection between autoregressive models and energy-based models (Blondel et al., 2026). Among other interesting findings, we formulate autoregressive language models through the Maximum-Entropy Reinforcement Learning (MaxEnt RL) framework, which is quite neat. Below is a succinct summary of this formulation.
+
+Language models as MDPs. We treat a language model as a MDP with the state space as the token histories and the action space as the vocabulary. The transition dynamics are deterministic: given a state $s_t$ and action $a_t$, the next state is the concatenation 
+\(s_{t+1} = s_t \oplus a_t.\)
+
+Next-token probs as the MaxEnt optimal policy. Given a model outputting next token probabilities $\pi^\ast(\cdot|s)$ for each state $s$, we interpret $\pi^\ast$ as the optimal policy that maximizes the expected return plus an entropy bonus:
+\(\begin{equation} \label{eq:expected-return}
+    \pi^\ast = \operatorname*{argmax}_{\pi} \mathbb{E}_{\tau \sim \pi} \left[ \sum_{t=0}^{L-1} r(s_t, a_t) + H(\pi(\cdot|s_t)) \right].
+\end{equation}\)
+As is common in language modeling, we assume a finite horizon $L$ (context length) and no discounting.
+
+Logits as the optimal action values. The optimal value function $V^*(s)$ for the objective in $\eqref{eq:expected-return}$ satisfies the soft Bellman optimality equation:
+\(\begin{equation} \label{eq:bellman-max}
+    V^*(s_t) \coloneqq \max_{\pi(\cdot|s_t)} \mathbb{E}_{a_t \sim \pi(\cdot|s_t)} \Big[ r(s_t, a_t) + V^*(s_{t+1}) - \log \pi(a_t|s_t) \Big].
+\end{equation}\)
+
+Let $Q^\ast(s_t, a_t) \coloneqq r(s_t, a_t) + V^(s_{t+1})$ be the optimal action values. Solving the maximization on the RHS of $\eqref{eq:bellman-max}$ gives 
+\(\begin{equation} \label{eq:optimal-policy}
+    \pi^*(a|s_t) = \frac{\exp(Q^\ast(s_t, a))}{Z_t} = \operatorname{softmax}(Q^\ast(s_t, \cdot))[a],
+\end{equation}\)
+where $Z_t \coloneqq \sum_{a’} \exp(Q^\ast(s_t, a’))$ is the partition function. Therefore, the unnormalized logits of the LM can be identified with the optimal action values $Q^(s_t, \cdot)$ up to an additive state-dependent constant.
+
+LSE of the logits as state values. Plugging the optimal policy $\pi^$ back into the objective in $\eqref{eq:bellman-max}$, we recover the value of the state $V^(s_t)$.
+Recall that $\log \pi^(a|s_t) = Q^(s_t, a) - \log Z_t$. We have
+\(\begin{align}
+    V^*(s_t) &amp;= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ Q^*(s_t, a_t) - \log \pi^*(a_t|s_t) \Big] \\
+    &amp;= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ Q^*(s_t, a_t) - \big( Q^*(s_t, a_t) - \log Z_t \big) \Big] \\
+    &amp;= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ \log Z_t \Big] \\
+    &amp;= \log Z_t \\
+    &amp;= \operatorname{LSE}_{a' \in \mathcal{A}} Q^*(s_t, a').
+\end{align}\)
+Therefore, the LSE of the action values (or logits) corresponds to the optimal state value $V^*(s_t)$ under this natural normalization.
+
+Implicit reward of LM. By the definition of $Q^\ast(s_t, a_t) \coloneqq r(s_t, a_t) + V^(s_{t+1})$, the underlying step-wise reward $r$ must satisfy the following consistency condition for non-terminal steps $t &lt; L-1$:
+\(\begin{align} \label{eq:implicit-reward}
+    r(s_t, a_t) &amp;= Q^\ast(s_t, a_t) - V^\ast(s_{t+1}) \\
+     &amp;= Q^\ast(s_t, a_t) - \operatorname{LSE}_{a' \in \mathcal{A}} Q^*(s_{t+1}, a').
+\end{align}\)
+For the terminal step $t = L-1$, $V^(s_L)$ represents the terminal reward of the complete sequence.
+
+References
+
+Blondel, M., Sander, M. E., Vivier-Ardisson, G., Liu, T., &amp; Roulet, V. (2026). Autoregressive Language Models are Secretly Energy-Based Models. Proceedings of the International Conference on Machine Learning. ↩
+
+" />
+
+<meta name="author" content="Tianlin Liu" />
+
+
+<meta property="og:title" content="Language models as Maximum-Entropy Policies" />
+<meta property="twitter:title" content="Language models as Maximum-Entropy Policies" />
+
+<title>Language models as Maximum-Entropy Policies – Tianlin Liu – home</title>
+
+  <link rel="stylesheet" type="text/css" href="/style.css" />
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- Minimal favicon setup -->
+  <link rel="icon" type="image/x-icon" href="/assets/image/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/image/favicon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
+  <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- <link rel="alternate" type="application/rss+xml" title="Tianlin Liu - home" href="/feed.xml"/> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
+    integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print"
+    onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print"
+    onload="this.media='all'" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
+    integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous"
+    media="print" onload="this.media='all'" />
+
+</head>
+
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <!-- 
+          <a href="/" class="site-avatar"><img src="" width="70" height="70" /></a>
+ -->
+        <!--           <div class="site-info">
+            <h1 class="site-name"><a href="/">Tianlin Liu</a></h1>
+            <p class="site-description">home</p>
+          </div>
+ -->
+        <nav class="nav-menu">
+          
+  <a class="nav-menu-item" href="/about">about</a>
+
+  <a class="nav-menu-item" href="/publications">publication</a>
+
+  <a class="nav-menu-item" href="/blog">blog</a>
+
+
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div id="main" role="main" class="container">
+    <article class="post">
+  <h1>Language models as Maximum-Entropy Policies</h1>
+
+  <div class="entry">
+    <p>My collaborators and I published a paper on the connection between autoregressive models and energy-based models <span id="citation-blondel2026autoregressive"><a class="citation" href="#blondel2026autoregressive">(Blondel et al., 2026)</a></span>. Among other interesting findings, we formulate autoregressive language models through the Maximum-Entropy Reinforcement Learning (MaxEnt RL) framework, which is quite neat. Below is a succinct summary of this formulation.</p>
+
+<p><strong>Language models as MDPs.</strong> We treat a language model as a MDP with the state space as the token histories and the action space as the vocabulary. The transition dynamics are deterministic: given a state $s_t$ and action $a_t$, the next state is the concatenation 
+$$
+s_{t+1} = s_t \oplus a_t.
+$$</p>
+
+<p><strong>Next-token probs as the MaxEnt optimal policy.</strong> Given a model outputting next token probabilities $\pi^\ast(\cdot|s)$ for each state $s$, we interpret $\pi^\ast$ as the optimal policy that maximizes the expected return plus an entropy bonus:
+$$
+\begin{equation} \label{eq:expected-return}
+    \pi^\ast = \operatorname*{argmax}_{\pi} \mathbb{E}_{\tau \sim \pi} \left[ \sum_{t=0}^{L-1} r(s_t, a_t) + H(\pi(\cdot|s_t)) \right].
+\end{equation}
+$$
+As is common in language modeling, we assume a finite horizon $L$ (context length) and no discounting.</p>
+
+<p><strong>Logits as the optimal action values.</strong> The optimal value function $V^*(s)$ for the objective in $\eqref{eq:expected-return}$ satisfies the soft Bellman optimality equation:
+$$
+\begin{equation} \label{eq:bellman-max}
+    V^*(s_t) \coloneqq \max_{\pi(\cdot|s_t)} \mathbb{E}_{a_t \sim \pi(\cdot|s_t)} \Big[ r(s_t, a_t) + V^*(s_{t+1}) - \log \pi(a_t|s_t) \Big].
+\end{equation}
+$$</p>
+
+<p>Let $Q^\ast(s_t, a_t) \coloneqq r(s_t, a_t) + V^*(s_{t+1})$ be the optimal action values. Solving the maximization on the RHS of $\eqref{eq:bellman-max}$ gives 
+$$
+\begin{equation} \label{eq:optimal-policy}
+    \pi^*(a|s_t) = \frac{\exp(Q^\ast(s_t, a))}{Z_t} = \operatorname{softmax}(Q^\ast(s_t, \cdot))[a],
+\end{equation}
+$$
+where $Z_t \coloneqq \sum_{a'} \exp(Q^\ast(s_t, a'))$ is the partition function. Therefore, the unnormalized logits of the LM can be identified with the optimal action values $Q^*(s_t, \cdot)$ up to an additive state-dependent constant.</p>
+
+<p><strong>LSE of the logits as state values.</strong> Plugging the optimal policy $\pi^*$ back into the objective in $\eqref{eq:bellman-max}$, we recover the value of the state $V^*(s_t)$.
+Recall that $\log \pi^*(a|s_t) = Q^*(s_t, a) - \log Z_t$. We have
+$$
+\begin{align}
+    V^*(s_t) &= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ Q^*(s_t, a_t) - \log \pi^*(a_t|s_t) \Big] \\
+    &= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ Q^*(s_t, a_t) - \big( Q^*(s_t, a_t) - \log Z_t \big) \Big] \\
+    &= \mathbb{E}_{a_t \sim \pi^\ast(\cdot|s_t)} \Big[ \log Z_t \Big] \\
+    &= \log Z_t \\
+    &= \operatorname{LSE}_{a' \in \mathcal{A}} Q^*(s_t, a').
+\end{align}
+$$
+Therefore, the LSE of the action values (or logits) corresponds to the optimal state value $V^*(s_t)$ under this natural normalization.</p>
+
+<p><strong>Implicit reward of LM.</strong> By the definition of $Q^\ast(s_t, a_t) \coloneqq r(s_t, a_t) + V^*(s_{t+1})$, the underlying step-wise reward $r$ must satisfy the following consistency condition for non-terminal steps $t < L-1$:
+$$
+\begin{align} \label{eq:implicit-reward}
+    r(s_t, a_t) &= Q^\ast(s_t, a_t) - V^\ast(s_{t+1}) \\
+     &= Q^\ast(s_t, a_t) - \operatorname{LSE}_{a' \in \mathcal{A}} Q^*(s_{t+1}, a').
+\end{align}
+$$
+For the terminal step $t = L-1$, $V^*(s_L)$ represents the terminal reward of the complete sequence.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="blondel2026autoregressive">Blondel, M., Sander, M. E., Vivier-Ardisson, G., Liu, T., &amp; Roulet, V. (2026). Autoregressive Language Models are Secretly Energy-Based Models. <i>Proceedings of the International Conference on Machine Learning</i>.</span> <a href="#citation-blondel2026autoregressive" class="cite-backref" title="Back to text">↩</a>
+</li></ol>
+
+  </div>
+
+  <div class="date">
+    <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;Date:<span style="color: #333333; font-weight: normal;">&nbsp;August 16, 2026</span>
+  </div>
+
+  <div class="post-categories">
+    <i class="fa fa-tags fa-fw" aria-hidden="true"></i>&nbsp;Tags:&nbsp;
+      
+      
+  </div>
+
+  <div class="share-post">
+    <i class="fa fa-share-alt-square fa-fw" aria-hidden="true"></i>&nbsp;Share:&nbsp;
+    <!-- Sharingbutton X (formerly Twitter) -->
+<a class="resp-sharing-button__link" href="https://x.com/intent/tweet/?text=Language models as Maximum-Entropy Policies&amp;url=http://localhost:4000/2026/08/16/autoregressive-model-maxent-rl/" title="Share on X" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </div>
+  </div>
+</a>
+
+<!-- Sharingbutton LinkedIn -->
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost:4000/2026/08/16/autoregressive-model-maxent-rl/&amp;title=Language models as Maximum-Entropy Policies&amp;summary=Language models as Maximum-Entropy Policies&amp;source=http://localhost:4000/2026/08/16/autoregressive-model-maxent-rl/" title="Share on LinkedIn" target="_blank" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg>
+    </div>
+  </div>
+</a>
+
+<!-- Sharingbutton E-Mail -->
+<a class="resp-sharing-button__link" href="mailto:?subject=Language models as Maximum-Entropy Policies&body=You can read more at this site%2C%0Ahttp://localhost:4000/2026/08/16/autoregressive-model-maxent-rl/" title="Share via E-Mail" target="_self" rel="noopener" aria-label="">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+    </div>
+  </div>
+</a>
+
+  </div>
+
+  <div class="related-posts">
+    <div class="related-posts">
+<span class="related-posts-heading">Related Posts:</span><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+  
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+  
+
+  
+
+
+
+
+  
+    
+    
+      
+    
+    
+    
+
+    
+    <div class="related-posts-post">
+  <a href="/2026/01/31/discrete-flow-matching-notes/">
+    Notes on discrete flow matching
+  </a>
+</div>
+
+
+  
+    
+    
+    
+
+    
+    <div class="related-posts-post">
+  <a href="/2025/09/24/phd-lesson/">
+    PhD reflections
+  </a>
+</div>
+
+
+  
+    
+    
+    
+
+    
+    <div class="related-posts-post">
+  <a href="/2024/06/08/just-having-fun/">
+    Reading 'Just for Fun: The Story of an Accidental Revolutionary' 
+  </a>
+</div>
+
+
+  
+    
+    
+    
+      
+
+
+</div>
+
+  </div>
+
+  <div class="post-nav">
+    <div class="post-nav">
+  <p>
+    
+    <span class="post-nav-label">Previous</span><br>
+    <a href="/2026/01/31/discrete-flow-matching-notes/">&#9194;&nbsp;Notes on discrete flow matching</a>
+    
+  </p>
+  <p>
+    
+  </p>
+</div>
+
+  </div>
+
+</article>
+
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer"><!--           <div class="copyright">
+            
+            <p>&copy; 2026 Tianlin Liu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/forever-jekyll/forever-jekyll" rel="nofollow">Forever Jekyll</a>.</p>
+            
+          </div> -->
+      </footer>
+    </div>
+  </div>
+
+  <script defer src="https://cdn.plyr.io/3.6.5/plyr.js"></script>
+  <script>
+    const player = new Plyr("#player", { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, enablejsapi: 1, autoplay: 0, focused: true, global: false });
+    window.player = player;
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+  <script type="text/javascript">
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true
+    });
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true });</script>
+
+  <!-- MathJax v3 with AMS equation numbering, mathtools (\coloneqq), and custom macros -->
+  <script>
+    MathJax = {
+      loader: { load: ['[tex]/mathtools'] },
+      tex: {
+        packages: { '[+]': ['mathtools'] },
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams',
+        macros: {
+          coloneqq: ':=',
+          EE: '\\mathbb{E}',
+          LSE: '\\operatorname{LSE}',
+          Acal: '\\mathcal{A}'
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  <script>
+    function addDarkmodeWidget() {
+      new Darkmode().showWidget();
+      window.addEventListener('load', addDarkmodeWidget);
+    }
+    const options = {
+      label: '🌓',
+    }
+    const darkmode = new Darkmode(options);
+    darkmode.showWidget();
+  </script>
+
+</body>
+
+</html>

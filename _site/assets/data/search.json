@@ -1,6 +1,15 @@
 [
   
   {
+    "title"    : "Language models as Maximum-Entropy Policies",
+    "category" : "",
+    "url"      : "/2026/08/16/autoregressive-model-maxent-rl/",
+    "date"     : "August 16, 2026",
+    "excerpt"  : "My collaborators and I published a paper on the connection between autoregressive models and energy-based models (Blondel et al., 2026). Among other interesting findings, we formulate autoregressive language models through the Maximum-Entropy Rein...",
+    "content"  : "My collaborators and I published a paper on the connection between autoregressive models and energy-based models (Blondel et al., 2026). Among other interesting findings, we formulate autoregressive language models through the Maximum-Entropy Reinforcement Learning (MaxEnt RL) framework, which is quite neat. Below is a succinct summary of this formulation.\n\nLanguage models as MDPs. We treat a language model as a MDP with the state space as the token histories and the action space as the vocabulary. The transition dynamics are deterministic: given a state  and action , the next state is the concatenation \n\n\nNext-token probs as the MaxEnt optimal policy. Given a model outputting next token probabilities  for each state , we interpret  as the optimal policy that maximizes the expected return plus an entropy bonus:\n\nAs is common in language modeling, we assume a finite horizon  (context length) and no discounting.\n\nLogits as the optimal action values. The optimal value function  for the objective in  satisfies the soft Bellman optimality equation:\n\n\nLet  be the optimal action values. Solving the maximization on the RHS of  gives \n\nwhere  is the partition function. Therefore, the unnormalized logits of the LM can be identified with the optimal action values  up to an additive state-dependent constant.\n\nLSE of the logits as state values. Plugging the optimal policy  back into the objective in , we recover the value of the state .\nRecall that . We have\n\nTherefore, the LSE of the action values (or logits) corresponds to the optimal state value  under this natural normalization.\n\nImplicit reward of LM. By the definition of , the underlying step-wise reward  must satisfy the following consistency condition for non-terminal steps :\n\nFor the terminal step ,  represents the terminal reward of the complete sequence.\n\nReferences\n\nBlondel, M., Sander, M. E., Vivier-Ardisson, G., Liu, T., &amp;amp; Roulet, V. (2026). Autoregressive Language Models are Secretly Energy-Based Models. Proceedings of the International Conference on Machine Learning. ↩\n\n"
+} ,
+  
+  {
     "title"    : "Notes on discrete flow matching",
     "category" : "",
     "url"      : "/2026/01/31/discrete-flow-matching-notes/",

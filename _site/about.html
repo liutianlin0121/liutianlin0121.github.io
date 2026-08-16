@@ -96,11 +96,14 @@
 
 <p>Hi there! I’m Tianlin.</p>
 
-<p>I’m a research scientist on Google DeepMind’s Gemma team. I obtained my PhD with <a href="https://dmi.unibas.ch/de/personen/ivan-dokmanic/">Prof. Ivan Dokmanić</a> at the University of Basel in Switzerland. I received BSc (2016) and MSc (2019) both from Jacobs University Bremen; during my time there, I completed my master’s thesis under the guidance of <a href="https://www.ai.rug.nl/minds/">Prof. Herbert Jaeger</a>.</p>
+<p>I’m a research scientist at Google DeepMind. I obtained my PhD with <a href="https://dmi.unibas.ch/de/personen/ivan-dokmanic/">Prof. Ivan Dokmanić</a> at the University of Basel in Switzerland. I received BSc (2016) and MSc (2019) both from Jacobs University Bremen; during my time there, I completed my master’s thesis under the guidance of <a href="https://www.ai.rug.nl/minds/">Prof. Herbert Jaeger</a>.</p>
 
 <h3 id="news">News</h3>
 
 <ul>
+  <li>
+    <p><strong>Aug 2026</strong>: <a href="https://arxiv.org/abs/2608.00146">DiffusionGemma technical report</a> is out!</p>
+  </li>
   <li>
     <p><strong>Nov 2024</strong>: I defended my PhD thesis and joined Google DeepMind.</p>
   </li>
@@ -211,19 +214,25 @@ March 2018: I attended IK-2018, Moehnesee, Germany.
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({ startOnLoad: true });</script>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.js"
-    integrity="sha384-GxNFqL3r9uRJQhR+47eDxuPoNE7yLftQM8LcxzgS4HT73tp970WS/wV5p8UzCOmb"
-    crossorigin="anonymous"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{
-                    delimiters: [
-                    { left: '$$',  right: '$$',  display: true  },
-                    { left: '$',   right: '$',   display: false },
-                    { left: '\\[', right: '\\]', display: true  },
-                    { left: '\\(', right: '\\)', display: false }
-                    ],
-                    preProcess: function(math) { return math.replace(/\\_/g, '_'); }
-                    });">
-                    </script>
+  <!-- MathJax v3 with AMS equation numbering, mathtools (\coloneqq), and custom macros -->
+  <script>
+    MathJax = {
+      loader: { load: ['[tex]/mathtools'] },
+      tex: {
+        packages: { '[+]': ['mathtools'] },
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        tags: 'ams',
+        macros: {
+          coloneqq: ':=',
+          EE: '\\mathbb{E}',
+          LSE: '\\operatorname{LSE}',
+          Acal: '\\mathcal{A}'
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <script>
