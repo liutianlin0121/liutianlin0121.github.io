@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: Are coordinates of an isotropic random vector uncorrelated?
+summary: "Constructing a counterexample to show that the coordinates of an isotropic random vector are not always uncorrelated."
 ---
 I was reading Section 3.3 of the nicely written book  {% citet vershynin2018high %}. At the beginning of that section, it was mentioned that:
 

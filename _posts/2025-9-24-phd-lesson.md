@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: "PhD reflections"
+summary: "Reflections on navigating research during a PhD."
 ---
 
 <figure style="text-align:center">

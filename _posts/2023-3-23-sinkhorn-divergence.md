@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: Using Sinkhorn divergence to measure image similarity
+summary: "Using optimal transport and entropy-regularized Sinkhorn divergence as a geometry-aware metric for image similarity."
 ---
 
 To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilities of image content.

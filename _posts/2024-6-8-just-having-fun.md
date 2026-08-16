@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: "Reading 'Just for Fun: The Story of an Accidental Revolutionary' "
+summary: "Reflections on reading Linus Torvalds's autobiography."
 ---
 
 

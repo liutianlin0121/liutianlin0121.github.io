@@ -15,7 +15,7 @@ permalink: /blog
   justify-content: space-between;
   align-items: center;
   padding-bottom: 8px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 32px;
 }
 
@@ -24,12 +24,12 @@ permalink: /blog
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #222;
+  color: var(--heading-color);
 }
 
 .archive-count {
   font-size: 0.85rem;
-  color: #999;
+  color: var(--text-muted);
 }
 
 .blog-list {
@@ -41,7 +41,7 @@ permalink: /blog
 .blog-card {
   padding-bottom: 28px;
   margin-bottom: 28px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .blog-card:last-child {
@@ -51,7 +51,7 @@ permalink: /blog
 .blog-title-heading {
   font-size: 1.35rem;
   font-weight: 700;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   line-height: 1.3;
   letter-spacing: -0.01em;
 }
@@ -59,24 +59,29 @@ permalink: /blog
 .blog-title-link,
 .blog-title-link:visited,
 .blog-title-link:active {
-  color: #111;
+  color: var(--heading-color);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .blog-title-link:hover {
-  color: #4183c4;
-}
-
-.blog-excerpt {
-  color: #555555;
-  font-size: 0.96rem;
-  line-height: 1.55;
-  margin: 8px 0 10px 0;
+  color: var(--link-color);
 }
 
 .blog-date {
   font-size: 0.85rem;
-  color: #888888;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+}
+
+.blog-summary {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
 }
 </style>
 
@@ -90,12 +95,16 @@ permalink: /blog
     {% for post in site.posts %}
       <li class="blog-card">
         <h2 class="blog-title-heading">
-          <a href="{{ post.url }}" class="blog-title-link">{{ post.title }}</a>
+          <a href="{{ post.url | relative_url }}" class="blog-title-link">{{ post.title }}</a>
         </h2>
-        <p class="blog-excerpt">
-          {{ post.excerpt | strip_html | truncatewords: 30 }}
+        <div class="blog-date">{{ post.date | date: "%d %B %Y" | upcase }}</div>
+        <p class="blog-summary">
+          {% if post.summary %}
+            {{ post.summary }}
+          {% else %}
+            {{ post.excerpt | strip_html | truncatewords: 25 }}
+          {% endif %}
         </p>
-        <div class="blog-date">{{ post.date | date: "%Y-%m-%d" }}</div>
       </li>
     {% endfor %}
   </ul>

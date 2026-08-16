@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: The expected angle between two isotropic random vectors
+summary: "Correcting a textbook typo to show that independent isotropic random vectors have an expected angle of π/2 in both 2D and high dimensions."
 ---
 
 In Section 3.2 of {% citet vershynin2018high %}, it was mentioned in the caption to Figure 3.4 that

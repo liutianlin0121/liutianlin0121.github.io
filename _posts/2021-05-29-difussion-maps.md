@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: A detailed derivation of the diffusion map
+summary: "A step-by-step derivation of diffusion maps for non-linear dimensionality reduction."
 ---
 
 The diffusion map {% citep coifman2006 %} is an extensively used dimensionality reduction technique. It represents high-dimensional data points using an underlying graph, which non-linearly encodes the geometrical similarities between data points. Despite its popularity, few tutorials introduce the diffusion map in precision that I find satisfying. This blog delves deep into the derivation.

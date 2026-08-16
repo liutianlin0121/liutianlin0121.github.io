@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: Notes on discrete flow matching
+summary: "Expanding on the derivations of discrete flow matching."
 ---
 
 I recently read the discrete flow matching {% citep gat2024discrete %} paper and found it very interesting. However, it is technically dense and frequently draws comparisons to continuous flow matching, a topic I’m not familiar with. Below are my reading notes of {% citet gat2024discrete %}. I've expanded on the derivations and technical details to make the concept of discrete flow matching self-contained, without requiring prior knowledge of the continuous framework.

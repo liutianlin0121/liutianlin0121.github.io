@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: Visualizing Swiss sustainability research
+summary: "Visualizing how Swiss research projects address UN Sustainable Development Goals."
 ---
 
 

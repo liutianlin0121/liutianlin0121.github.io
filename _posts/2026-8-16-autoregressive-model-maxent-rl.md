@@ -2,6 +2,7 @@
 toc: false
 layout: post
 title: Language models as Maximum-Entropy Policies
+summary: "A summary of the connection between autoregressive language models and maximum-entropy reinforcement learning."
 ---
 
 My collaborators and I published a paper on the connection between autoregressive models and energy-based models {% citep blondel2026autoregressive %}. Among other interesting findings, we formulate autoregressive language models through the Maximum-Entropy Reinforcement Learning (MaxEnt RL) framework, which is quite neat. Below is a succinct summary of this formulation.
