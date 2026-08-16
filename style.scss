@@ -9,12 +9,12 @@ html {
 }
 
 body {
-  background: $white;
+  background: var(--bg-color);
   font-family: $sans-font-family;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.66666666667;
-  color: $darkGray;
+  color: var(--text-color);
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
@@ -29,6 +29,7 @@ body {
   margin: 0;
   flex-direction: column;
   overflow-wrap: break-word;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -47,8 +48,8 @@ ul, ol, dl, figure,
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 01em 0 15px;
-  color: $darkerGray;
+  margin: 1em 0 15px;
+  color: var(--heading-color);
   font-family: $sans-font-family;
   font-weight: 700;
   line-height: 1.66666666667;
@@ -74,15 +75,15 @@ h6 {font-size: 14px;}
 small, .text_small {font-size: 14px;}
 
 a {
-  color: $blue;
+  color: var(--link-color);
   text-decoration: none;
 
   &:visited {
-    color: $blue;
+    color: var(--link-color);
   }
 
   &:hover {
-    color: $blue;
+    color: var(--link-hover);
     text-decoration: underline;
   }
 }
@@ -139,45 +140,46 @@ hr {
   position: relative;
   margin-top: 35px;
   margin-bottom: 35px;
-  border: 01px solid $lightGray;
+  border: 1px solid var(--border-color);
 }
 
 .date {
   font-weight: bold;
-  color: $gray;
+  color: var(--text-muted);
   margin-bottom: 35px;
 }
 
 .post-categories {
   font-weight: bold;
-  color: $gray;
+  color: var(--text-muted);
   margin-bottom: 40px;
 
   .categories-button {
     display: inline-block;
     text-align: center;
-    border: 01px solid $paleGray;
-    border-radius: 03px;
-    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 3px;
+    background: var(--card-bg);
     font-weight: 400;
-    color: $gray;
+    color: var(--text-muted);
     font-size: 16px !important;
     white-space: nowrap;
     text-decoration: none;
-    padding: 06px 12px;
-    margin-right: 04px;
+    padding: 6px 12px;
+    margin-right: 4px;
     cursor: pointer;
     user-select: none;
-    transition: .4s;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
   }
 
   .categories-button:hover {
-    color: $darkGray;
-    text-decoration: underline;
+    color: var(--heading-color);
+    border-color: var(--link-color);
+    text-decoration: none;
   }
 
   .categories-button:visited {
-    color: inherit;
+    color: var(--text-muted);
   }
 }
 
@@ -248,9 +250,9 @@ hr {
 }
 
 blockquote {
-  background-color: $white;
-  color: $gray;
-  border-left: 04px solid #eeeeee;
+  background-color: var(--card-bg);
+  color: var(--text-muted);
+  border-left: 4px solid var(--border-color);
   padding-left: 15px;
   font-size: 16px !important;
   font-style: italic;
@@ -268,10 +270,10 @@ pre,
 code {
   font-family: $code-font-family !important;
   font-size: 15px !important;
-  color: #586e75;
-  border: 01px solid #dddddd;
-  border-radius: 03px;
-  background-color: #fdf6e3;
+  color: var(--code-text);
+  border: 1px solid var(--code-border);
+  border-radius: 3px;
+  background-color: var(--code-bg);
 }
 
 code {
@@ -346,7 +348,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   overflow-x: auto;
-  border: 01px solid #dddddd;
+  border: 1px solid var(--border-color);
 
   & + table {
     margin-top: 30px;
@@ -354,7 +356,7 @@ table {
 
   tr {
     &:nth-child(even) {
-      background-color: #efefef;
+      background-color: var(--card-bg);
     }
   }
 
@@ -363,12 +365,13 @@ table {
   }
 
   th {
-    background-color: #efefef;
-    border: 01px solid #dddddd;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--heading-color);
   }
 
   td {
-    border: 01px solid #dddddd;
+    border: 1px solid var(--border-color);
   }
 
   tr,
@@ -419,7 +422,7 @@ a[href^="#fnref:"] {
   display: flex;
   align-items: center;
   padding: 20px 0;
-  border-bottom: 01px solid $lightGray;
+  border-bottom: 1px solid var(--border-color);
 
   @include mobile {
     display: block;
@@ -439,7 +442,7 @@ a[href^="#fnref:"] {
   }
 
   img {
-    border-radius: 03px;
+    border-radius: 3px;
   }
 }
 
@@ -456,15 +459,15 @@ a[href^="#fnref:"] {
 
 .site-name {
   margin: 0;
-  color: $darkGray;
+  color: var(--heading-color);
   font-family: $sans-font-family;
   font-weight: 300;
   font-size: 28px !important;
-  letter-spacing: 01px;
+  letter-spacing: 1px;
 
   a {
     &:hover {
-      color: $mahogany !important;
+      color: var(--link-hover) !important;
       text-decoration: none;
     }
     &:visited {
@@ -474,12 +477,12 @@ a[href^="#fnref:"] {
 }
 
 .site-description {
-  margin: -05px 0 0 0;
-  color: $gray;
+  margin: -5px 0 0 0;
+  color: var(--text-muted);
   font-size: 16px !important;
 
   @include mobile {
-    margin: 03px 0;
+    margin: 3px 0;
   }
 }
 
@@ -489,36 +492,42 @@ nav {
 
   @include mobile {
     float: none;
-    margin-top: 09px;
+    margin-top: 9px;
     display: block;
     font-size: 16px !important;
   }
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: var(--text-color);
     text-align: right;
-    font-weight: 300;
-    letter-spacing: 01px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: color 0.2s ease;
 
-      &:hover {
-        color: inherit;
-        text-decoration: underline;
-      }
-      &:visited {
-        color: inherit;
-      }
-        @include mobile {
-          margin: 0 10px;
-          color: $blue;
-        }
+    &:hover {
+      color: var(--link-color);
+      text-decoration: none;
+    }
+    &:visited {
+      color: var(--text-color);
+    }
+    @include mobile {
+      margin: 0 10px;
+      color: var(--link-color);
+    }
   }
 }
 
-.nav-menu-item.active,
+.nav-menu-item.active {
+  text-decoration: none;
+  color: var(--heading-color) !important;
+  font-weight: 700 !important;
+}
+
 a.nav-menu-item:focus {
   text-decoration: none;
-  color: $mahogany;
+  color: var(--heading-color);
 }
 
 .clearfix:before,
@@ -580,9 +589,9 @@ a.nav-menu-item:focus {
 
 .wrapper-footer {
   margin-top: 30px;
-  border-top: 01px solid #ddd;
-  border-bottom: 01px solid #ddd;
-  background-color: $lightGray;
+  border-top: 1px solid var(--footer-border);
+  border-bottom: 1px solid var(--footer-border);
+  background-color: var(--footer-bg);
 }
 
 footer {
@@ -590,17 +599,17 @@ footer {
   text-align: center;
 
   .social-icons {
-    margin-bottom: 08px;
+    margin-bottom: 8px;
   }
 
   .social-icon {
     display: inline-block;
-    padding: 0 04px;
-    color: $gray;
+    padding: 0 4px;
+    color: var(--text-muted);
 
-      &:hover {
-      color: $darkGray;
-      }
+    &:hover {
+      color: var(--heading-color);
+    }
   }
 }
 
@@ -610,6 +619,37 @@ footer {
   p {
     margin: 0;
     padding: 0;
+  }
+}
+
+// Theme Toggle Button
+.theme-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  border: 1px solid var(--toggle-border);
+  box-shadow: 0 3px 12px var(--toggle-shadow);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
+  z-index: 9999;
+  transition: transform 0.2s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+  outline: none;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 }
 

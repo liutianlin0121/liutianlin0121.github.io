@@ -1,37 +1,10 @@
 ---
 layout: page
 title: Publications
-permalink: /publications/
+permalink: /publications
 ---
 
 [Google Scholar profile](https://scholar.google.com/citations?user=1bbQjM4AAAAJ&hl=en)
-
-### Journal
-<p></p>
-
-**LoFi: Neural Local Fields for Scalable Image Reconstruction**  
-AmirEhsan Khorashadizadeh, Tobías I. Liaudat, _Tianlin Liu_, Jason D. McEwen, Ivan Dokmanić  
-IEEE Transactions on Computational Imaging, 2025  
-[![pdf](../files/badges/-paper-green.svg)](https://ieeexplore.ieee.org/document/11108275/) [![code](../files/badges/-code-blue.svg)](https://github.com/AmirEhsan95/LoFi) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Khorashadizadeh2025lofi.bib)
-
-**GLIMPSE: Generalized Local Imaging with MLPs**  
-AmirEhsan Khorashadizadeh, Valentin Debarnot, _Tianlin Liu_, Ivan Dokmanić  
-IEEE Transactions on Medical Imaging, 2025  
-[![pdf](../files/badges/-paper-green.svg)](https://ieeexplore.ieee.org/document/11018464) [![code](../files/badges/-code-blue.svg)](https://github.com/swing-research/Glimpse) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Khorashadizadeh2025glimpse.bib)
-
-**Routers in Vision Mixture of Experts: An Empirical Study**  
-_Tianlin Liu_, Mathieu Blondel, Carlos Riquelme, Joan Puigcerver  
-Transactions on Machine Learning Research (TMLR), 2024  
-[![pdf](../files/badges/-paper-green.svg)](https://arxiv.org/abs/2401.15969) [![code](../files/badges/-code-blue.svg)](https://github.com/google-research/vmoe) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2024routers.bib)
-
-**WaveBench: Benchmarking Data-driven Solvers for Linear Wave Propagation PDEs**  
-_Tianlin Liu_\*, Jose Antonio Lara Benitez\*, Amirehsan Khorashadizadeh, Florian Faucher, Maarten V de Hoop, Ivan Dokmanić  
-[![pdf](../files/badges/-paper-green.svg)](https://openreview.net/forum?id=6wpInwnzs8) [![code](../files/badges/-code-blue.svg)](https://github.com/wavebench/wavebench) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2024wavebench.bib) 
-
-**Learning multiscale convolutional dictionaries for image reconstruction**  
-_Tianlin Liu_, Anadi Chaman, David Belius, and Ivan Dokmanić  
-IEEE Transactions on Computational Imaging, 2022  
-[![pdf](../files/badges/-paper-green.svg)](https://ieeexplore.ieee.org/document/9775596) [![code](../files/badges/-code-blue.svg)](https://github.com/liutianlin0121/MUSC) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2022learning.bib) 
 
 
 ### Conference
@@ -106,6 +79,35 @@ International IEEE EMBS Conference on Neural Engineering (NER) 2019
 _Tianlin Liu_, Lyle Ungar, and João Sedoc   
 AAAI Conference on Artificial Intelligence 2019   
 [![pdf](../files/badges/-paper-green.svg)](https://arxiv.org/pdf/1811.11001.pdf) [![code](../files/badges/-code-blue.svg)](https://github.com/liutianlin0121/Conceptor-Negation-WV) [![poster](../files/badges/-poster-orange.svg)](../files/poster_aaai2019.pdf) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2019Unsupervised.bib)
+
+
+
+### Journal
+<p></p>
+
+**LoFi: Neural Local Fields for Scalable Image Reconstruction**  
+AmirEhsan Khorashadizadeh, Tobías I. Liaudat, _Tianlin Liu_, Jason D. McEwen, Ivan Dokmanić  
+IEEE Transactions on Computational Imaging, 2025  
+[![pdf](../files/badges/-paper-green.svg)](https://ieeexplore.ieee.org/document/11108275/) [![code](../files/badges/-code-blue.svg)](https://github.com/AmirEhsan95/LoFi) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Khorashadizadeh2025lofi.bib)
+
+**GLIMPSE: Generalized Local Imaging with MLPs**  
+AmirEhsan Khorashadizadeh, Valentin Debarnot, _Tianlin Liu_, Ivan Dokmanić  
+IEEE Transactions on Medical Imaging, 2025  
+[![pdf](../files/badges/-paper-green.svg)](https://ieeexplore.ieee.org/document/11018464) [![code](../files/badges/-code-blue.svg)](https://github.com/swing-research/Glimpse) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Khorashadizadeh2025glimpse.bib)
+
+**Routers in Vision Mixture of Experts: An Empirical Study**  
+_Tianlin Liu_, Mathieu Blondel, Carlos Riquelme, Joan Puigcerver  
+Transactions on Machine Learning Research (TMLR), 2024  
+[![pdf](../files/badges/-paper-green.svg)](https://arxiv.org/abs/2401.15969) [![code](../files/badges/-code-blue.svg)](https://github.com/google-research/vmoe) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2024routers.bib)
+
+**WaveBench: Benchmarking Data-driven Solvers for Linear Wave Propagation PDEs**  
+_Tianlin Liu_\*, Jose Antonio Lara Benitez\*, Amirehsan Khorashadizadeh, Florian Faucher, Maarten V de Hoop, Ivan Dokmanić  
+[![pdf](../files/badges/-paper-green.svg)](https://openreview.net/forum?id=6wpInwnzs8) [![code](../files/badges/-code-blue.svg)](https://github.com/wavebench/wavebench) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2024wavebench.bib) 
+
+**Learning multiscale convolutional dictionaries for image reconstruction**  
+_Tianlin Liu_, Anadi Chaman, David Belius, and Ivan Dokmanić  
+IEEE Transactions on Computational Imaging, 2022  
+[![pdf](../files/badges/-paper-green.svg)](https://ieeexplore.ieee.org/document/9775596) [![code](../files/badges/-code-blue.svg)](https://github.com/liutianlin0121/MUSC) [![bibtex](../files/badges/-bibtex-pink.svg)](../files/bibFiles/Liu2022learning.bib) 
 
 
 ### Workshop

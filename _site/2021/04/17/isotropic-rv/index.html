@@ -5,99 +5,44 @@
   <meta charset="utf-8" />
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=5.0'>
 
 
-<meta name="description" content="I was reading Section 3.3 of the nicely written book  Vershynin (2018)(Vershynin, 2018). At the beginning of that section, it was mentioned that:
 
-
-  The coordinates of an isotropic random vector are always uncorrelated (why?), but they are not necessarily independent.
-
-
-In the above statement, the “not necessarily independent” part is evident from the example of spherically distributed random variables. However, I had a hard time verifying the “always uncorrelated” statement. After some thoughts, I think this statement is actually wrong: The coordinates of an isotropic random vector can be correlated.
-
-To show coordinates of a generic isotropic random vector can be correlated, we need to find an isotropic random variable $X$ such that
-
-\[\begin{equation}
-\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j).
-\end{equation}\]
-
-This can be achieved by considering a coordinate random variable $X$ uniformly distributed in the set $\lbrace \sqrt{n} e_i \rbrace_{i=1}^n$, where $\lbrace e_i\rbrace_{i=1}^n$ is the canonical basis of $\mathbb{R}^n$:
-
-\[\begin{equation}
-X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace. 
-\end{equation}\]
-
-As shown in Section 3.3.4 of the book by Roman Vershynin, this random $X$ is isotropic. That is,
-
-\[\begin{equation}
-\mathbb{E} (X_i X_j) =  0,  \quad \forall i \neq j.
-\end{equation}\]
-
-Additionally, each component of $X$ can only take non-negative values. This implies that $\mathbb{E} (X_i) \neq  0$ for all $i = 1, \ldots, n$. As a result, there holds
-
-\[\begin{equation}
-\mathbb{E} (X_i) \mathbb{E} (X_j) \neq  0, \quad \forall i,j = 1, \ldots, n.
-\end{equation}\]
-
-Hence we have $\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j)$. That is, the random variable $X$ is isotropic yet it has correlated coordinates.
-
-Acknowledgement: My Ph.D. advisor Ivan helped me come up with the above counter-example.
-
-References
-
-Vershynin, R. (2018). High-dimensional Probability: An Introduction with Applications in Data Science (Vol. 47). Cambridge University Press. ↩
-
-" />
-<meta property="og:description" content="I was reading Section 3.3 of the nicely written book  Vershynin (2018)(Vershynin, 2018). At the beginning of that section, it was mentioned that:
-
-
-  The coordinates of an isotropic random vector are always uncorrelated (why?), but they are not necessarily independent.
-
-
-In the above statement, the “not necessarily independent” part is evident from the example of spherically distributed random variables. However, I had a hard time verifying the “always uncorrelated” statement. After some thoughts, I think this statement is actually wrong: The coordinates of an isotropic random vector can be correlated.
-
-To show coordinates of a generic isotropic random vector can be correlated, we need to find an isotropic random variable $X$ such that
-
-\[\begin{equation}
-\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j).
-\end{equation}\]
-
-This can be achieved by considering a coordinate random variable $X$ uniformly distributed in the set $\lbrace \sqrt{n} e_i \rbrace_{i=1}^n$, where $\lbrace e_i\rbrace_{i=1}^n$ is the canonical basis of $\mathbb{R}^n$:
-
-\[\begin{equation}
-X \sim \mathrm{Unif} \lbrace \sqrt{n} e_i : i = 1, \ldots, n \rbrace. 
-\end{equation}\]
-
-As shown in Section 3.3.4 of the book by Roman Vershynin, this random $X$ is isotropic. That is,
-
-\[\begin{equation}
-\mathbb{E} (X_i X_j) =  0,  \quad \forall i \neq j.
-\end{equation}\]
-
-Additionally, each component of $X$ can only take non-negative values. This implies that $\mathbb{E} (X_i) \neq  0$ for all $i = 1, \ldots, n$. As a result, there holds
-
-\[\begin{equation}
-\mathbb{E} (X_i) \mathbb{E} (X_j) \neq  0, \quad \forall i,j = 1, \ldots, n.
-\end{equation}\]
-
-Hence we have $\mathbb{E}(X_i X_j) \neq  \mathbb{E}(X_i) \mathbb{E}(X_j)$. That is, the random variable $X$ is isotropic yet it has correlated coordinates.
-
-Acknowledgement: My Ph.D. advisor Ivan helped me come up with the above counter-example.
-
-References
-
-Vershynin, R. (2018). High-dimensional Probability: An Introduction with Applications in Data Science (Vol. 47). Cambridge University Press. ↩
-
-" />
-
+<meta name="description" content="I was reading Section 3.3 of the nicely written book  Vershynin (2018)(Vershynin, 2018). At the beginning of that section, it was mentioned that:  The coordinates of an isotropic random vector are ..." />
 <meta name="author" content="Tianlin Liu" />
 
-
+<!-- Open Graph / Facebook -->
+<meta property="og:site_name" content="Tianlin Liu" />
+<meta property="og:type" content="article" />
 <meta property="og:title" content="Are coordinates of an isotropic random vector uncorrelated?" />
-<meta property="twitter:title" content="Are coordinates of an isotropic random vector uncorrelated?" />
+<meta property="og:description" content="I was reading Section 3.3 of the nicely written book  Vershynin (2018)(Vershynin, 2018). At the beginning of that section, it was mentioned that:  The coordinates of an isotropic random vector are ..." />
+<meta property="og:url" content="http://localhost:4000/2021/04/17/isotropic-rv/" />
 
-<title>Are coordinates of an isotropic random vector uncorrelated? – Tianlin Liu – home</title>
+<meta property="og:image" content="http://localhost:4000/assets/image/tianlin-liu-profile.JPG" />
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:site" content="@tianlinliu0121" />
+<meta name="twitter:creator" content="@tianlinliu0121" />
+
+<meta name="twitter:title" content="Are coordinates of an isotropic random vector uncorrelated?" />
+<meta name="twitter:description" content="I was reading Section 3.3 of the nicely written book  Vershynin (2018)(Vershynin, 2018). At the beginning of that section, it was mentioned that:  The coordinates of an isotropic random vector are ..." />
+
+<meta name="twitter:image" content="http://localhost:4000/assets/image/tianlin-liu-profile.JPG" />
+
+<title>Are coordinates of an isotropic random vector uncorrelated? – Tianlin Liu</title>
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
 
   <link rel="stylesheet" type="text/css" href="/style.css" />
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css" />
@@ -109,16 +54,8 @@ Vershynin, R. (2018). High-dimensional Probability: An Introduction with Applica
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
   <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
-  <!-- <link rel="alternate" type="application/rss+xml" title="Tianlin Liu - home" href="/feed.xml"/> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
-    integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print"
-    onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print"
-    onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
-    integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous"
-    media="print" onload="this.media='all'" />
+  
+  
 
 </head>
 
@@ -127,19 +64,32 @@ Vershynin, R. (2018). High-dimensional Probability: An Introduction with Applica
     <div class="container">
       <header class="masthead clearfix">
         <!-- 
-          <a href="/" class="site-avatar"><img src="" width="70" height="70" /></a>
- -->
-        <!--           <div class="site-info">
+          <a href="/" class="site-avatar"><img src="/assets/image/tianlin-liu-profile.JPG" width="70" height="70" /></a>
+        -->
+        <!-- 
+          <div class="site-info">
             <h1 class="site-name"><a href="/">Tianlin Liu</a></h1>
-            <p class="site-description">home</p>
+            <p class="site-description">Personal website and research blog of Tianlin Liu.</p>
           </div>
- -->
+        -->
         <nav class="nav-menu">
           
+  
+  
+  
+  
   <a class="nav-menu-item" href="/about">about</a>
 
+  
+  
+  
+  
   <a class="nav-menu-item" href="/publications">publication</a>
 
+  
+  
+  
+  
   <a class="nav-menu-item" href="/blog">blog</a>
 
 
@@ -472,29 +422,15 @@ $$
 
   <div class="wrapper-footer">
     <div class="container">
-      <footer class="footer"><!--           <div class="copyright">
-            
-            <p>&copy; 2026 Tianlin Liu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/forever-jekyll/forever-jekyll" rel="nofollow">Forever Jekyll</a>.</p>
-            
-          </div> -->
-      </footer>
+      <footer class="footer"></footer>
     </div>
   </div>
 
-  <script defer src="https://cdn.plyr.io/3.6.5/plyr.js"></script>
-  <script>
-    const player = new Plyr("#player", { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, enablejsapi: 1, autoplay: 0, focused: true, global: false });
-    window.player = player;
-  </script>
+  <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌓</button>
 
-  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-  <script type="text/javascript">
-    const lightbox = GLightbox({
-      touchNavigation: true,
-      loop: true,
-      autoplayVideos: true
-    });
-  </script>
+  
+
+  
 
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({ startOnLoad: true });</script>
@@ -519,17 +455,17 @@ $$
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <script>
-    function addDarkmodeWidget() {
-      new Darkmode().showWidget();
-      window.addEventListener('load', addDarkmodeWidget);
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const isDark = currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const nextTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
     }
-    const options = {
-      label: '🌓',
-    }
-    const darkmode = new Darkmode(options);
-    darkmode.showWidget();
   </script>
 
 </body>

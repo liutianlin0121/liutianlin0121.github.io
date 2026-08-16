@@ -5,79 +5,44 @@
   <meta charset="utf-8" />
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
-
-
-<meta name="description" content="To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilities of image content.
-
-One example where MSE causes trouble is in template matching, where the goal is to align an image with its translated version. To nudge the misaligned image toward the correct location, we want to use a metric that gives a small value when the translation distance is small, and conversely, a large value when the distance is large. However, this is often not the case if we use MSE as a metric. The MSE score betwee two images will be significant, even if the translation between them is small. This is because the MSE approach average error across pixels, and a tiny translation can cause large differences in pixel values.
-
-Are there image metrics that can capture global variabilities of images? I recently learned from Adler et al. (2017), Dukler et al. (2019), and Kothari et al. (2020) that one approach is to use the Sinkhorn divergence. In this approach, we treat images—after a proper normalization—as histograms; we then compare the distance between two histograms through optimal transport. Specifically, the entropy-regularized Wasserstein metric between two histograms $a$ and $b$ is defined as
-
-\[W_{C, \epsilon}(a, b) := \min_{T \in U(a, b)}~ \langle T, C \rangle + \epsilon \langle T, \log T \rangle,\]
-
-where $C$ is a cost matrix, and $U(a, b) := {T \in \mathbb{R}^{m \times n}{+} : T 1_n = a, T^\top 1_m = b}$
-is the transportation polytope. The cost matrix stores all pairwise costs between points in the supports of the histograms. That is, $[C]{ij} = c(x_i, x_j)$ with $x_i$ and $x_j$ being two points from the supports of $a$ and $b$. It is typically to choose $c$ as the squared Euclidean distance.
-
-The Sinkhorn divergence is define as
-
-\[S_{C, \epsilon}(a, b) := W_{C, \epsilon}(a, b) - \frac{1}{2} \big( W_{C, \epsilon}(a, a) + W_{C, \epsilon}(b, b) \big).\]
-
-The Sinkhorn divergence $S_{C, \epsilon}$ is debiased version of $W_{C, \epsilon}$ since $S_{C, \epsilon}(a, a) = 0$ and $S_{C, \epsilon}(a, b) = S_{C, \epsilon}(b, a)$.
-
-Numerical demonstration
-
-To visually see that MSE is not a reliable indicator of translation distance, see the GIFs presented below. As a first example, an MNIST image of ‘1’ is translated, and when the translated image and the original image do not overlap, the MSE remains constant. This can lead to complications if one uses gradient-based optimization to minimize the loss.
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=5.0'>
 
 
 
-As another example below, an image of high-frequency textures (a curvelet band of an image) is translated. Since the curvelet is oscillatory, the MSE loss has many local minima. Again, this can make gradient-based optimization difficult.
-
-
-
-As we see in the above GIFS, the Sinkhorn divergence produces a smooth and monotonic curve, which agrees with our intuition of translation distance.
-
-The Google Colab notebook for reproducing these experiments can be found here.
-" />
-<meta property="og:description" content="To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilities of image content.
-
-One example where MSE causes trouble is in template matching, where the goal is to align an image with its translated version. To nudge the misaligned image toward the correct location, we want to use a metric that gives a small value when the translation distance is small, and conversely, a large value when the distance is large. However, this is often not the case if we use MSE as a metric. The MSE score betwee two images will be significant, even if the translation between them is small. This is because the MSE approach average error across pixels, and a tiny translation can cause large differences in pixel values.
-
-Are there image metrics that can capture global variabilities of images? I recently learned from Adler et al. (2017), Dukler et al. (2019), and Kothari et al. (2020) that one approach is to use the Sinkhorn divergence. In this approach, we treat images—after a proper normalization—as histograms; we then compare the distance between two histograms through optimal transport. Specifically, the entropy-regularized Wasserstein metric between two histograms $a$ and $b$ is defined as
-
-\[W_{C, \epsilon}(a, b) := \min_{T \in U(a, b)}~ \langle T, C \rangle + \epsilon \langle T, \log T \rangle,\]
-
-where $C$ is a cost matrix, and $U(a, b) := {T \in \mathbb{R}^{m \times n}{+} : T 1_n = a, T^\top 1_m = b}$
-is the transportation polytope. The cost matrix stores all pairwise costs between points in the supports of the histograms. That is, $[C]{ij} = c(x_i, x_j)$ with $x_i$ and $x_j$ being two points from the supports of $a$ and $b$. It is typically to choose $c$ as the squared Euclidean distance.
-
-The Sinkhorn divergence is define as
-
-\[S_{C, \epsilon}(a, b) := W_{C, \epsilon}(a, b) - \frac{1}{2} \big( W_{C, \epsilon}(a, a) + W_{C, \epsilon}(b, b) \big).\]
-
-The Sinkhorn divergence $S_{C, \epsilon}$ is debiased version of $W_{C, \epsilon}$ since $S_{C, \epsilon}(a, a) = 0$ and $S_{C, \epsilon}(a, b) = S_{C, \epsilon}(b, a)$.
-
-Numerical demonstration
-
-To visually see that MSE is not a reliable indicator of translation distance, see the GIFs presented below. As a first example, an MNIST image of ‘1’ is translated, and when the translated image and the original image do not overlap, the MSE remains constant. This can lead to complications if one uses gradient-based optimization to minimize the loss.
-
-
-
-As another example below, an image of high-frequency textures (a curvelet band of an image) is translated. Since the curvelet is oscillatory, the MSE loss has many local minima. Again, this can make gradient-based optimization difficult.
-
-
-
-As we see in the above GIFS, the Sinkhorn divergence produces a smooth and monotonic curve, which agrees with our intuition of translation distance.
-
-The Google Colab notebook for reproducing these experiments can be found here.
-" />
-
+<meta name="description" content="To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilit..." />
 <meta name="author" content="Tianlin Liu" />
 
-
+<!-- Open Graph / Facebook -->
+<meta property="og:site_name" content="Tianlin Liu" />
+<meta property="og:type" content="article" />
 <meta property="og:title" content="Using Sinkhorn divergence to measure image similarity" />
-<meta property="twitter:title" content="Using Sinkhorn divergence to measure image similarity" />
+<meta property="og:description" content="To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilit..." />
+<meta property="og:url" content="http://localhost:4000/2023/03/23/sinkhorn-divergence/" />
 
-<title>Using Sinkhorn divergence to measure image similarity – Tianlin Liu – home</title>
+<meta property="og:image" content="http://localhost:4000/assets/image/tianlin-liu-profile.JPG" />
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:site" content="@tianlinliu0121" />
+<meta name="twitter:creator" content="@tianlinliu0121" />
+
+<meta name="twitter:title" content="Using Sinkhorn divergence to measure image similarity" />
+<meta name="twitter:description" content="To quantitatively evaluate the difference between images, one often uses the mean square error (MSE). However, MSE is often too sensitive to local pixel values and ignores the global (in)variabilit..." />
+
+<meta name="twitter:image" content="http://localhost:4000/assets/image/tianlin-liu-profile.JPG" />
+
+<title>Using Sinkhorn divergence to measure image similarity – Tianlin Liu</title>
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
 
   <link rel="stylesheet" type="text/css" href="/style.css" />
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css" />
@@ -89,16 +54,8 @@ The Google Colab notebook for reproducing these experiments can be found here.
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
   <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
-  <!-- <link rel="alternate" type="application/rss+xml" title="Tianlin Liu - home" href="/feed.xml"/> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
-    integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print"
-    onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print"
-    onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
-    integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous"
-    media="print" onload="this.media='all'" />
+  
+  
 
 </head>
 
@@ -107,19 +64,32 @@ The Google Colab notebook for reproducing these experiments can be found here.
     <div class="container">
       <header class="masthead clearfix">
         <!-- 
-          <a href="/" class="site-avatar"><img src="" width="70" height="70" /></a>
- -->
-        <!--           <div class="site-info">
+          <a href="/" class="site-avatar"><img src="/assets/image/tianlin-liu-profile.JPG" width="70" height="70" /></a>
+        -->
+        <!-- 
+          <div class="site-info">
             <h1 class="site-name"><a href="/">Tianlin Liu</a></h1>
-            <p class="site-description">home</p>
+            <p class="site-description">Personal website and research blog of Tianlin Liu.</p>
           </div>
- -->
+        -->
         <nav class="nav-menu">
           
+  
+  
+  
+  
   <a class="nav-menu-item" href="/about">about</a>
 
+  
+  
+  
+  
   <a class="nav-menu-item" href="/publications">publication</a>
 
+  
+  
+  
+  
   <a class="nav-menu-item" href="/blog">blog</a>
 
 
@@ -441,29 +411,15 @@ $$
 
   <div class="wrapper-footer">
     <div class="container">
-      <footer class="footer"><!--           <div class="copyright">
-            
-            <p>&copy; 2026 Tianlin Liu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/forever-jekyll/forever-jekyll" rel="nofollow">Forever Jekyll</a>.</p>
-            
-          </div> -->
-      </footer>
+      <footer class="footer"></footer>
     </div>
   </div>
 
-  <script defer src="https://cdn.plyr.io/3.6.5/plyr.js"></script>
-  <script>
-    const player = new Plyr("#player", { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, enablejsapi: 1, autoplay: 0, focused: true, global: false });
-    window.player = player;
-  </script>
+  <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌓</button>
 
-  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-  <script type="text/javascript">
-    const lightbox = GLightbox({
-      touchNavigation: true,
-      loop: true,
-      autoplayVideos: true
-    });
-  </script>
+  
+
+  
 
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({ startOnLoad: true });</script>
@@ -488,17 +444,17 @@ $$
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <script>
-    function addDarkmodeWidget() {
-      new Darkmode().showWidget();
-      window.addEventListener('load', addDarkmodeWidget);
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const isDark = currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const nextTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
     }
-    const options = {
-      label: '🌓',
-    }
-    const darkmode = new Darkmode(options);
-    darkmode.showWidget();
   </script>
 
 </body>

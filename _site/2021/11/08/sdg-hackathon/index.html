@@ -5,165 +5,44 @@
   <meta charset="utf-8" />
 <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=5.0'>
 
 
-<meta name="description" content="Over the last weekend, I participated in the SDG Hackathon organized by CorrelAid and the University of Basel.
 
-The goal of the hackathon is to visualize how research happening in Switzerland addresses the 17 Sustainable Development Goals (SDGs) set up by the United Nations. Hackathon participants are provided with a public database processed by the text2sdg software. This dataset contains various types of information on research projects funded by the Swiss National Science Foundation, including each project’s number, title, keywords, university, and its corresponding SDG (judged by the text2sdg software).
-
-Below is the visualization that I made (modulo minor post-hackathon adjustments):
-
-
-
-
-
-It is an Alluvial diagram that illustrates the number of projects broken down by universities, disciplines, and SDGs.
-
-To my pleasant surprise, I won the public award and a runner-up jury award.
-
-
-
-
-
-
-The pipeline for producing the figure was standard: I used Python, RAWGraphs, and Adobe Illustrator to generate the figure. Based on the hackathon repository on Github, I used the following code to pre-process the provided datasets sdg_hackathon_data.zip  and supplementary_data.zip :
-
-import pandas as pd
-import numpy as np
-
-main_df = pd.read_csv("sdg_hackathon_data.zip")
-additional_df = pd.read_csv("supplementary_data.zip")
-
-#join on main dataset
-main_df = main_df.merge(additional_df, left_on = "project_number", right_on = "project_number", how = "left")
-
-# only use ontology for query
-query_df = main_df[main_df['system'] == 'ontology']
-
-query_df = query_df.drop(columns = ['project_title', 'keywords', 'start_date', 'end_date', 'approved_amount', 'responsible_applicant', 'institution', 'abstract', 'discipline_number', 'project_number', 'hits', 'funding_instrument', 'abstract_translated_indicator', 'funding_instrument_hierarchy', 'system', 'all_disciplines'])
-
-
-country = 'Switzerland'
-country_data = query_df[query_df['institution_country'] == country]
-country_data = query_df[ query_df.discipline_name_hierarchy.notnull()]
-
-
-swiss_uni_list = [
- 'University of Fribourg - FR', 
- 'ETH Zurich - ETHZ',
- 'University of Zurich - ZH',
- 'University of Geneva - GE',
- 'University of Berne - BE',
- 'EPF Lausanne - EPFL',
- 'University of Lausanne - LA',
- 'University of Basel - BS']
-
-country_data = country_data[country_data['university'].isin(swiss_uni_list)]
-country_data['discipline_name_hierarchy'] = [a.split(';')[0] for a in country_data['discipline_name_hierarchy'].to_list()]
-
-
-The pre-processed data country_data is a panda dataframe of the following form:
-
-
-
-
-
-I then saved the country_data into a CSV file and uploaded it to RAWGraphs for a speedy visualization.
-
-To choose colors for mappings between universities and disciplines, I have attempted to find the “main color” of each university: For the University of Basel, I used the Unibas Mint; for ETH, I used its official ETH blue; for EPFL, I used the Swiss red. For universities that do not have an official color, I chose colors based on their logos and webpages. For the mappings between disciplines and SDGs, I used three primary colors selected from the color-hex webpage.
-
-As a next step, I post-processed the SVG figure generated from RAWGraphs using Adobe Illustrator. To make the text font consistent with those of the SDG icons, I used the Oswald font, which is recommended for the typography of SDG icons.
-
-And that’s it! It took me about a day to generate and polish the figure.
-
-
-
-Overall, the Hackathon was a fun experience! I learned a lot about data visualization skills such as how to use Adobe Illustrator to beautify vector graphics. A thank goes to Yue Kris Wu, who helped me improve the color palette used in the figure (by pointing out color-hex to me).
-
-" />
-<meta property="og:description" content="Over the last weekend, I participated in the SDG Hackathon organized by CorrelAid and the University of Basel.
-
-The goal of the hackathon is to visualize how research happening in Switzerland addresses the 17 Sustainable Development Goals (SDGs) set up by the United Nations. Hackathon participants are provided with a public database processed by the text2sdg software. This dataset contains various types of information on research projects funded by the Swiss National Science Foundation, including each project’s number, title, keywords, university, and its corresponding SDG (judged by the text2sdg software).
-
-Below is the visualization that I made (modulo minor post-hackathon adjustments):
-
-
-
-
-
-It is an Alluvial diagram that illustrates the number of projects broken down by universities, disciplines, and SDGs.
-
-To my pleasant surprise, I won the public award and a runner-up jury award.
-
-
-
-
-
-
-The pipeline for producing the figure was standard: I used Python, RAWGraphs, and Adobe Illustrator to generate the figure. Based on the hackathon repository on Github, I used the following code to pre-process the provided datasets sdg_hackathon_data.zip  and supplementary_data.zip :
-
-import pandas as pd
-import numpy as np
-
-main_df = pd.read_csv("sdg_hackathon_data.zip")
-additional_df = pd.read_csv("supplementary_data.zip")
-
-#join on main dataset
-main_df = main_df.merge(additional_df, left_on = "project_number", right_on = "project_number", how = "left")
-
-# only use ontology for query
-query_df = main_df[main_df['system'] == 'ontology']
-
-query_df = query_df.drop(columns = ['project_title', 'keywords', 'start_date', 'end_date', 'approved_amount', 'responsible_applicant', 'institution', 'abstract', 'discipline_number', 'project_number', 'hits', 'funding_instrument', 'abstract_translated_indicator', 'funding_instrument_hierarchy', 'system', 'all_disciplines'])
-
-
-country = 'Switzerland'
-country_data = query_df[query_df['institution_country'] == country]
-country_data = query_df[ query_df.discipline_name_hierarchy.notnull()]
-
-
-swiss_uni_list = [
- 'University of Fribourg - FR', 
- 'ETH Zurich - ETHZ',
- 'University of Zurich - ZH',
- 'University of Geneva - GE',
- 'University of Berne - BE',
- 'EPF Lausanne - EPFL',
- 'University of Lausanne - LA',
- 'University of Basel - BS']
-
-country_data = country_data[country_data['university'].isin(swiss_uni_list)]
-country_data['discipline_name_hierarchy'] = [a.split(';')[0] for a in country_data['discipline_name_hierarchy'].to_list()]
-
-
-The pre-processed data country_data is a panda dataframe of the following form:
-
-
-
-
-
-I then saved the country_data into a CSV file and uploaded it to RAWGraphs for a speedy visualization.
-
-To choose colors for mappings between universities and disciplines, I have attempted to find the “main color” of each university: For the University of Basel, I used the Unibas Mint; for ETH, I used its official ETH blue; for EPFL, I used the Swiss red. For universities that do not have an official color, I chose colors based on their logos and webpages. For the mappings between disciplines and SDGs, I used three primary colors selected from the color-hex webpage.
-
-As a next step, I post-processed the SVG figure generated from RAWGraphs using Adobe Illustrator. To make the text font consistent with those of the SDG icons, I used the Oswald font, which is recommended for the typography of SDG icons.
-
-And that’s it! It took me about a day to generate and polish the figure.
-
-
-
-Overall, the Hackathon was a fun experience! I learned a lot about data visualization skills such as how to use Adobe Illustrator to beautify vector graphics. A thank goes to Yue Kris Wu, who helped me improve the color palette used in the figure (by pointing out color-hex to me).
-
-" />
-
+<meta name="description" content="Over the last weekend, I participated in the SDG Hackathon organized by CorrelAid and the University of Basel.The goal of the hackathon is to visualize how research happening in Switzerland address..." />
 <meta name="author" content="Tianlin Liu" />
 
-
+<!-- Open Graph / Facebook -->
+<meta property="og:site_name" content="Tianlin Liu" />
+<meta property="og:type" content="article" />
 <meta property="og:title" content="Visualizing Swiss sustainability research" />
-<meta property="twitter:title" content="Visualizing Swiss sustainability research" />
+<meta property="og:description" content="Over the last weekend, I participated in the SDG Hackathon organized by CorrelAid and the University of Basel.The goal of the hackathon is to visualize how research happening in Switzerland address..." />
+<meta property="og:url" content="http://localhost:4000/2021/11/08/sdg-hackathon/" />
 
-<title>Visualizing Swiss sustainability research – Tianlin Liu – home</title>
+<meta property="og:image" content="http://localhost:4000/assets/image/tianlin-liu-profile.JPG" />
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+
+<meta name="twitter:site" content="@tianlinliu0121" />
+<meta name="twitter:creator" content="@tianlinliu0121" />
+
+<meta name="twitter:title" content="Visualizing Swiss sustainability research" />
+<meta name="twitter:description" content="Over the last weekend, I participated in the SDG Hackathon organized by CorrelAid and the University of Basel.The goal of the hackathon is to visualize how research happening in Switzerland address..." />
+
+<meta name="twitter:image" content="http://localhost:4000/assets/image/tianlin-liu-profile.JPG" />
+
+<title>Visualizing Swiss sustainability research – Tianlin Liu</title>
+
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
 
   <link rel="stylesheet" type="text/css" href="/style.css" />
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/ress/dist/ress.min.css" />
@@ -175,16 +54,8 @@ Overall, the Hackathon was a fun experience! I learned a lot about data visualiz
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/image/favicon-192x192.png">
   <meta name="msapplication-config" content="/assets/image/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
-  <!-- <link rel="alternate" type="application/rss+xml" title="Tianlin Liu - home" href="/feed.xml"/> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css"
-    integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous" media="print"
-    onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.6.5/plyr.css" media="print" onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" media="print"
-    onload="this.media='all'" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.18/dist/katex.min.css"
-    integrity="sha384-zTROYFVGOfTw7JV7KUu8udsvW2fx4lWOsCEDqhBreBwlHI4ioVRtmIvEThzJHGET" crossorigin="anonymous"
-    media="print" onload="this.media='all'" />
+  
+  
 
 </head>
 
@@ -193,19 +64,32 @@ Overall, the Hackathon was a fun experience! I learned a lot about data visualiz
     <div class="container">
       <header class="masthead clearfix">
         <!-- 
-          <a href="/" class="site-avatar"><img src="" width="70" height="70" /></a>
- -->
-        <!--           <div class="site-info">
+          <a href="/" class="site-avatar"><img src="/assets/image/tianlin-liu-profile.JPG" width="70" height="70" /></a>
+        -->
+        <!-- 
+          <div class="site-info">
             <h1 class="site-name"><a href="/">Tianlin Liu</a></h1>
-            <p class="site-description">home</p>
+            <p class="site-description">Personal website and research blog of Tianlin Liu.</p>
           </div>
- -->
+        -->
         <nav class="nav-menu">
           
+  
+  
+  
+  
   <a class="nav-menu-item" href="/about">about</a>
 
+  
+  
+  
+  
   <a class="nav-menu-item" href="/publications">publication</a>
 
+  
+  
+  
+  
   <a class="nav-menu-item" href="/blog">blog</a>
 
 
@@ -566,29 +450,15 @@ Overall, the Hackathon was a fun experience! I learned a lot about data visualiz
 
   <div class="wrapper-footer">
     <div class="container">
-      <footer class="footer"><!--           <div class="copyright">
-            
-            <p>&copy; 2026 Tianlin Liu. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/forever-jekyll/forever-jekyll" rel="nofollow">Forever Jekyll</a>.</p>
-            
-          </div> -->
-      </footer>
+      <footer class="footer"></footer>
     </div>
   </div>
 
-  <script defer src="https://cdn.plyr.io/3.6.5/plyr.js"></script>
-  <script>
-    const player = new Plyr("#player", { noCookie: true, rel: 0, showinfo: 0, iv_load_policy: 3, modestbranding: 1, playsinline: 1, enablejsapi: 1, autoplay: 0, focused: true, global: false });
-    window.player = player;
-  </script>
+  <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">🌓</button>
 
-  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-  <script type="text/javascript">
-    const lightbox = GLightbox({
-      touchNavigation: true,
-      loop: true,
-      autoplayVideos: true
-    });
-  </script>
+  
+
+  
 
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({ startOnLoad: true });</script>
@@ -613,17 +483,17 @@ Overall, the Hackathon was a fun experience! I learned a lot about data visualiz
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
   <script>
-    function addDarkmodeWidget() {
-      new Darkmode().showWidget();
-      window.addEventListener('load', addDarkmodeWidget);
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const isDark = currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        const nextTheme = isDark ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('theme', nextTheme);
+      });
     }
-    const options = {
-      label: '🌓',
-    }
-    const darkmode = new Darkmode(options);
-    darkmode.showWidget();
   </script>
 
 </body>
